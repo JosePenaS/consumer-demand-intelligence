@@ -1,0 +1,17 @@
+---
+title: "Weekly Research"
+---
+
+Consumer Demand Intelligence publishes structured research on emerging consumer-demand signals and their potential public-market implications.
+
+## 2026
+
+### Week 34
+
+#### NeeDoh — Schylling / Gladstone Investment Corporation
+
+**Status:** YELLOW — Monitoring Signal
+
+A surge in consumer interest around NeeDoh led to a deeper investigation of Schylling and ultimately revealed a public-market exposure through Gladstone Investment Corporation.
+
+[Read the full research →](2026-W34-needoh.qmd)

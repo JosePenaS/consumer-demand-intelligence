@@ -1,0 +1,35 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Consumer Demand Intelligence"
+
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: research/index.qmd
+        text: Weekly Research
+      - href: methodology.qmd
+        text: Methodology
+      - href: about.qmd
+        text: About
+
+    right:
+      - icon: github
+        href: https://github.com/JosePenaS/consumer-demand-intelligence
+
+  page-footer:
+    left: "Consumer Demand Intelligence"
+    right: "Built with R, Quarto, Google Trends, and automated web research"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+    link-external-newwindow: true
+
+
+

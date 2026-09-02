@@ -1,0 +1,19 @@
+---
+title: "Weekly Research"
+---
+
+Consumer Demand Intelligence publishes structured weekly research on emerging consumer-demand signals and their potential public-market implications.
+
+Each report begins with consumer-demand discovery and proceeds through web verification, corporate ownership mapping, public-market look-through analysis, financial transmission, materiality assessment, and source verification.
+
+## 2026
+
+### Week 34 — NeeDoh / Schylling / GAIN
+
+**YELLOW · 62/100 · High evidence quality**
+
+Persistent consumer demand for NeeDoh led the system from a consumer search signal to Schylling and ultimately to a quantifiable public-market exposure through **Gladstone Investment Corporation (NASDAQ: GAIN)**.
+
+**Key finding:** Schylling represents approximately 6.8% of GAIN's investments and 13.4% of net assets at reported fair value, creating a meaningful NAV exposure while its term debt provides a separate contractual income channel.
+
+[Read the full Week 34 report →](research/2026-W34-needoh.qmd)

@@ -1,0 +1,59 @@
+---
+title: "Methodology"
+---
+
+Consumer Demand Intelligence uses a multi-stage research pipeline designed to separate interesting consumer-search activity from financially meaningful market intelligence.
+
+## Research Pipeline
+
+### 1. Consumer-demand discovery
+
+Google Trends is used to discover unusual search behavior and emerging consumer-interest signals.
+
+Search growth is treated as a research lead rather than evidence of investment significance.
+
+### 2. Candidate screening
+
+Potential topics are evaluated for coherence, specificity, and whether they represent a recognizable consumer-demand phenomenon.
+
+### 3. Automated web research
+
+Qualified candidates undergo structured web research focused on:
+
+- evidence of real consumer demand;
+- product availability and supply conditions;
+- company and brand ownership;
+- public-market exposure;
+- financial relevance;
+- source quality and consistency.
+
+### 4. Public-market look-through
+
+Private brands are not automatically excluded.
+
+The research process examines whether publicly traded companies may have economic exposure through:
+
+- parent-company ownership;
+- common equity;
+- preferred equity;
+- debt investments;
+- business development companies;
+- listed investment vehicles;
+- other economically meaningful securities.
+
+### 5. Financial transmission
+
+The analysis distinguishes between different economic channels.
+
+For example, changes in the fair value of an investment may affect NAV without necessarily creating current income. Debt may generate interest income while also creating fair-value and credit exposure.
+
+### 6. Investment-relevance scoring
+
+Each topic is evaluated using a structured scoring framework incorporating evidence strength, economic linkage, materiality, durability, and uncertainty.
+
+### 7. Source verification
+
+Material claims and citations are audited to ensure that sources directly support the statements attributed to them.
+
+The objective is to produce a repeatable market-intelligence process rather than a simple collection of trending searches.
+---
