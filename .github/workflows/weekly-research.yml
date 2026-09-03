@@ -118,9 +118,26 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git checkout -b $branchName
+          git fetch origin
 
-          git commit -m "Add $issueId weekly research"
+          $remoteBranchExists = git ls-remote `
+            --heads origin $branchName
+
+          if ($remoteBranchExists) {
+            Write-Host "Existing weekly branch found. Reusing it."
+
+            git checkout -B $branchName origin/$branchName
+          }
+          else {
+            Write-Host "Creating new weekly branch."
+
+            git checkout -b $branchName
+          }
+
+          git add research/index.qmd
+          git add "research/*.qmd"
+
+          git commit -m "Update $issueId weekly research"
 
           git push --force-with-lease origin $branchName
 
