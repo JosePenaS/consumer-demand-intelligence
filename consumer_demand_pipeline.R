@@ -3957,16 +3957,39 @@ QUARTO_REPORT_FILE <- file.path(
 # remove the first H1 to avoid showing the title twice.
 quarto_body <- weekly_briefing
 
-quarto_body <- sub(
-  "^#[[:space:]]+[^\\r\\n]+[\\r\\n]+",
-  "",
-  quarto_body
-)
+# Remove the first Markdown H1 line produced by the weekly editor.
+# Splitting into lines is more reliable than trying to remove the
+# heading with a multiline regular expression.
+quarto_lines <- strsplit(
+  quarto_body,
+  "\\r?\\n"
+)[[1]]
 
-quarto_body <- sub(
-  "^[\\r\\n]+",
-  "",
-  quarto_body
+first_nonempty_line <- which(
+  nzchar(stringr::str_trim(quarto_lines))
+)[1]
+
+if (
+  !is.na(first_nonempty_line) &&
+  grepl(
+    "^#[[:space:]]+",
+    quarto_lines[first_nonempty_line]
+  )
+) {
+  quarto_lines <- quarto_lines[-first_nonempty_line]
+}
+
+# Remove blank lines left at the beginning.
+while (
+  length(quarto_lines) > 0 &&
+  !nzchar(stringr::str_trim(quarto_lines[1]))
+) {
+  quarto_lines <- quarto_lines[-1]
+}
+
+quarto_body <- paste(
+  quarto_lines,
+  collapse = "\n"
 )
 
 quarto_front_matter <- c(
