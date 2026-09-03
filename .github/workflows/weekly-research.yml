@@ -1,0 +1,158 @@
+name: Weekly Consumer Demand Research
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  weekly-research:
+    runs-on: windows-latest
+
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - name: Install R packages
+        shell: Rscript {0}
+        run: |
+          packages <- c(
+            "httr2",
+            "dplyr",
+            "tidyr",
+            "purrr",
+            "tibble",
+            "lubridate",
+            "jsonlite",
+            "stringr",
+            "readr"
+          )
+
+          missing_packages <- packages[
+            !vapply(
+              packages,
+              requireNamespace,
+              logical(1),
+              quietly = TRUE
+            )
+          ]
+
+          if (length(missing_packages) > 0) {
+            install.packages(
+              missing_packages,
+              repos = "https://cloud.r-project.org"
+            )
+          }
+
+      - name: Run consumer demand pipeline
+        shell: Rscript {0}
+        run: |
+          source("consumer_demand_pipeline.R", echo = FALSE)
+
+      - name: Check generated research files
+        shell: pwsh
+        run: |
+          Write-Host "Git status after pipeline:"
+          git status --short
+
+          Write-Host ""
+          Write-Host "Research directory:"
+          Get-ChildItem research
+
+      - name: Detect generated publication changes
+        id: changes
+        shell: pwsh
+        run: |
+          git add research/index.qmd
+          git add "research/*.qmd"
+
+          $changes = git diff --cached --name-only
+
+          if ($changes) {
+            Write-Host "Publication changes detected:"
+            Write-Host $changes
+            "has_changes=true" >> $env:GITHUB_OUTPUT
+          }
+          else {
+            Write-Host "No publication changes detected."
+            "has_changes=false" >> $env:GITHUB_OUTPUT
+          }
+
+      - name: Create weekly branch
+        if: steps.changes.outputs.has_changes == 'true'
+        id: branch
+        shell: pwsh
+        run: |
+          $issueFile = Get-ChildItem research -Filter "????-W??.qmd" |
+            Sort-Object LastWriteTime -Descending |
+            Select-Object -First 1
+
+          if (-not $issueFile) {
+            throw "Could not identify the generated weekly Quarto report."
+          }
+
+          $issueId = [System.IO.Path]::GetFileNameWithoutExtension(
+            $issueFile.Name
+          )
+
+          $branchName = "weekly/$issueId"
+
+          Write-Host "Issue ID: $issueId"
+          Write-Host "Branch: $branchName"
+
+          "issue_id=$issueId" >> $env:GITHUB_OUTPUT
+          "branch_name=$branchName" >> $env:GITHUB_OUTPUT
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git checkout -b $branchName
+
+          git commit -m "Add $issueId weekly research"
+
+          git push --force-with-lease origin $branchName
+
+      - name: Create pull request
+        if: steps.changes.outputs.has_changes == 'true'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_ID: ${{ steps.branch.outputs.issue_id }}
+          BRANCH_NAME: ${{ steps.branch.outputs.branch_name }}
+        run: |
+          $existingPr = gh pr list `
+            --head $env:BRANCH_NAME `
+            --base main `
+            --json number `
+            --jq '.[0].number'
+
+          if ($existingPr) {
+            Write-Host "Pull request already exists: #$existingPr"
+          }
+          else {
+            gh pr create `
+              --base main `
+              --head $env:BRANCH_NAME `
+              --title "Weekly research: $env:ISSUE_ID" `
+              --body @"
+          Automated Consumer Demand Intelligence weekly research run.
+
+          This pull request contains the generated research report and the updated Weekly Research index.
+
+          Review the files before merging into main.
+
+          Issue: $env:ISSUE_ID
+          "@
+          }
