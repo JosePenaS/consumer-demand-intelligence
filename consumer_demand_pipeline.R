@@ -3814,7 +3814,8 @@ build_weekly_editor_prompt <- function(
     
     "## Comparison table\n",
     
-    "Rank | Topic/subtheme | Priority | Investment score | Verified driver | Public-company exposure | Instrument | Fair-value/NAV mechanism | Income/cash-flow mechanism | Materiality | Evidence quality | Status\n\n",
+    "Rank | Topic/subtheme | Priority | Investment score | Verified driver | Public-company exposure | Instrument | Fair-value/NAV mechanism | Income/cash-flow mechanism | Materiality | Evidence quality | Status\n",
+    "|---|---|---|---:|---|---|---|---|---|---|---|---|\n\n",
     
     "## Monitoring signals\n",
     
