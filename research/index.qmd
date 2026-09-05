@@ -2,6 +2,21 @@
 title: "Weekly Research"
 ---
 
+<!-- AUTO-WEEKLY-START -->
+
+## Latest automated reports
+
+### 2026 · Week 36
+
+2026-W36 Weekly Market Intelligence
+
+**Published:** 2026-09-04
+
+[Read the full report →](2026-W36.qmd)
+
+<!-- AUTO-WEEKLY-END -->
+
+
 Consumer Demand Intelligence publishes structured research on emerging consumer-demand signals and their potential public-market implications.
 
 ## 2026
