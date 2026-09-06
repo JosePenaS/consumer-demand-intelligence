@@ -27,6 +27,7 @@ website:
 format:
   html:
     theme: cosmo
+    css: styles.css
     toc: true
     code-fold: true
     link-external-newwindow: true
