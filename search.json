@@ -100,16 +100,30 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Weekly Research",
+    "title": "Consumer Demand Intelligence",
     "section": "",
-    "text": "Consumer Demand Intelligence publishes structured weekly research on emerging consumer-demand signals and their potential public-market implications.\nEach report begins with consumer-demand discovery and proceeds through web verification, corporate ownership mapping, public-market look-through analysis, financial transmission, materiality assessment, and source verification."
+    "text": "Consumer Demand Intelligence is an automated research system that detects emerging consumer-demand signals and investigates whether they create meaningful public-market opportunities.\nThe pipeline moves from demand discovery through web verification, corporate ownership mapping, financial transmission, materiality assessment, and source verification."
   },
   {
-    "objectID": "index.html#section",
-    "href": "index.html#section",
-    "title": "Weekly Research",
-    "section": "2026",
-    "text": "2026\n\nWeek 34 — NeeDoh / Schylling / GAIN\nYELLOW · 62/100 · High evidence quality\nPersistent consumer demand for NeeDoh led the system from a consumer search signal to Schylling and ultimately to a quantifiable public-market exposure through Gladstone Investment Corporation (NASDAQ: GAIN).\nKey finding: Schylling represents approximately 6.8% of GAIN’s investments and 13.4% of net assets at reported fair value, creating a meaningful NAV exposure while its term debt provides a separate contractual income channel.\nRead the full Week 34 report →"
+    "objectID": "index.html#from-consumer-signals-to-investable-research",
+    "href": "index.html#from-consumer-signals-to-investable-research",
+    "title": "Consumer Demand Intelligence",
+    "section": "",
+    "text": "Consumer Demand Intelligence is an automated research system that detects emerging consumer-demand signals and investigates whether they create meaningful public-market opportunities.\nThe pipeline moves from demand discovery through web verification, corporate ownership mapping, financial transmission, materiality assessment, and source verification."
+  },
+  {
+    "objectID": "index.html#latest-research",
+    "href": "index.html#latest-research",
+    "title": "Consumer Demand Intelligence",
+    "section": "Latest Research",
+    "text": "Latest Research\n\n\n2026 · Week 36\n\nNeeDoh scarcity/stockouts (Schylling)\nYELLOW · 59/100 · High evidence quality\nNeeDoh scarcity continues to show public‑market look‑through via Gladstone Investment (GAIN); rationing evidence remained active during the window, but much of the valuation uplift has already been recognized.\nInvestment mechanism: Combined Schylling FV ≈$83m vs. GAIN’s ~$1.31b portfolio (≈6–7%); material for GAIN, negligible system‑wide. A meaningful portion of 2026 uplift is already booked.\nRead the full Week 36 report →"
+  },
+  {
+    "objectID": "index.html#how-the-research-pipeline-works",
+    "href": "index.html#how-the-research-pipeline-works",
+    "title": "Consumer Demand Intelligence",
+    "section": "How the research pipeline works",
+    "text": "How the research pipeline works\n\nDemand discovery — identify emerging consumer-search signals.\nVerification — determine what is actually driving the demand.\nOwnership mapping — trace products and brands to corporate owners.\nPublic-market look-through — identify listed-company exposure.\nFinancial transmission — determine how the development could affect revenue, earnings, cash flow, or NAV.\nMateriality assessment — estimate whether the exposure is large enough to matter.\nSource audit — prioritize primary filings and high-quality evidence.\n\nBrowse all weekly research →"
   },
   {
     "objectID": "research/2026-W36.html",
