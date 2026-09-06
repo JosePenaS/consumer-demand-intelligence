@@ -31,9 +31,10 @@ toc: true
 Key sources: Axios (company demand commentary), The Atlantic (national shortage reporting), Shop TODAY (continued scarcity, Aug. 17 update), GAIN FY2026 10‑K (Schylling position and unrealized gains), SE Marketplace (wholesale onboarding pause). ([axios.com](https://www.axios.com/2026/04/04/needoh-squishy-toys-dumplings-easter?utm_source=openai))
 
 ## Comparison table
-| Rank | Topic/subtheme | Priority | Investment score | Verified driver | Public-company exposure | Instrument | Fair-value/NAV mechanism | Income/cash-flow mechanism | Materiality | Evidence quality | Status |
-|---|---|---:|---|---|---|---|---|---|---|---|---|
-| 1 | NeeDoh scarcity/stockouts → Schylling | YELLOW | 59 | Viral‑driven demand/sustained stockouts; retailer rationing | Gladstone Investment (GAIN) | Preferred equity + term debt | Schylling value marks drive GAIN NAV; ~$45.8m FY26 unrealized appreciation | Cash interest on term debt (SOFR+11%); preferred dividends not disclosed | ≈6–7% of GAIN FV portfolio | High | Monitoring candidate |
+
+| Topic/subtheme | Priority | Score | Public exposure | Materiality | Evidence quality | Status |
+|---|---|---:|---|---|---|---|
+| NeeDoh scarcity/stockouts → Schylling | YELLOW | 59 | Gladstone Investment (GAIN) | ≈6–7% of GAIN FV portfolio | High | Monitoring candidate |
 
 ## Monitoring signals
 - PlayStation 5 Pro sell‑through spike around GTA VI Extended Look

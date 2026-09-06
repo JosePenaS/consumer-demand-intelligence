@@ -20,45 +20,38 @@ h3 {
 }
 
 /* ============================================================
-   Weekly Research — wide comparison tables
+   Weekly Research — comparison table
    ============================================================ */
 
-/* The Comparison table section becomes its own scroll area */
 #comparison-table {
-  display: block;
   width: 100%;
   max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
+  overflow-x: visible;
 }
 
-/* Give the table enough room to remain readable */
 #comparison-table table {
-  width: 1400px;
-  min-width: 1400px;
-  max-width: none;
+  width: 100%;
+  max-width: 100%;
   table-layout: auto;
-  font-size: 0.82rem;
-  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
 }
 
-/* Comfortable compact cells */
 #comparison-table th,
 #comparison-table td {
-  padding: 0.45rem 0.55rem;
+  padding: 0.5rem 0.55rem;
   vertical-align: top;
   line-height: 1.35;
   white-space: normal;
 }
 
-/* Keep only genuinely small fields from wrapping */
-#comparison-table th:nth-child(1),
-#comparison-table td:nth-child(1),
+#comparison-table th:nth-child(2),
+#comparison-table td:nth-child(2),
 #comparison-table th:nth-child(3),
 #comparison-table td:nth-child(3),
-#comparison-table th:nth-child(4),
-#comparison-table td:nth-child(4) {
+#comparison-table th:nth-child(6),
+#comparison-table td:nth-child(6),
+#comparison-table th:nth-child(7),
+#comparison-table td:nth-child(7) {
   white-space: nowrap;
 }
-
