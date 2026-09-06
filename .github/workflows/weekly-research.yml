@@ -77,6 +77,7 @@ jobs:
         id: changes
         shell: pwsh
         run: |
+          git add index.qmd
           git add research/index.qmd
           git add "research/*.qmd"
 

@@ -4301,6 +4301,246 @@ message(
 )
 
 # ============================================================
+# Update Home page Latest Research block
+# ============================================================
+
+HOME_INDEX_FILE <- file.path(PROJECT_ROOT, "index.qmd")
+
+HOME_LATEST_START <- "<!-- LATEST-RESEARCH-START -->"
+HOME_LATEST_END   <- "<!-- LATEST-RESEARCH-END -->"
+
+if (nrow(weekly_index_data) > 0 && file.exists(HOME_INDEX_FILE)) {
+
+  latest_report <- weekly_index_data[1, ]
+
+  latest_lines <- readLines(
+    file.path(RESEARCH_DIR, latest_report$filename),
+    warn = FALSE,
+    encoding = "UTF-8"
+  )
+
+  latest_issue_label <- stringr::str_replace(
+    latest_report$issue_id,
+    "-W",
+    " · Week "
+  )
+
+  story_line <- grep(
+    "^[0-9]+\\)[[:space:]]+.*Priority:.*Investment score:",
+    latest_lines,
+    value = TRUE
+  )
+
+  latest_story_title <- latest_report$title
+  latest_status_line <- ""
+
+  if (length(story_line) > 0) {
+
+    first_story_line <- story_line[[1]]
+
+    latest_story_title <- stringr::str_remove(
+      first_story_line,
+      "^[0-9]+\\)[[:space:]]+"
+    )
+
+    latest_story_title <- stringr::str_remove(
+      latest_story_title,
+      "[[:space:]]+—[[:space:]]+Priority:.*$"
+    )
+
+    priority_match <- stringr::str_match(
+      first_story_line,
+      "Priority:[[:space:]]*([^—]+)[[:space:]]*—[[:space:]]*Investment score:[[:space:]]*([0-9]+/[0-9]+)"
+    )
+
+    if (!is.na(priority_match[1, 2])) {
+      latest_status_line <- paste0(
+        "**",
+        stringr::str_trim(priority_match[1, 2]),
+        " · ",
+        stringr::str_trim(priority_match[1, 3])
+      )
+    }
+  }
+
+  evidence_line <- grep(
+    "^- Evidence quality:",
+    latest_lines,
+    value = TRUE
+  )
+
+  if (length(evidence_line) > 0 && nzchar(latest_status_line)) {
+
+    evidence_text <- evidence_line[[1]]
+
+    evidence_text <- stringr::str_remove(
+      evidence_text,
+      "^- Evidence quality:[[:space:]]*"
+    )
+
+    evidence_text <- stringr::str_remove(
+      evidence_text,
+      "[[:space:]]*\\([^)]*\\)\\.[[:space:]]*\\(.*$"
+    )
+
+    evidence_text <- stringr::str_remove(
+      evidence_text,
+      "[[:space:]]*\\(.*$"
+    )
+
+    evidence_text <- stringr::str_remove(
+      evidence_text,
+      "\\.$"
+    )
+
+    if (nzchar(evidence_text)) {
+      latest_status_line <- paste0(
+        latest_status_line,
+        " · ",
+        evidence_text,
+        " evidence quality"
+      )
+    }
+  }
+
+  if (nzchar(latest_status_line)) {
+    latest_status_line <- paste0(latest_status_line, "**")
+  }
+
+  executive_line <- grep(
+    "^- One lead investment story qualified this week:",
+    latest_lines,
+    value = TRUE
+  )
+
+  latest_summary <- if (length(executive_line) > 0) {
+    executive_line[[1]]
+  } else {
+    paste(
+      "See the full weekly report for the latest",
+      "consumer-demand intelligence findings."
+    )
+  }
+
+  latest_summary <- stringr::str_remove(
+    latest_summary,
+    "^- One lead investment story qualified this week:[[:space:]]*"
+  )
+
+  latest_summary <- stringr::str_remove(
+    latest_summary,
+    "[[:space:]]*\\(\\[[^]]+\\]\\([^)]*\\)\\)[[:space:]]*$"
+  )
+
+  mechanism_line <- grep(
+    "^- Financial materiality \\(context\\):",
+    latest_lines,
+    value = TRUE
+  )
+
+  latest_mechanism <- if (length(mechanism_line) > 0) {
+    mechanism_line[[1]]
+  } else {
+    ""
+  }
+
+  latest_mechanism <- stringr::str_remove(
+    latest_mechanism,
+    "^- Financial materiality \\(context\\):[[:space:]]*"
+  )
+
+  latest_mechanism <- stringr::str_remove(
+    latest_mechanism,
+    "[[:space:]]*\\(\\[[^]]+\\]\\([^)]*\\)\\)[[:space:]]*$"
+  )
+
+  latest_home_block <- c(
+    HOME_LATEST_START,
+    "",
+    paste0("### ", latest_issue_label),
+    "",
+    paste0("#### ", latest_story_title),
+    "",
+    latest_status_line,
+    "",
+    latest_summary,
+    "",
+    if (nzchar(latest_mechanism)) {
+      paste0("**Investment mechanism:** ", latest_mechanism)
+    } else {
+      ""
+    },
+    "",
+    paste0(
+      "[Read the full ",
+      stringr::str_replace(
+        latest_report$issue_id,
+        "^[0-9]{4}-W",
+        "Week "
+      ),
+      " report →](research/",
+      latest_report$filename,
+      ")"
+    ),
+    "",
+    HOME_LATEST_END
+  )
+
+  home_lines <- readLines(
+    HOME_INDEX_FILE,
+    warn = FALSE,
+    encoding = "UTF-8"
+  )
+
+  home_start_position <- which(home_lines == HOME_LATEST_START)
+  home_end_position <- which(home_lines == HOME_LATEST_END)
+
+  if (
+    length(home_start_position) != 1 ||
+    length(home_end_position) != 1 ||
+    home_end_position <= home_start_position
+  ) {
+    stop(
+      "Home page Latest Research markers are missing or duplicated."
+    )
+  }
+
+  home_before_block <- if (home_start_position > 1) {
+    home_lines[seq_len(home_start_position - 1)]
+  } else {
+    character()
+  }
+
+  home_after_block <- if (home_end_position < length(home_lines)) {
+    home_lines[(home_end_position + 1):length(home_lines)]
+  } else {
+    character()
+  }
+
+  home_lines <- c(
+    home_before_block,
+    latest_home_block,
+    home_after_block
+  )
+
+  writeLines(
+    home_lines,
+    HOME_INDEX_FILE,
+    useBytes = TRUE
+  )
+
+  message(
+    "Home page Latest Research updated: ",
+    normalizePath(
+      HOME_INDEX_FILE,
+      winslash = "/",
+      mustWork = FALSE
+    )
+  )
+}
+
+
+# ============================================================
 # Validate publication outputs
 # ============================================================
 

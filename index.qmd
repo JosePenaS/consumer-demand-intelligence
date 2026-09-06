@@ -1,19 +1,44 @@
 ---
-title: "Weekly Research"
+title: "Consumer Demand Intelligence"
+page-layout: full
 ---
 
-Consumer Demand Intelligence publishes structured weekly research on emerging consumer-demand signals and their potential public-market implications.
+## From consumer signals to investable research
 
-Each report begins with consumer-demand discovery and proceeds through web verification, corporate ownership mapping, public-market look-through analysis, financial transmission, materiality assessment, and source verification.
+Consumer Demand Intelligence is an automated research system that detects emerging consumer-demand signals and investigates whether they create meaningful public-market opportunities.
 
-## 2026
+The pipeline moves from demand discovery through web verification, corporate ownership mapping, financial transmission, materiality assessment, and source verification.
 
-### Week 34 — NeeDoh / Schylling / GAIN
+---
 
-**YELLOW · 62/100 · High evidence quality**
+## Latest Research
 
-Persistent consumer demand for NeeDoh led the system from a consumer search signal to Schylling and ultimately to a quantifiable public-market exposure through **Gladstone Investment Corporation (NASDAQ: GAIN)**.
+<!-- LATEST-RESEARCH-START -->
 
-**Key finding:** Schylling represents approximately 6.8% of GAIN's investments and 13.4% of net assets at reported fair value, creating a meaningful NAV exposure while its term debt provides a separate contractual income channel.
+### 2026 · Week 36
 
-[Read the full Week 34 report →](research/2026-W34-needoh.qmd)
+#### NeeDoh scarcity/stockouts (Schylling)
+
+**YELLOW · 59/100 · High evidence quality**
+
+NeeDoh scarcity continues to show public‑market look‑through via Gladstone Investment (GAIN); rationing evidence remained active during the window, but much of the valuation uplift has already been recognized.
+
+**Investment mechanism:** Combined Schylling FV ≈$83m vs. GAIN’s ~$1.31b portfolio (≈6–7%); material for GAIN, negligible system‑wide. A meaningful portion of 2026 uplift is already booked.
+
+[Read the full Week 36 report →](research/2026-W36.qmd)
+
+<!-- LATEST-RESEARCH-END -->
+
+---
+
+## How the research pipeline works
+
+1. **Demand discovery** — identify emerging consumer-search signals.
+2. **Verification** — determine what is actually driving the demand.
+3. **Ownership mapping** — trace products and brands to corporate owners.
+4. **Public-market look-through** — identify listed-company exposure.
+5. **Financial transmission** — determine how the development could affect revenue, earnings, cash flow, or NAV.
+6. **Materiality assessment** — estimate whether the exposure is large enough to matter.
+7. **Source audit** — prioritize primary filings and high-quality evidence.
+
+[Browse all weekly research →](research/index.qmd)
