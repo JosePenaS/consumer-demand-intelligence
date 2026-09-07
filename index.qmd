@@ -15,17 +15,17 @@ The pipeline moves from demand discovery through web verification, corporate own
 
 <!-- LATEST-RESEARCH-START -->
 
-### 2026 · Week 36
+### 2026 · Week 37
 
-#### NeeDoh scarcity/stockouts (Schylling)
+#### 2026-W37 Weekly Market Intelligence
 
-**YELLOW · 59/100 · High evidence quality**
 
-NeeDoh scarcity continues to show public‑market look‑through via Gladstone Investment (GAIN); rationing evidence remained active during the window, but much of the valuation uplift has already been recognized.
 
-**Investment mechanism:** Combined Schylling FV ≈$83m vs. GAIN’s ~$1.31b portfolio (≈6–7%); material for GAIN, negligible system‑wide. A meaningful portion of 2026 uplift is already booked.
+See the full weekly report for the latest consumer-demand intelligence findings.
 
-[Read the full Week 36 report →](research/2026-W36.qmd)
+
+
+[Read the full Week 37 report →](research/2026-W37.qmd)
 
 <!-- LATEST-RESEARCH-END -->
 
