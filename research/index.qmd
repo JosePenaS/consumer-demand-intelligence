@@ -1,32 +1,56 @@
 ---
 title: "Weekly Research"
+page-layout: full
 ---
+
+## Consumer Demand Research
+
+Weekly investigations of emerging consumer-demand signals and their potential public-market implications.
+
+Each report moves from observed demand through verification, ownership mapping, financial transmission, materiality assessment, and source validation.
 
 <!-- AUTO-WEEKLY-START -->
 
-## Latest automated reports
+## Latest Research
 
 ### 2026 · Week 36
 
-2026-W36 Weekly Market Intelligence
+#### NeeDoh scarcity / Schylling
 
-**Published:** 2026-09-04
+**YELLOW · 59/100 · High evidence quality**
 
-[Read the full report →](2026-W36.qmd)
+Persistent NeeDoh scarcity and retailer rationing point to continued consumer demand, with public-market exposure through Gladstone Investment Corporation (GAIN).
+
+**Public exposure:** Gladstone Investment (GAIN)  
+**Materiality:** ≈6–7% of GAIN's fair-value portfolio  
+**Status:** Monitoring candidate
+
+[Read the Week 36 report →](2026-W36.qmd)
 
 <!-- AUTO-WEEKLY-END -->
 
+---
 
-Consumer Demand Intelligence publishes structured research on emerging consumer-demand signals and their potential public-market implications.
+## Research Archive
 
-## 2026
+### 2026
 
-### Week 34
+#### Week 34 · NeeDoh — Schylling / Gladstone Investment Corporation
 
-#### NeeDoh — Schylling / Gladstone Investment Corporation
+**YELLOW · Monitoring Signal**
 
-**Status:** YELLOW — Monitoring Signal
+A surge in consumer interest around NeeDoh led to an investigation of Schylling and ultimately revealed public-market exposure through Gladstone Investment Corporation.
 
-A surge in consumer interest around NeeDoh led to a deeper investigation of Schylling and ultimately revealed a public-market exposure through Gladstone Investment Corporation.
+[Read the Week 34 research →](2026-W34-needoh.qmd)
 
-[Read the full research →](2026-W34-needoh.qmd)
+---
+
+## Research Framework
+
+Every investigation follows the same basic progression:
+
+**Demand signal → Verification → Ownership → Public exposure → Financial transmission → Materiality → Investment assessment**
+
+The objective is not simply to identify products that are trending. It is to determine whether unusual consumer behavior can be traced to a **measurable and financially meaningful exposure in a publicly traded company**.
+
+[Read the methodology →](../methodology.qmd)

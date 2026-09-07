@@ -4095,23 +4095,23 @@ extract_yaml_value <- function(lines, field) {
     field,
     ":[[:space:]]*[\"']?(.*?)[\"']?[[:space:]]*$"
   )
-
+  
   match_line <- grep(
     pattern,
     lines,
     value = TRUE
   )
-
+  
   if (length(match_line) == 0) {
     return(NA_character_)
   }
-
+  
   value <- sub(
     pattern,
     "\\1",
     match_line[[1]]
   )
-
+  
   stringr::str_trim(value)
 }
 
@@ -4123,21 +4123,21 @@ weekly_index_data <- purrr::map_dfr(
       warn = FALSE,
       encoding = "UTF-8"
     )
-
+    
     filename <- basename(report_file)
-
+    
     issue_id <- stringr::str_remove(
       filename,
       "\\.qmd$"
     )
-
+    
     title <- extract_yaml_value(lines, "title")
     date <- extract_yaml_value(lines, "date")
-
+    
     if (is.na(title) || !nzchar(title)) {
       title <- paste(issue_id, "Weekly Market Intelligence")
     }
-
+    
     tibble::tibble(
       issue_id = issue_id,
       title = title,
@@ -4153,63 +4153,258 @@ if (nrow(weekly_index_data) > 0) {
 }
 
 if (nrow(weekly_index_data) > 0) {
-  automatic_index_entries <- purrr::map_chr(
-    seq_len(nrow(weekly_index_data)),
-    function(i) {
-      row <- weekly_index_data[i, ]
-
-      issue_label <- stringr::str_replace(
-        row$issue_id,
-        "-W",
-        " · Week "
-      )
-
-      date_text <- ""
-
-      if (!is.na(row$date) && nzchar(row$date)) {
-        date_text <- paste0(
-          "\n\n**Published:** ",
-          row$date
-        )
-      }
-
-      paste0(
-        "### ",
-        issue_label,
-        "\n\n",
-        row$title,
-        date_text,
-        "\n\n",
-        "[Read the full report →](",
-        row$filename,
-        ")"
-      )
-    }
+  
+  # ------------------------------------------------------------
+  # Build featured card from the newest weekly report
+  # ------------------------------------------------------------
+  
+  latest_row <- weekly_index_data[1, ]
+  
+  latest_report_file <- file.path(
+    RESEARCH_DIR,
+    latest_row$filename
   )
-
+  
+  latest_report_lines <- readLines(
+    latest_report_file,
+    warn = FALSE,
+    encoding = "UTF-8"
+  )
+  
+  issue_kicker <- stringr::str_replace(
+    latest_row$issue_id,
+    "-W",
+    " · WEEK "
+  )
+  
+  # Default values in case a field cannot be parsed.
+  story_title <- latest_row$title
+  priority_text <- "RESEARCH"
+  score_text <- "—"
+  evidence_text <- "—"
+  exposure_text <- "See full report"
+  materiality_text <- "See full report"
+  status_text <- "Published"
+  summary_text <- paste(
+    "Read the latest Consumer Demand Intelligence investigation",
+    "and its potential public-market implications."
+  )
+  
+  # ------------------------------------------------------------
+  # Read the compact comparison table:
+  #
+  # Topic/subtheme | Priority | Score | Public exposure |
+  # Materiality | Evidence quality | Status
+  # ------------------------------------------------------------
+  
+  comparison_header <- grep(
+    "^\\|[[:space:]]*Topic/subtheme[[:space:]]*\\|",
+    latest_report_lines
+  )
+  
+  if (
+    length(comparison_header) > 0 &&
+    comparison_header[[1]] + 2 <= length(latest_report_lines)
+  ) {
+    
+    comparison_row <- latest_report_lines[
+      comparison_header[[1]] + 2
+    ]
+    
+    comparison_cells <- strsplit(
+      comparison_row,
+      "\\|"
+    )[[1]]
+    
+    comparison_cells <- stringr::str_trim(
+      comparison_cells
+    )
+    
+    comparison_cells <- comparison_cells[
+      nzchar(comparison_cells)
+    ]
+    
+    if (length(comparison_cells) >= 7) {
+      
+      story_title <- comparison_cells[[1]]
+      
+      # Convert the table arrow into a cleaner card title.
+      story_title <- stringr::str_replace(
+        story_title,
+        "[[:space:]]*→[[:space:]]*",
+        " / "
+      )
+      
+      priority_text <- comparison_cells[[2]]
+      score_text <- comparison_cells[[3]]
+      exposure_text <- comparison_cells[[4]]
+      materiality_text <- comparison_cells[[5]]
+      evidence_text <- comparison_cells[[6]]
+      status_text <- comparison_cells[[7]]
+    }
+  }
+  
+  # ------------------------------------------------------------
+  # Pull the lead-story summary from Executive briefing
+  # ------------------------------------------------------------
+  
+  summary_match <- grep(
+    "^- One lead investment story qualified this week:",
+    latest_report_lines,
+    value = TRUE
+  )
+  
+  if (length(summary_match) > 0) {
+    
+    summary_text <- sub(
+      "^- One lead investment story qualified this week:[[:space:]]*",
+      "",
+      summary_match[[1]]
+    )
+    
+    # Remove a trailing Markdown source link if present.
+    summary_text <- stringr::str_replace(
+      summary_text,
+      "[[:space:]]*\\[[^]]+\\]\\([^)]*\\)[[:space:]]*$",
+      ""
+    )
+    
+    summary_text <- stringr::str_trim(summary_text)
+  }
+  
+  # ------------------------------------------------------------
+  # Badge styling
+  # ------------------------------------------------------------
+  
+  priority_class <- switch(
+    toupper(priority_text),
+    "YELLOW" = " research-badge-yellow",
+    "ORANGE" = " research-badge-orange",
+    "RED" = " research-badge-red",
+    ""
+  )
+  
+  priority_badge <- paste0(
+    '<span class="research-badge',
+    priority_class,
+    '">',
+    toupper(priority_text),
+    "</span>"
+  )
+  
+  score_badge <- paste0(
+    '<span class="research-badge">',
+    score_text,
+    ifelse(
+      grepl("/", score_text, fixed = TRUE),
+      "",
+      "/100"
+    ),
+    "</span>"
+  )
+  
+  evidence_badge <- paste0(
+    '<span class="research-badge">',
+    toupper(evidence_text),
+    ifelse(
+      grepl(
+        "evidence",
+        evidence_text,
+        ignore.case = TRUE
+      ),
+      "",
+      " EVIDENCE"
+    ),
+    "</span>"
+  )
+  
+  # ------------------------------------------------------------
+  # Build Quarto featured-research card
+  # ------------------------------------------------------------
+  
   automatic_index_block <- c(
     AUTO_INDEX_START,
     "",
-    "## Latest automated reports",
+    "## Latest Research",
     "",
-    paste(
-      automatic_index_entries,
-      collapse = "\n\n---\n\n"
+    "::: {.research-feature}",
+    "",
+    paste0(
+      '<div class="research-kicker">',
+      issue_kicker,
+      "</div>"
     ),
+    "",
+    paste0(
+      "### ",
+      story_title
+    ),
+    "",
+    '<div class="research-meta">',
+    priority_badge,
+    score_badge,
+    evidence_badge,
+    "</div>",
+    "",
+    summary_text,
+    "",
+    '<div class="research-stats">',
+    "<div>",
+    "<span>PUBLIC EXPOSURE</span>",
+    paste0(
+      "<strong>",
+      exposure_text,
+      "</strong>"
+    ),
+    "</div>",
+    "<div>",
+    "<span>MATERIALITY</span>",
+    paste0(
+      "<strong>",
+      materiality_text,
+      "</strong>"
+    ),
+    "</div>",
+    "<div>",
+    "<span>STATUS</span>",
+    paste0(
+      "<strong>",
+      status_text,
+      "</strong>"
+    ),
+    "</div>",
+    "</div>",
+    "",
+    paste0(
+      "[Read the full ",
+      stringr::str_replace(
+        latest_row$issue_id,
+        "^[0-9]{4}-W",
+        "Week "
+      ),
+      " report →](",
+      latest_row$filename,
+      "){.research-report-link}"
+    ),
+    "",
+    ":::",
     "",
     AUTO_INDEX_END
   )
+  
 } else {
+  
   automatic_index_block <- c(
     AUTO_INDEX_START,
     "",
-    "## Latest automated reports",
+    "## Latest Research",
     "",
     "No automated weekly reports have been published yet.",
     "",
     AUTO_INDEX_END
   )
 }
+
 
 if (file.exists(RESEARCH_INDEX_FILE)) {
   index_lines <- readLines(
@@ -4245,13 +4440,13 @@ if (
   } else {
     character()
   }
-
+  
   after_block <- if (end_position < length(index_lines)) {
     index_lines[(end_position + 1):length(index_lines)]
   } else {
     character()
   }
-
+  
   index_lines <- c(
     before_block,
     automatic_index_block,
@@ -4259,16 +4454,16 @@ if (
   )
 } else {
   yaml_end_positions <- which(index_lines == "---")
-
+  
   if (length(yaml_end_positions) >= 2) {
     yaml_end <- yaml_end_positions[[2]]
-
+    
     after_yaml <- if (yaml_end < length(index_lines)) {
       index_lines[(yaml_end + 1):length(index_lines)]
     } else {
       character()
     }
-
+    
     index_lines <- c(
       index_lines[seq_len(yaml_end)],
       "",
@@ -4310,49 +4505,49 @@ HOME_LATEST_START <- "<!-- LATEST-RESEARCH-START -->"
 HOME_LATEST_END   <- "<!-- LATEST-RESEARCH-END -->"
 
 if (nrow(weekly_index_data) > 0 && file.exists(HOME_INDEX_FILE)) {
-
+  
   latest_report <- weekly_index_data[1, ]
-
+  
   latest_lines <- readLines(
     file.path(RESEARCH_DIR, latest_report$filename),
     warn = FALSE,
     encoding = "UTF-8"
   )
-
+  
   latest_issue_label <- stringr::str_replace(
     latest_report$issue_id,
     "-W",
     " · Week "
   )
-
+  
   story_line <- grep(
     "^[0-9]+\\)[[:space:]]+.*Priority:.*Investment score:",
     latest_lines,
     value = TRUE
   )
-
+  
   latest_story_title <- latest_report$title
   latest_status_line <- ""
-
+  
   if (length(story_line) > 0) {
-
+    
     first_story_line <- story_line[[1]]
-
+    
     latest_story_title <- stringr::str_remove(
       first_story_line,
       "^[0-9]+\\)[[:space:]]+"
     )
-
+    
     latest_story_title <- stringr::str_remove(
       latest_story_title,
       "[[:space:]]+—[[:space:]]+Priority:.*$"
     )
-
+    
     priority_match <- stringr::str_match(
       first_story_line,
       "Priority:[[:space:]]*([^—]+)[[:space:]]*—[[:space:]]*Investment score:[[:space:]]*([0-9]+/[0-9]+)"
     )
-
+    
     if (!is.na(priority_match[1, 2])) {
       latest_status_line <- paste0(
         "**",
@@ -4362,37 +4557,37 @@ if (nrow(weekly_index_data) > 0 && file.exists(HOME_INDEX_FILE)) {
       )
     }
   }
-
+  
   evidence_line <- grep(
     "^- Evidence quality:",
     latest_lines,
     value = TRUE
   )
-
+  
   if (length(evidence_line) > 0 && nzchar(latest_status_line)) {
-
+    
     evidence_text <- evidence_line[[1]]
-
+    
     evidence_text <- stringr::str_remove(
       evidence_text,
       "^- Evidence quality:[[:space:]]*"
     )
-
+    
     evidence_text <- stringr::str_remove(
       evidence_text,
       "[[:space:]]*\\([^)]*\\)\\.[[:space:]]*\\(.*$"
     )
-
+    
     evidence_text <- stringr::str_remove(
       evidence_text,
       "[[:space:]]*\\(.*$"
     )
-
+    
     evidence_text <- stringr::str_remove(
       evidence_text,
       "\\.$"
     )
-
+    
     if (nzchar(evidence_text)) {
       latest_status_line <- paste0(
         latest_status_line,
@@ -4402,17 +4597,17 @@ if (nrow(weekly_index_data) > 0 && file.exists(HOME_INDEX_FILE)) {
       )
     }
   }
-
+  
   if (nzchar(latest_status_line)) {
     latest_status_line <- paste0(latest_status_line, "**")
   }
-
+  
   executive_line <- grep(
     "^- One lead investment story qualified this week:",
     latest_lines,
     value = TRUE
   )
-
+  
   latest_summary <- if (length(executive_line) > 0) {
     executive_line[[1]]
   } else {
@@ -4421,39 +4616,39 @@ if (nrow(weekly_index_data) > 0 && file.exists(HOME_INDEX_FILE)) {
       "consumer-demand intelligence findings."
     )
   }
-
+  
   latest_summary <- stringr::str_remove(
     latest_summary,
     "^- One lead investment story qualified this week:[[:space:]]*"
   )
-
+  
   latest_summary <- stringr::str_remove(
     latest_summary,
     "[[:space:]]*\\(\\[[^]]+\\]\\([^)]*\\)\\)[[:space:]]*$"
   )
-
+  
   mechanism_line <- grep(
     "^- Financial materiality \\(context\\):",
     latest_lines,
     value = TRUE
   )
-
+  
   latest_mechanism <- if (length(mechanism_line) > 0) {
     mechanism_line[[1]]
   } else {
     ""
   }
-
+  
   latest_mechanism <- stringr::str_remove(
     latest_mechanism,
     "^- Financial materiality \\(context\\):[[:space:]]*"
   )
-
+  
   latest_mechanism <- stringr::str_remove(
     latest_mechanism,
     "[[:space:]]*\\(\\[[^]]+\\]\\([^)]*\\)\\)[[:space:]]*$"
   )
-
+  
   latest_home_block <- c(
     HOME_LATEST_START,
     "",
@@ -4485,16 +4680,16 @@ if (nrow(weekly_index_data) > 0 && file.exists(HOME_INDEX_FILE)) {
     "",
     HOME_LATEST_END
   )
-
+  
   home_lines <- readLines(
     HOME_INDEX_FILE,
     warn = FALSE,
     encoding = "UTF-8"
   )
-
+  
   home_start_position <- which(home_lines == HOME_LATEST_START)
   home_end_position <- which(home_lines == HOME_LATEST_END)
-
+  
   if (
     length(home_start_position) != 1 ||
     length(home_end_position) != 1 ||
@@ -4504,31 +4699,31 @@ if (nrow(weekly_index_data) > 0 && file.exists(HOME_INDEX_FILE)) {
       "Home page Latest Research markers are missing or duplicated."
     )
   }
-
+  
   home_before_block <- if (home_start_position > 1) {
     home_lines[seq_len(home_start_position - 1)]
   } else {
     character()
   }
-
+  
   home_after_block <- if (home_end_position < length(home_lines)) {
     home_lines[(home_end_position + 1):length(home_lines)]
   } else {
     character()
   }
-
+  
   home_lines <- c(
     home_before_block,
     latest_home_block,
     home_after_block
   )
-
+  
   writeLines(
     home_lines,
     HOME_INDEX_FILE,
     useBytes = TRUE
   )
-
+  
   message(
     "Home page Latest Research updated: ",
     normalizePath(
@@ -4718,3 +4913,4 @@ if (nzchar(weekly_briefing)) {
   message("Weekly briefing saved as: ", normalizePath(file.path(WEEKLY_OUTPUT_DIR, "weekly_market_intelligence.md")))
 }
 message("Weekly market-intelligence pipeline finished.")
+
