@@ -1,6 +1,7 @@
 ---
 title: "Weekly Research"
 page-layout: full
+body-classes: research-hub
 ---
 
 ## Consumer Demand Research
@@ -13,19 +14,38 @@ Each report moves from observed demand through verification, ownership mapping, 
 
 ## Latest Research
 
-### 2026 · Week 36
+::: {.research-feature}
 
-#### NeeDoh scarcity / Schylling
+<div class="research-kicker">2026 · WEEK 36</div>
 
-**YELLOW · 59/100 · High evidence quality**
+### NeeDoh scarcity / Schylling
+
+<div class="research-meta">
+<span class="research-badge research-badge-yellow">YELLOW</span>
+<span class="research-badge">59/100</span>
+<span class="research-badge">HIGH EVIDENCE</span>
+</div>
 
 Persistent NeeDoh scarcity and retailer rationing point to continued consumer demand, with public-market exposure through Gladstone Investment Corporation (GAIN).
 
-**Public exposure:** Gladstone Investment (GAIN)  
-**Materiality:** ≈6–7% of GAIN's fair-value portfolio  
-**Status:** Monitoring candidate
+<div class="research-stats">
+<div>
+<span>PUBLIC EXPOSURE</span>
+<strong>Gladstone Investment (GAIN)</strong>
+</div>
+<div>
+<span>MATERIALITY</span>
+<strong>≈6–7% of GAIN's fair-value portfolio</strong>
+</div>
+<div>
+<span>STATUS</span>
+<strong>Monitoring candidate</strong>
+</div>
+</div>
 
-[Read the Week 36 report →](2026-W36.qmd)
+[Read the full Week 36 report →](2026-W36.qmd){.research-report-link}
+
+:::
 
 <!-- AUTO-WEEKLY-END -->
 
