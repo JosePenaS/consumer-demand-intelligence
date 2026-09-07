@@ -244,5 +244,222 @@ h3 {
   }
 }
 
+/* ============================================================
+   Individual Weekly Research Report
+   ============================================================ */
 
+.research-report {
+  --report-max-width: 980px;
+}
 
+/* Main content width */
+.research-report main.content {
+  max-width: var(--report-max-width);
+}
+
+/* Title treatment */
+.research-report h1.title {
+  margin-bottom: 0.35rem;
+  font-size: 2.15rem;
+  line-height: 1.15;
+}
+
+.research-report .quarto-title-meta {
+  margin-bottom: 2rem;
+}
+
+/* Section hierarchy */
+.research-report h2 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid #dfe3e7;
+}
+
+.research-report h3 {
+  margin-top: 2rem;
+}
+
+/* General paragraph readability */
+.research-report p {
+  line-height: 1.65;
+}
+
+/* Lists */
+.research-report ul,
+.research-report ol {
+  padding-left: 1.35rem;
+}
+
+.research-report li {
+  margin-bottom: 0.55rem;
+  line-height: 1.58;
+}
+
+/* Executive briefing */
+.research-report #executive-briefing + ul {
+  margin-top: 1.1rem;
+  padding: 1.25rem 1.4rem 1.15rem 2.35rem;
+  border: 1px solid #dfe3e7;
+  border-radius: 0.55rem;
+  background: #fafbfc;
+}
+
+.research-report #executive-briefing + ul li {
+  margin-bottom: 0.8rem;
+}
+
+.research-report #executive-briefing + ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* Ranked story */
+.research-report #ranked-stories + ol {
+  padding: 0;
+  margin-top: 1.25rem;
+  list-style: none;
+}
+
+.research-report #ranked-stories + ol > li {
+  margin-bottom: 1rem;
+  padding: 1rem 1.2rem;
+  border-left: 4px solid #f0c36d;
+  background: #fffaf0;
+  font-weight: 700;
+  border-radius: 0.25rem;
+}
+
+/* Content immediately following ranked story heading */
+.research-report #ranked-stories ~ ul {
+  max-width: 920px;
+}
+
+/* Comparison table */
+.research-report #comparison-table {
+  margin-top: 1.2rem;
+}
+
+/* Monitoring / rejected / analyst / watchlist sections */
+.research-report #monitoring-signals + ul,
+.research-report #rejected-or-low-value-signals + ul,
+.research-report #analyst-quality-flags + ul,
+.research-report #next-week-watchlist + ul {
+  margin-top: 1rem;
+}
+
+.research-report #monitoring-signals + ul > li,
+.research-report #rejected-or-low-value-signals + ul > li,
+.research-report #analyst-quality-flags + ul > li,
+.research-report #next-week-watchlist + ul > li {
+  margin-bottom: 1rem;
+}
+
+/* Sources */
+.research-report #sources + ul {
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+}
+
+.research-report #sources + ul li {
+  margin-bottom: 0.85rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #495057;
+}
+
+/* Inline links */
+.research-report a {
+  text-underline-offset: 2px;
+}
+
+/* Keep TOC readable */
+.research-report nav#TOC {
+  font-size: 0.9rem;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .research-report h1.title {
+    font-size: 1.75rem;
+  }
+
+  .research-report #executive-briefing + ul {
+    padding: 1rem 1rem 1rem 1.8rem;
+  }
+}
+
+/* ============================================================
+   Investment Snapshot
+   ============================================================ */
+
+.investment-snapshot {
+  margin: 1.5rem 0 2.25rem 0;
+  padding: 1.5rem 1.6rem;
+  border: 1px solid #dfe3e7;
+  border-radius: 0.6rem;
+  background: #fafbfc;
+}
+
+.snapshot-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
+}
+
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid #dfe3e7;
+}
+
+.snapshot-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.snapshot-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #6c757d;
+}
+
+.snapshot-grid strong {
+  font-size: 0.95rem;
+}
+
+.snapshot-verdict {
+  margin-top: 1.3rem;
+  padding-top: 1rem;
+  border-top: 1px solid #dfe3e7;
+  line-height: 1.55;
+}
+
+@media (max-width: 768px) {
+  .snapshot-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tighten investment snapshot */
+.investment-snapshot {
+  padding: 1.25rem 1.5rem;
+}
+
+.snapshot-header {
+  margin-bottom: 1rem;
+}
+
+.snapshot-grid {
+  padding-top: 0.85rem;
+  gap: 1rem;
+}
+
+.snapshot-verdict {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+}
