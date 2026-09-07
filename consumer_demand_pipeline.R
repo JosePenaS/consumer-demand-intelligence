@@ -3993,6 +3993,199 @@ quarto_body <- paste(
   collapse = "\n"
 )
 
+# ------------------------------------------------------------
+# Build the Investment Snapshot shown at the top of each report.
+# The snapshot is derived from the first row of the compact
+# comparison table plus the lead story's editorial verdict.
+# If no qualifying comparison-table row exists (for example,
+# a quiet week), the report is still published without a card.
+# ------------------------------------------------------------
+
+escape_report_html <- function(x) {
+  x <- as.character(x)
+  
+  x <- stringr::str_replace_all(x, "&", "&amp;")
+  x <- stringr::str_replace_all(x, "<", "&lt;")
+  x <- stringr::str_replace_all(x, ">", "&gt;")
+  x <- stringr::str_replace_all(x, '"', "&quot;")
+  
+  x
+}
+
+investment_snapshot_block <- character()
+
+comparison_header_index <- grep(
+  "^[[:space:]]*\\|?[[:space:]]*Topic/subtheme[[:space:]]*\\|",
+  quarto_lines
+)
+
+if (length(comparison_header_index) > 0) {
+  
+  header_index <- comparison_header_index[[1]]
+  
+  candidate_indices <- seq.int(
+    from = header_index + 1,
+    to = min(length(quarto_lines), header_index + 6)
+  )
+  
+  candidate_lines <- quarto_lines[candidate_indices]
+  
+  data_candidates <- candidate_indices[
+    grepl("\\|", candidate_lines) &
+      !grepl(
+        "^[[:space:]]*\\|?[[:space:]]*:?-{3,}",
+        candidate_lines
+      )
+  ]
+  
+  if (length(data_candidates) > 0) {
+    
+    comparison_row <- quarto_lines[data_candidates[[1]]]
+    
+    comparison_cells <- strsplit(
+      comparison_row,
+      "\\|"
+    )[[1]]
+    
+    comparison_cells <- stringr::str_trim(
+      comparison_cells
+    )
+    
+    comparison_cells <- comparison_cells[
+      nzchar(comparison_cells)
+    ]
+    
+    if (length(comparison_cells) >= 7) {
+      
+      snapshot_priority <- comparison_cells[[2]]
+      snapshot_score <- comparison_cells[[3]]
+      snapshot_exposure <- comparison_cells[[4]]
+      snapshot_materiality <- comparison_cells[[5]]
+      snapshot_evidence <- comparison_cells[[6]]
+      snapshot_status <- comparison_cells[[7]]
+      
+      snapshot_priority_class <- switch(
+        toupper(snapshot_priority),
+        "YELLOW" = " research-badge-yellow",
+        "ORANGE" = " research-badge-orange",
+        "RED" = " research-badge-red",
+        ""
+      )
+      
+      snapshot_score_label <- if (
+        grepl("/", snapshot_score, fixed = TRUE)
+      ) {
+        snapshot_score
+      } else {
+        paste0(snapshot_score, "/100")
+      }
+      
+      snapshot_evidence_label <- toupper(snapshot_evidence)
+      
+      if (
+        nzchar(snapshot_evidence_label) &&
+        !grepl(
+          "EVIDENCE",
+          snapshot_evidence_label,
+          fixed = TRUE
+        )
+      ) {
+        snapshot_evidence_label <- paste(
+          snapshot_evidence_label,
+          "EVIDENCE"
+        )
+      }
+      
+      verdict_index <- grep(
+        "^-[[:space:]]+One.*sentence editorial verdict:[[:space:]]*",
+        quarto_lines,
+        ignore.case = TRUE
+      )
+      
+      snapshot_verdict <- if (length(verdict_index) > 0) {
+        
+        sub(
+          "^-[[:space:]]+One.*sentence editorial verdict:[[:space:]]*",
+          "",
+          quarto_lines[verdict_index[[1]]],
+          ignore.case = TRUE
+        )
+        
+      } else {
+        
+        "See the ranked story for the full investment view."
+      }
+      
+      snapshot_verdict <- stringr::str_trim(snapshot_verdict)
+      
+      investment_snapshot_block <- c(
+        "::: {.investment-snapshot}",
+        "",
+        '<div class="snapshot-header">',
+        paste0(
+          '<span class="research-badge',
+          snapshot_priority_class,
+          '">',
+          escape_report_html(toupper(snapshot_priority)),
+          "</span>"
+        ),
+        paste0(
+          '<span class="research-badge">',
+          escape_report_html(snapshot_score_label),
+          "</span>"
+        ),
+        paste0(
+          '<span class="research-badge">',
+          escape_report_html(snapshot_evidence_label),
+          "</span>"
+        ),
+        "</div>",
+        "",
+        '<div class="snapshot-grid">',
+        "",
+        "<div>",
+        '<span class="snapshot-label">PUBLIC EXPOSURE</span>',
+        paste0(
+          "<strong>",
+          escape_report_html(snapshot_exposure),
+          "</strong>"
+        ),
+        "</div>",
+        "",
+        "<div>",
+        '<span class="snapshot-label">MATERIALITY</span>',
+        paste0(
+          "<strong>",
+          escape_report_html(snapshot_materiality),
+          "</strong>"
+        ),
+        "</div>",
+        "",
+        "<div>",
+        '<span class="snapshot-label">STATUS</span>',
+        paste0(
+          "<strong>",
+          escape_report_html(snapshot_status),
+          "</strong>"
+        ),
+        "</div>",
+        "",
+        "</div>",
+        "",
+        '<div class="snapshot-verdict">',
+        paste0(
+          "<strong>Investment view:</strong> ",
+          escape_report_html(snapshot_verdict)
+        ),
+        "</div>",
+        "",
+        ":::",
+        ""
+      )
+    }
+  }
+}
+
 quarto_front_matter <- c(
   "---",
   paste0('title: "', ISSUE_ID, ' Weekly Market Intelligence"'),
@@ -4001,12 +4194,15 @@ quarto_front_matter <- c(
   "  - Consumer Demand",
   "  - Market Intelligence",
   "toc: true",
+  "page-layout: full",
+  "body-classes: research-report",
   "---",
   ""
 )
 
 quarto_page <- c(
   quarto_front_matter,
+  investment_snapshot_block,
   quarto_body
 )
 

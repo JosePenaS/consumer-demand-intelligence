@@ -5,7 +5,42 @@ categories:
   - Consumer Demand
   - Market Intelligence
 toc: true
+page-layout: full
+body-classes: research-report
 ---
+
+::: {.investment-snapshot}
+
+<div class="snapshot-header">
+<span class="research-badge research-badge-yellow">YELLOW</span>
+<span class="research-badge">59/100</span>
+<span class="research-badge">HIGH EVIDENCE</span>
+</div>
+
+<div class="snapshot-grid">
+
+<div>
+<span class="snapshot-label">PUBLIC EXPOSURE</span>
+<strong>Gladstone Investment (GAIN)</strong>
+</div>
+
+<div>
+<span class="snapshot-label">MATERIALITY</span>
+<strong>≈6–7% of GAIN's fair-value portfolio</strong>
+</div>
+
+<div>
+<span class="snapshot-label">STATUS</span>
+<strong>Monitoring candidate</strong>
+</div>
+
+</div>
+
+<div class="snapshot-verdict">
+<strong>Investment view:</strong> Research-worthy BDC look-through persists, but much of the valuation effect is already embedded and the theme remains fad-sensitive into the holidays.
+</div>
+
+:::
 
 ## Executive briefing
 - One lead investment story qualified this week: NeeDoh scarcity continues to show public‑market look‑through via Gladstone Investment (GAIN); rationing evidence remained active during the window, but much of the valuation uplift has already been recognized. ([otcmarkets.com](https://www.otcmarkets.com/filing/html?guid=r0j-knwqajPQV3h&id=19435359))
