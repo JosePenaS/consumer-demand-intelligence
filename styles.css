@@ -463,3 +463,100 @@ h3 {
   margin-top: 1rem;
   padding-top: 0.85rem;
 }
+
+/* ============================================================
+   Ranked Story Cards
+   ============================================================ */
+
+.research-story-card {
+  margin: 1.5rem 0 2.25rem 0;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid #dfe3e7;
+  border-radius: 0.6rem;
+  background: #ffffff;
+}
+
+.research-story-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1.15rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.research-story-rank {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #6c757d;
+  text-transform: uppercase;
+}
+
+.research-story-title {
+  margin-top: 0.2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.research-story-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.research-story-body {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.research-story-field {
+  padding-top: 0.15rem;
+}
+
+.research-story-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  color: #6c757d;
+  text-transform: uppercase;
+}
+
+.research-story-field p {
+  margin: 0;
+}
+
+.research-story-verdict {
+  margin-top: 0.3rem;
+  padding: 0.9rem 1rem;
+  border-left: 4px solid #f0c36d;
+  background: #fffaf0;
+  border-radius: 0.25rem;
+}
+
+.research-badge-orange {
+  background: #fff3cd;
+  border-color: #f0ad4e;
+}
+
+.research-badge-red {
+  background: #f8d7da;
+  border-color: #dc3545;
+}
+
+@media (max-width: 768px) {
+  .research-story-card {
+    padding: 1.15rem;
+  }
+
+  .research-story-header {
+    flex-direction: column;
+  }
+}
+
+

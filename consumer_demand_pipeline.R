@@ -3807,6 +3807,7 @@ build_weekly_editor_prompt <- function(
     "Include only topics scoring at least 50 after research and editorial verification.\n",
     
     "For each selected story provide rank, distinct topic or subtheme, RED/ORANGE/YELLOW priority, investment score, verified development, why it matters, strongest verified public-company connection, investment instrument when relevant, fair-value/NAV mechanism, income/cash-flow mechanism, financial materiality, evidence quality, catalyst, monitoring trigger, one-sentence editorial verdict, and key Markdown-linked sources.\n",
+    "Formatting is strict: begin each qualifying story with one numbered line in the form '1. Topic or subtheme — Priority: YELLOW — Investment score: 59/100'. Put the story details on the following Markdown bullet lines using these labels: Verified development, Why it matters, Strongest verified public-company connection, Investment instrument (when relevant), Fair-value/NAV mechanism, Income/cash-flow mechanism, Financial materiality, Evidence quality, Catalyst, Monitoring trigger, One-sentence editorial verdict, and Key sources. Do not use additional story subheadings.\n",
     
     "Avoid language such as 'tradable' unless the evidence supports a sufficiently clear and timely market mechanism. Prefer terms such as 'public-market look-through', 'research-worthy', 'monitoring candidate', or 'investment-relevant theme' when appropriate.\n",
     
@@ -3988,6 +3989,257 @@ while (
   quarto_lines <- quarto_lines[-1]
 }
 
+# ------------------------------------------------------------
+# Turn Ranked stories into structured Quarto research cards.
+# This is deterministic: even if the weekly editor returns the
+# usual numbered-story + bullet format, each qualifying story is
+# wrapped and labeled consistently before publication.
+# ------------------------------------------------------------
+
+format_ranked_story_cards <- function(lines) {
+  
+  ranked_heading <- which(
+    stringr::str_trim(lines) == "## Ranked stories"
+  )
+  
+  if (length(ranked_heading) == 0) {
+    return(lines)
+  }
+  
+  ranked_start <- ranked_heading[[1]]
+  
+  later_h2 <- which(
+    seq_along(lines) > ranked_start &
+      grepl("^##[[:space:]]+", lines)
+  )
+  
+  ranked_end <- if (length(later_h2) > 0) {
+    later_h2[[1]] - 1
+  } else {
+    length(lines)
+  }
+  
+  if (ranked_start >= ranked_end) {
+    return(lines)
+  }
+  
+  ranked_indices <- seq.int(ranked_start + 1, ranked_end)
+  
+  story_starts <- ranked_indices[
+    grepl(
+      "^[[:space:]]*[0-9]+[.)][[:space:]]+",
+      lines[ranked_indices]
+    )
+  ]
+  
+  if (length(story_starts) == 0) {
+    return(lines)
+  }
+  
+  parse_story_field <- function(line) {
+    field_pattern <- paste0(
+      "^[[:space:]]*-[[:space:]]+",
+      "(Verified development|Why it matters|",
+      "Strongest verified public.company connection|",
+      "Investment instrument \\(when relevant\\)|",
+      "Instrument \\(exposure\\)|",
+      "Fair.value/NAV mechanism|",
+      "Income/cash.flow mechanism|",
+      "Financial materiality( \\(context\\))?|",
+      "Evidence quality|Catalyst|Monitoring trigger|",
+      "One.sentence editorial verdict|Key sources)",
+      ":[[:space:]]*(.*)$"
+    )
+    
+    match <- stringr::str_match(
+      line,
+      stringr::regex(field_pattern, ignore_case = TRUE)
+    )
+    
+    if (is.na(match[1, 2])) {
+      return(NULL)
+    }
+    
+    list(
+      label = stringr::str_trim(match[1, 2]),
+      value = stringr::str_trim(match[1, 4])
+    )
+  }
+  
+  card_lines <- character()
+  
+  for (i in seq_along(story_starts)) {
+    
+    story_start <- story_starts[[i]]
+    story_end <- if (i < length(story_starts)) {
+      story_starts[[i + 1]] - 1
+    } else {
+      ranked_end
+    }
+    
+    raw_title <- stringr::str_trim(lines[story_start])
+    
+    rank_number <- sub(
+      "^[[:space:]]*([0-9]+)[.)].*$",
+      "\\1",
+      raw_title
+    )
+    
+    story_title <- sub(
+      "^[[:space:]]*[0-9]+[.)][[:space:]]+",
+      "",
+      raw_title
+    )
+    
+    priority_match <- stringr::str_match(
+      story_title,
+      "(?i)Priority:[[:space:]]*(RED|ORANGE|YELLOW)"
+    )
+    
+    score_match <- stringr::str_match(
+      story_title,
+      "(?i)Investment score:[[:space:]]*([0-9]+(?:/100)?)"
+    )
+    
+    priority_text <- if (!is.na(priority_match[1, 2])) {
+      toupper(priority_match[1, 2])
+    } else {
+      "RESEARCH"
+    }
+    
+    score_text <- if (!is.na(score_match[1, 2])) {
+      score_match[1, 2]
+    } else {
+      ""
+    }
+    
+    if (nzchar(score_text) && !grepl("/", score_text, fixed = TRUE)) {
+      score_text <- paste0(score_text, "/100")
+    }
+    
+    clean_title <- stringr::str_replace(
+      story_title,
+      "[[:space:]]+[—-][[:space:]]+Priority:.*$",
+      ""
+    )
+    
+    clean_title <- stringr::str_trim(clean_title)
+    
+    priority_class <- switch(
+      priority_text,
+      "YELLOW" = " research-badge-yellow",
+      "ORANGE" = " research-badge-orange",
+      "RED" = " research-badge-red",
+      ""
+    )
+    
+    story_content <- if (story_start < story_end) {
+      lines[seq.int(story_start + 1, story_end)]
+    } else {
+      character()
+    }
+    
+    story_fields <- character()
+    
+    for (content_line in story_content) {
+      parsed_field <- parse_story_field(content_line)
+      
+      if (!is.null(parsed_field)) {
+        field_class <- if (
+          grepl("editorial verdict", parsed_field$label, ignore.case = TRUE)
+        ) {
+          "research-story-verdict"
+        } else {
+          "research-story-field"
+        }
+        
+        clean_label <- toupper(
+          stringr::str_replace_all(parsed_field$label, "[._]", " ")
+        )
+        
+        story_fields <- c(
+          story_fields,
+          paste0("::: {.", field_class, "}"),
+          paste0(
+            '<span class="research-story-label">',
+            escape_report_html(clean_label),
+            '</span>'
+          ),
+          "",
+          parsed_field$value,
+          "",
+          "::: ",
+          ""
+        )
+      } else if (nzchar(stringr::str_trim(content_line))) {
+        story_fields <- c(story_fields, content_line, "")
+      }
+    }
+    
+    story_meta <- c(
+      '<div class="research-story-meta">',
+      paste0(
+        '<span class="research-badge',
+        priority_class,
+        '">',
+        priority_text,
+        '</span>'
+      )
+    )
+    
+    if (nzchar(score_text)) {
+      story_meta <- c(
+        story_meta,
+        paste0(
+          '<span class="research-badge">',
+          score_text,
+          '</span>'
+        )
+      )
+    }
+    
+    story_meta <- c(story_meta, '</div>')
+    
+    card_lines <- c(
+      card_lines,
+      "",
+      "::: {.research-story-card}",
+      '<div class="research-story-header">',
+      '<div>',
+      paste0(
+        '<div class="research-story-rank">RANK ',
+        rank_number,
+        '</div>'
+      ),
+      paste0(
+        '<div class="research-story-title">',
+        escape_report_html(clean_title),
+        '</div>'
+      ),
+      '</div>',
+      story_meta,
+      '</div>',
+      "",
+      '<div class="research-story-body">',
+      story_fields,
+      '</div>',
+      "",
+      ":::",
+      ""
+    )
+  }
+  
+  before_ranked <- lines[seq_len(ranked_start)]
+  after_ranked <- if (ranked_end < length(lines)) {
+    lines[seq.int(ranked_end + 1, length(lines))]
+  } else {
+    character()
+  }
+  
+  c(before_ranked, card_lines, after_ranked)
+}
+quarto_lines <- format_ranked_story_cards(quarto_lines)
+
 quarto_body <- paste(
   quarto_lines,
   collapse = "\n"
@@ -4097,7 +4349,7 @@ if (length(comparison_header_index) > 0) {
       }
       
       verdict_index <- grep(
-        "^-[[:space:]]+One.*sentence editorial verdict:[[:space:]]*",
+        "^-[[:space:]]+(\\*\\*)?One.*sentence editorial verdict:(\\*\\*)?[[:space:]]*",
         quarto_lines,
         ignore.case = TRUE
       )
@@ -4105,7 +4357,7 @@ if (length(comparison_header_index) > 0) {
       snapshot_verdict <- if (length(verdict_index) > 0) {
         
         sub(
-          "^-[[:space:]]+One.*sentence editorial verdict:[[:space:]]*",
+          "^-[[:space:]]+(\\*\\*)?One.*sentence editorial verdict:(\\*\\*)?[[:space:]]*",
           "",
           quarto_lines[verdict_index[[1]]],
           ignore.case = TRUE
@@ -5109,4 +5361,3 @@ if (nzchar(weekly_briefing)) {
   message("Weekly briefing saved as: ", normalizePath(file.path(WEEKLY_OUTPUT_DIR, "weekly_market_intelligence.md")))
 }
 message("Weekly market-intelligence pipeline finished.")
-
