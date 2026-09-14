@@ -16,34 +16,34 @@ Each report moves from observed demand through verification, ownership mapping, 
 
 ::: {.research-feature}
 
-<div class="research-kicker">2026 · WEEK 36</div>
+<div class="research-kicker">2026 · WEEK 38</div>
 
-### NeeDoh scarcity / Schylling
+### 2026-W38 Weekly Market Intelligence
 
 <div class="research-meta">
-<span class="research-badge research-badge-yellow">YELLOW</span>
-<span class="research-badge">59/100</span>
-<span class="research-badge">HIGH EVIDENCE</span>
+<span class="research-badge">RESEARCH</span>
+<span class="research-badge">—/100</span>
+<span class="research-badge">— EVIDENCE</span>
 </div>
 
-Persistent NeeDoh scarcity and retailer rationing point to continued consumer demand, with public-market exposure through Gladstone Investment Corporation (GAIN).
+Read the latest Consumer Demand Intelligence investigation and its potential public-market implications.
 
 <div class="research-stats">
 <div>
 <span>PUBLIC EXPOSURE</span>
-<strong>Gladstone Investment (GAIN)</strong>
+<strong>See full report</strong>
 </div>
 <div>
 <span>MATERIALITY</span>
-<strong>≈6–7% of GAIN's fair-value portfolio</strong>
+<strong>See full report</strong>
 </div>
 <div>
 <span>STATUS</span>
-<strong>Monitoring candidate</strong>
+<strong>Published</strong>
 </div>
 </div>
 
-[Read the full Week 36 report →](2026-W36.qmd){.research-report-link}
+[Read the full Week 38 report →](2026-W38.qmd){.research-report-link}
 
 :::
 

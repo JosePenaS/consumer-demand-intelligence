@@ -3996,6 +3996,63 @@ while (
 # wrapped and labeled consistently before publication.
 # ------------------------------------------------------------
 
+# ============================================================
+# HTML ESCAPING HELPER
+#
+# Escapes text before inserting it into HTML cards.
+# Must be defined before format_ranked_story_cards() is called.
+# ============================================================
+
+escape_report_html <- function(x) {
+  
+  x <- as.character(x)
+  
+  x[is.na(x)] <- ""
+  
+  # IMPORTANT:
+  # Escape ampersands first so we do not re-escape
+  # the entities created below.
+  
+  x <- gsub(
+    "&",
+    "&amp;",
+    x,
+    fixed = TRUE
+  )
+  
+  x <- gsub(
+    "<",
+    "&lt;",
+    x,
+    fixed = TRUE
+  )
+  
+  x <- gsub(
+    ">",
+    "&gt;",
+    x,
+    fixed = TRUE
+  )
+  
+  x <- gsub(
+    "\"",
+    "&quot;",
+    x,
+    fixed = TRUE
+  )
+  
+  x <- gsub(
+    "'",
+    "&#39;",
+    x,
+    fixed = TRUE
+  )
+  
+  x
+}
+
+
+
 format_ranked_story_cards <- function(lines) {
   
   ranked_heading <- which(
@@ -5361,3 +5418,4 @@ if (nzchar(weekly_briefing)) {
   message("Weekly briefing saved as: ", normalizePath(file.path(WEEKLY_OUTPUT_DIR, "weekly_market_intelligence.md")))
 }
 message("Weekly market-intelligence pipeline finished.")
+
