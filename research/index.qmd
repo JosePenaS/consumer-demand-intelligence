@@ -16,9 +16,9 @@ Each report moves from observed demand through verification, ownership mapping, 
 
 ::: {.research-feature}
 
-<div class="research-kicker">2026 · WEEK 38</div>
+<div class="research-kicker">2026 · WEEK 39</div>
 
-### 2026-W38 Weekly Market Intelligence
+### 2026-W39 Weekly Market Intelligence
 
 <div class="research-meta">
 <span class="research-badge">RESEARCH</span>
@@ -43,7 +43,7 @@ Read the latest Consumer Demand Intelligence investigation and its potential pub
 </div>
 </div>
 
-[Read the full Week 38 report →](2026-W38.qmd){.research-report-link}
+[Read the full Week 39 report →](2026-W39.qmd){.research-report-link}
 
 :::
 

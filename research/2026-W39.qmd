@@ -1,0 +1,34 @@
+---
+title: "2026-W39 Weekly Market Intelligence"
+date: "2026-09-27"
+categories:
+  - Consumer Demand
+  - Market Intelligence
+toc: true
+page-layout: full
+body-classes: research-report
+---
+
+## Executive briefing
+
+No completed research stories qualified for inclusion in this week's market-intelligence briefing.
+
+## Ranked stories
+
+No qualifying investment-relevant stories were identified during this research cycle.
+
+## Monitoring signals
+
+No monitoring candidates were available from completed research.
+
+## Rejected or low-value signals
+
+See the pipeline diagnostics and candidate audit for the underlying discovery results.
+
+## Analyst-quality flags
+
+No completed analyst reports were available for editorial review.
+
+## Next-week watchlist
+
+Continue the automated consumer-demand discovery process during the next weekly research cycle.
