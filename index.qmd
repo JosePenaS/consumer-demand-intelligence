@@ -15,9 +15,9 @@ The pipeline moves from demand discovery through web verification, corporate own
 
 <!-- LATEST-RESEARCH-START -->
 
-### 2026 · Week 38
+### 2026 · Week 39
 
-#### 2026-W38 Weekly Market Intelligence
+#### 2026-W39 Weekly Market Intelligence
 
 
 
@@ -25,7 +25,7 @@ See the full weekly report for the latest consumer-demand intelligence findings.
 
 
 
-[Read the full Week 38 report →](research/2026-W38.qmd)
+[Read the full Week 39 report →](research/2026-W39.qmd)
 
 <!-- LATEST-RESEARCH-END -->
 
