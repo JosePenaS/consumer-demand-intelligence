@@ -16,9 +16,9 @@ Each report moves from observed demand through verification, ownership mapping, 
 
 ::: {.research-feature}
 
-<div class="research-kicker">2026 · WEEK 39</div>
+<div class="research-kicker">2026 · WEEK 40</div>
 
-### 2026-W39 Weekly Market Intelligence
+### 2026-W40 Weekly Market Intelligence
 
 <div class="research-meta">
 <span class="research-badge">RESEARCH</span>
@@ -26,7 +26,7 @@ Each report moves from observed demand through verification, ownership mapping, 
 <span class="research-badge">— EVIDENCE</span>
 </div>
 
-Read the latest Consumer Demand Intelligence investigation and its potential public-market implications.
+Target’s Oct 26–27 ACOTAR midnight release events intersect with Bloomsbury’s two-book ACOTAR launch and an already signaled FY26/27 uplift. ([corporate.target.com](https://corporate.target.com/news-features/article/2026/10/target-acotar-collection-midnight-release))
 
 <div class="research-stats">
 <div>
@@ -43,7 +43,7 @@ Read the latest Consumer Demand Intelligence investigation and its potential pub
 </div>
 </div>
 
-[Read the full Week 39 report →](2026-W39.qmd){.research-report-link}
+[Read the full Week 40 report →](2026-W40.qmd){.research-report-link}
 
 :::
 
