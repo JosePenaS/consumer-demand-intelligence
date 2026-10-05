@@ -15,17 +15,17 @@ The pipeline moves from demand discovery through web verification, corporate own
 
 <!-- LATEST-RESEARCH-START -->
 
-### 2026 · Week 39
+### 2026 · Week 40
 
-#### 2026-W39 Weekly Market Intelligence
-
-
-
-See the full weekly report for the latest consumer-demand intelligence findings.
+#### 2026-W40 Weekly Market Intelligence
 
 
 
-[Read the full Week 39 report →](research/2026-W39.qmd)
+Target’s Oct 26–27 ACOTAR midnight release events intersect with Bloomsbury’s two-book ACOTAR launch and an already signaled FY26/27 uplift.
+
+
+
+[Read the full Week 40 report →](research/2026-W40.qmd)
 
 <!-- LATEST-RESEARCH-END -->
 
