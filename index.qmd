@@ -15,17 +15,17 @@ The pipeline moves from demand discovery through web verification, corporate own
 
 <!-- LATEST-RESEARCH-START -->
 
-### 2026 · Week 40
+### 2026 · Week 42
 
-#### 2026-W40 Weekly Market Intelligence
-
-
-
-Target’s Oct 26–27 ACOTAR midnight release events intersect with Bloomsbury’s two-book ACOTAR launch and an already signaled FY26/27 uplift.
+#### 2026-W42 Weekly Market Intelligence
 
 
 
-[Read the full Week 40 report →](research/2026-W40.qmd)
+NeeDoh’s spring-summer demand spike has translated into materially higher marks for its private owner (Schylling, Inc.) inside Gladstone Investment Corporation’s (NASDAQ: GAIN) portfolio; the public-market look-through remains investment-relevant heading into holiday 2026.
+
+
+
+[Read the full Week 42 report →](research/2026-W42.qmd)
 
 <!-- LATEST-RESEARCH-END -->
 

@@ -16,9 +16,9 @@ Each report moves from observed demand through verification, ownership mapping, 
 
 ::: {.research-feature}
 
-<div class="research-kicker">2026 · WEEK 40</div>
+<div class="research-kicker">2026 · WEEK 42</div>
 
-### 2026-W40 Weekly Market Intelligence
+### 2026-W42 Weekly Market Intelligence
 
 <div class="research-meta">
 <span class="research-badge">RESEARCH</span>
@@ -26,7 +26,7 @@ Each report moves from observed demand through verification, ownership mapping, 
 <span class="research-badge">— EVIDENCE</span>
 </div>
 
-Target’s Oct 26–27 ACOTAR midnight release events intersect with Bloomsbury’s two-book ACOTAR launch and an already signaled FY26/27 uplift. ([corporate.target.com](https://corporate.target.com/news-features/article/2026/10/target-acotar-collection-midnight-release))
+NeeDoh’s spring-summer demand spike has translated into materially higher marks for its private owner (Schylling, Inc.) inside Gladstone Investment Corporation’s (NASDAQ: GAIN) portfolio; the public-market look-through remains investment-relevant heading into holiday 2026. ([axios.com](https://www.axios.com/2026/04/04/needoh-squishy-toys-dumplings-easter?utm_source=openai))
 
 <div class="research-stats">
 <div>
@@ -43,7 +43,7 @@ Target’s Oct 26–27 ACOTAR midnight release events intersect with Bloomsbury�
 </div>
 </div>
 
-[Read the full Week 40 report →](2026-W40.qmd){.research-report-link}
+[Read the full Week 42 report →](2026-W42.qmd){.research-report-link}
 
 :::
 
