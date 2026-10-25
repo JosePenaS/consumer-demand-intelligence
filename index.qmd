@@ -15,17 +15,17 @@ The pipeline moves from demand discovery through web verification, corporate own
 
 <!-- LATEST-RESEARCH-START -->
 
-### 2026 · Week 40
+### 2026 · Week 43
 
-#### 2026-W40 Weekly Market Intelligence
-
-
-
-Target’s Oct 26–27 ACOTAR midnight release events intersect with Bloomsbury’s two-book ACOTAR launch and an already signaled FY26/27 uplift.
+#### 2026-W43 Weekly Market Intelligence
 
 
 
-[Read the full Week 40 report →](research/2026-W40.qmd)
+NeeDoh scarcity persists into October with a clean look‑through to Gladstone Investment Corp. (GAIN); priority YELLOW, investment score 62/100.
+
+
+
+[Read the full Week 43 report →](research/2026-W43.qmd)
 
 <!-- LATEST-RESEARCH-END -->
 
