@@ -63,6 +63,18 @@ jobs:
         run: |
           source("consumer_demand_pipeline.R", echo = FALSE)
 
+      # Keep the weekly diagnostics (candidate audit, coherence audit,
+      # analyst reports, editor prompt, memory update, manifest) as a
+      # downloadable artifact on the run page, even if a later step fails.
+      - name: Upload weekly diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-diagnostics-${{ github.run_id }}
+          path: weekly_issue_*/
+          if-no-files-found: warn
+          retention-days: 90
+
       - name: Check generated research files
         shell: pwsh
         run: |
@@ -77,9 +89,25 @@ jobs:
         id: changes
         shell: pwsh
         run: |
+          # The pipeline writes this flag when no analyst report or
+          # editor briefing was produced. Do not publish an empty week.
+          $skipFlag = Get-ChildItem -Path . -Recurse -Filter "skip_publication.flag" -ErrorAction SilentlyContinue |
+            Select-Object -First 1
+
+          if ($skipFlag) {
+            Write-Host "Publication skipped this week:"
+            Get-Content $skipFlag.FullName
+            "has_changes=false" >> $env:GITHUB_OUTPUT
+            exit 0
+          }
+
           git add index.qmd
           git add research/index.qmd
           git add "research/*.qmd"
+
+          if (Test-Path story_memory.json) {
+            git add story_memory.json
+          }
 
           $changes = git diff --cached --name-only
 

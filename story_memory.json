@@ -1,0 +1,38 @@
+{
+  "stories": [
+    {
+      "story_key": "needoh",
+      "title": "NeeDoh scarcity and GAIN look-through",
+      "first_reported": "2026-W34",
+      "times_reported": 5,
+      "last_reported": "2026-W45",
+      "last_reported_date": "2026-11-08",
+      "last_status": "update",
+      "last_priority": "YELLOW",
+      "last_score": 58,
+      "last_summary": "NeeDoh scarcity persists at retail (Five Below purchase limits, Schylling direct-order pause); the public-market look-through is Gladstone Investment (GAIN) via Schylling preferred equity and term debt, with moderate NAV sensitivity.",
+      "pinned_facts": [
+        {
+          "fact": "Schylling, Inc. preferred stock fair value in GAIN schedule of investments",
+          "value": "$69.829M",
+          "as_of": "2026-06-30",
+          "source_url": "https://www.sec.gov/Archives/edgar/data/0001321741/000132174126000017/gain-20260630.htm",
+          "verified_in": "manual check 2026-11-09"
+        }
+      ]
+    },
+    {
+      "story_key": "acotar",
+      "title": "Target ACOTAR midnight events and Bloomsbury's two-book launch",
+      "first_reported": "2026-W40",
+      "times_reported": 1,
+      "last_reported": "2026-W40",
+      "last_reported_date": "2026-10-04",
+      "last_status": "new",
+      "last_priority": "YELLOW",
+      "last_score": 61,
+      "last_summary": "Target's Oct 26-27 ACOTAR midnight release events intersect with Bloomsbury's two-book ACOTAR launch and an already signaled FY26/27 uplift; impact is moderate for Bloomsbury and de minimis for Target.",
+      "pinned_facts": []
+    }
+  ]
+}
