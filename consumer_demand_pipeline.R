@@ -33,8 +33,39 @@ library(readr)
 # 1. Configuration
 # ============================================================
 
-SEED_QUERIES <- c(
-  "sold out everywhere")
+# Discovery seeds.
+# "sold out everywhere" runs every week. A few rotating seeds are
+# added each week so discovery is not dominated by a single trend,
+# while keeping the number of Google Trends calls (and the risk of
+# HTTP 429 rate limiting) low. The pool cycles every few weeks.
+SEED_ANCHOR <- "sold out everywhere"
+
+SEED_ROTATION_POOL <- c(
+  "out of stock",
+  "back in stock",
+  "restock",
+  "shortage",
+  "waitlist",
+  "where to buy"
+)
+
+ROTATING_SEEDS_PER_WEEK <- 2
+
+seed_rotation_week <- lubridate::isoweek(Sys.Date())
+
+seed_rotation_index <- (
+  (seed_rotation_week * ROTATING_SEEDS_PER_WEEK +
+     seq_len(ROTATING_SEEDS_PER_WEEK) - 1L) %%
+    length(SEED_ROTATION_POOL)
+) + 1L
+
+SEED_QUERIES <- unique(c(
+  SEED_ANCHOR,
+  SEED_ROTATION_POOL[seed_rotation_index]
+))
+
+# Pause between different seed searches (seconds).
+SLEEP_BETWEEN_SEEDS <- 45
 
 # Backward-compatible display value used in manifests.
 SEED_Q <- paste(SEED_QUERIES, collapse = " | ")
@@ -152,6 +183,254 @@ dir.create(WEEKLY_OUTPUT_DIR, recursive = TRUE, showWarnings = FALSE)
 `%||%` <- function(x, y) {
   if (is.null(x) || length(x) == 0) y else x
 }
+
+# ============================================================
+# 2B. Story memory helpers
+#
+# story_memory.json (repository root) remembers every story the
+# briefing has covered: when it was first and last reported, its
+# last priority/score/summary, and "pinned facts" verified from
+# primary sources. It is read before each run so that:
+#   - already-covered stories get lower research priority than
+#     new topics;
+#   - analysts and the editor know what was reported before and
+#     focus on what changed;
+#   - unchanged stories appear as a short "Still watching" note
+#     instead of a full repeat;
+#   - verified figures stay consistent from week to week.
+# The weekly editor returns a machine-readable update block that
+# is parsed after each run and written back to the file.
+# ============================================================
+
+STORY_MEMORY_FILE <- file.path(PROJECT_ROOT, "story_memory.json")
+
+memory_compact_key <- function(x) {
+  x <- as.character(x %||% "")
+  x[is.na(x)] <- ""
+  x |>
+    stringr::str_to_lower() |>
+    stringr::str_replace_all("[^a-z0-9]", "")
+}
+
+load_story_memory <- function(path = STORY_MEMORY_FILE) {
+  if (!file.exists(path)) {
+    return(list())
+  }
+  memory <- tryCatch(
+    jsonlite::fromJSON(path, simplifyVector = FALSE),
+    error = function(e) {
+      warning("Could not read story memory: ", conditionMessage(e))
+      NULL
+    }
+  )
+  stories <- memory$stories %||% list()
+  # Keep only well-formed entries.
+  purrr::keep(stories, function(s) is.list(s) && nzchar(s$story_key %||% ""))
+}
+
+find_memory_story <- function(name, memory) {
+  name_c <- memory_compact_key(name)
+  if (!nzchar(name_c) || length(memory) == 0) {
+    return(NULL)
+  }
+  for (story in memory) {
+    for (candidate in c(story$story_key %||% "", story$title %||% "")) {
+      key_c <- memory_compact_key(candidate)
+      if (!nzchar(key_c)) next
+      if (identical(name_c, key_c)) return(story)
+      if (nchar(key_c) >= 4 && grepl(key_c, name_c, fixed = TRUE)) return(story)
+      if (nchar(name_c) >= 4 && grepl(name_c, key_c, fixed = TRUE)) return(story)
+    }
+  }
+  NULL
+}
+
+is_known_story <- function(names, memory) {
+  vapply(
+    names,
+    function(n) !is.null(find_memory_story(n, memory)),
+    logical(1),
+    USE.NAMES = FALSE
+  )
+}
+
+format_pinned_facts <- function(facts) {
+  if (length(facts) == 0) {
+    return("  (none recorded)")
+  }
+  paste0(
+    vapply(
+      facts,
+      function(f) {
+        paste0(
+          "  - ", f$fact %||% "",
+          ": ", f$value %||% "",
+          if (nzchar(f$as_of %||% "")) paste0(" (as of ", f$as_of, ")") else "",
+          if (nzchar(f$source_url %||% "")) paste0(" — source: ", f$source_url) else "",
+          if (nzchar(f$verified_in %||% "")) paste0(" — verified in ", f$verified_in) else ""
+        )
+      },
+      character(1)
+    ),
+    collapse = "\n"
+  )
+}
+
+format_memory_story <- function(story) {
+  score <- story$last_score %||% NA
+  paste0(
+    "Story key: ", story$story_key %||% "", "\n",
+    "Title: ", story$title %||% "", "\n",
+    "First reported: ", story$first_reported %||% "", "\n",
+    "Last reported: ", story$last_reported %||% "",
+    " (", story$last_reported_date %||% "", ")\n",
+    "Times reported: ", story$times_reported %||% 1, "\n",
+    "Last status: ", story$last_status %||% "", "\n",
+    "Last priority / score: ", story$last_priority %||% "", " / ",
+    if (is.na(score)) "—" else paste0(score, "/100"), "\n",
+    "Last summary: ", story$last_summary %||% "", "\n",
+    "Pinned verified facts:\n", format_pinned_facts(story$pinned_facts %||% list())
+  )
+}
+
+# Text appended to an analyst research prompt when the topic was
+# covered in an earlier issue.
+format_memory_research_context <- function(story) {
+  if (is.null(story)) {
+    return("")
+  }
+  paste0(
+    "\n\nPRIOR COVERAGE IN THIS BRIEFING\n",
+    "This topic was already covered in an earlier issue. Do not re-write the previous analysis from scratch.\n",
+    format_memory_story(story), "\n\n",
+    "PRIOR-COVERAGE RULES\n",
+    "1. Focus on what is new since the last reported issue: new filings, new verified events, new figures, or evidence that changes the score.\n",
+    "2. Start your report with one line in the exact form 'CHANGE SINCE LAST REPORT: <one sentence>' or 'CHANGE SINCE LAST REPORT: NONE' if nothing material changed.\n",
+    "3. Treat the pinned verified facts as the current baseline. If you find a different figure, verify it against the primary source, report both values, and explain which is correct and why. Never silently replace a pinned figure.\n"
+  )
+}
+
+# Memory summary passed to the weekly editor.
+format_memory_for_editor <- function(memory, max_stories = 15) {
+  if (length(memory) == 0) {
+    return("No stories have been reported in earlier issues.\n")
+  }
+  last_dates <- vapply(memory, function(s) s$last_reported %||% "", character(1))
+  memory <- memory[order(last_dates, decreasing = TRUE)]
+  memory <- head(memory, max_stories)
+  paste(
+    vapply(memory, format_memory_story, character(1)),
+    collapse = "\n\n---\n\n"
+  )
+}
+
+# Pulls the ```story-memory ... ``` JSON block out of the editor's
+# Markdown. Returns the Markdown without the block plus the parsed
+# update (NULL if missing or invalid).
+extract_story_memory_update <- function(text) {
+  text <- as.character(text %||% "")
+  block_pattern <- "(?s)```[[:space:]]*story-memory[[:space:]]*\\n(.*?)```"
+  block <- stringr::str_match(text, block_pattern)[1, 2]
+  clean_text <- stringr::str_remove_all(
+    text,
+    "(?s)\\n*```[[:space:]]*story-memory[[:space:]]*\\n.*?```[[:space:]]*"
+  )
+  clean_text <- stringr::str_trim(clean_text, side = "right")
+
+  update <- NULL
+  if (!is.na(block) && nzchar(stringr::str_trim(block))) {
+    update <- tryCatch(
+      jsonlite::fromJSON(block, simplifyVector = FALSE),
+      error = function(e) {
+        warning("Could not parse story-memory block: ", conditionMessage(e))
+        NULL
+      }
+    )
+  } else {
+    warning("The weekly editor did not return a story-memory block; memory was not updated.")
+  }
+  list(text = clean_text, update = update)
+}
+
+merge_pinned_facts <- function(old_facts, new_facts) {
+  old_facts <- old_facts %||% list()
+  new_facts <- new_facts %||% list()
+  fact_key <- function(f) memory_compact_key(f$fact %||% "")
+  merged <- old_facts
+  for (f in new_facts) {
+    if (!is.list(f) || !nzchar(fact_key(f))) next
+    existing <- vapply(merged, fact_key, character(1))
+    position <- match(fact_key(f), existing)
+    if (is.na(position)) {
+      merged[[length(merged) + 1]] <- f
+    } else {
+      merged[[position]] <- f
+    }
+  }
+  merged
+}
+
+# Statuses that mean the story appeared in the published briefing
+# or is being tracked. Rejected topics are not remembered.
+MEMORY_TRACKED_STATUSES <- c("new", "update", "still_watching", "monitoring")
+
+update_story_memory <- function(memory, update, issue_id, issue_date) {
+  if (is.null(update) || length(update$stories %||% list()) == 0) {
+    return(memory)
+  }
+  for (entry in update$stories) {
+    if (!is.list(entry)) next
+    status <- stringr::str_to_lower(entry$status %||% "")
+    if (!status %in% MEMORY_TRACKED_STATUSES) next
+
+    existing <- find_memory_story(entry$story_key %||% entry$title %||% "", memory)
+    if (is.null(existing)) {
+      existing <- list(
+        story_key = entry$story_key %||% memory_compact_key(entry$title %||% ""),
+        title = entry$title %||% entry$story_key %||% "",
+        first_reported = issue_id,
+        times_reported = 0L,
+        pinned_facts = list()
+      )
+      position <- length(memory) + 1
+    } else {
+      keys <- vapply(memory, function(s) s$story_key %||% "", character(1))
+      position <- match(existing$story_key, keys)
+    }
+
+    existing$title <- entry$title %||% existing$title
+    existing$last_reported <- issue_id
+    existing$last_reported_date <- as.character(issue_date)
+    existing$times_reported <- as.integer(existing$times_reported %||% 0L) + 1L
+    existing$last_status <- status
+    # A "still watching" entry keeps the last real assessment.
+    if (!identical(status, "still_watching")) {
+      existing$last_priority <- entry$priority %||% existing$last_priority %||% ""
+      existing$last_score <- suppressWarnings(as.numeric(entry$score %||% NA))
+      existing$last_summary <- entry$summary %||% existing$last_summary %||% ""
+    }
+    existing$pinned_facts <- merge_pinned_facts(
+      existing$pinned_facts,
+      entry$pinned_facts
+    )
+    memory[[position]] <- existing
+  }
+  memory
+}
+
+save_story_memory <- function(memory, path = STORY_MEMORY_FILE) {
+  jsonlite::write_json(
+    list(stories = memory),
+    path,
+    auto_unbox = TRUE,
+    null = "null",
+    na = "null",
+    pretty = TRUE
+  )
+}
+
+story_memory <- load_story_memory()
+message("Stories in memory: ", length(story_memory))
 
 empty_timeseries_tbl <- function() {
   tibble(
@@ -881,6 +1160,9 @@ for (seed_q in SEED_QUERIES) {
     seed_results[[seed_run_index]] <- result_i
     if (i < N_RUNS) Sys.sleep(SLEEP_BETWEEN_RUNS)
   }
+
+  # Pause before the next seed to reduce rate limiting.
+  if (seed_q != tail(SEED_QUERIES, 1)) Sys.sleep(SLEEP_BETWEEN_SEEDS)
 }
 
 # ============================================================
@@ -1287,8 +1569,9 @@ initial_query_candidates <- harvest_related_queries |>
     
     parent_search_value = query,
     
-    # We currently use only "sold out everywhere"
-    # as the originating discovery seed.
+    # Each initial row comes from exactly one discovery seed;
+    # cross-seed confirmation is counted later when rows from
+    # different seeds are combined.
     parent_origin_seed_count = 1,
     
     parent_origin_seeds = origin_seed,
@@ -1874,7 +2157,7 @@ parent_candidates <- trend_candidates |>
         paste(
           "Exploratory research because Google Trends",
           "directly surfaced a scarcity-related query from",
-          "the 'sold out everywhere' discovery seed."
+          "a scarcity discovery seed."
         ),
       
       queue_status == "exploratory" &
@@ -2006,42 +2289,56 @@ parent_candidates <- parent_candidates |>
 
 # ============================================================
 # 12K. Build automatic + exploratory queues
+#
+# Story memory: candidates matching a story already covered in an
+# earlier issue are flagged as known. New topics are queued first;
+# known stories only fill the remaining slots, and only one query
+# variant per known story is kept (so e.g. five NeeDoh variants
+# cannot take all the automatic slots).
 # ============================================================
 
-automatic_queue <- parent_candidates |>
-  
-  filter(
-    queue_status ==
-      "automatic"
-  ) |>
-  
-  arrange(
-    desc(
-      discovery_score
-    )
-  ) |>
-  
-  slice_head(
-    n = MAX_AUTOMATIC_REPORTS
+parent_candidates <- parent_candidates |>
+  mutate(
+    memory_story_key = vapply(
+      parent_title,
+      function(title) {
+        story <- find_memory_story(title, story_memory)
+        if (is.null(story)) NA_character_ else story$story_key
+      },
+      character(1),
+      USE.NAMES = FALSE
+    ),
+    known_story = !is.na(memory_story_key)
   )
 
+select_research_queue <- function(candidates, n) {
+  new_topics <- candidates |>
+    filter(!known_story) |>
+    arrange(desc(discovery_score))
+
+  known_topics <- candidates |>
+    filter(known_story) |>
+    arrange(desc(discovery_score)) |>
+    distinct(memory_story_key, .keep_all = TRUE)
+
+  bind_rows(new_topics, known_topics) |>
+    slice_head(n = n)
+}
+
+automatic_queue <- parent_candidates |>
+  filter(queue_status == "automatic") |>
+  select_research_queue(n = MAX_AUTOMATIC_REPORTS)
 
 exploratory_queue <- parent_candidates |>
-  
-  filter(
-    queue_status ==
-      "exploratory"
-  ) |>
-  
-  arrange(
-    desc(
-      discovery_score
-    )
-  ) |>
-  
-  slice_head(
-    n = MAX_EXPLORATORY_REPORTS
-  )
+  filter(queue_status == "exploratory") |>
+  select_research_queue(n = MAX_EXPLORATORY_REPORTS)
+
+message(
+  "Known stories in research queue: ",
+  sum(automatic_queue$known_story) + sum(exploratory_queue$known_story),
+  " | New topics: ",
+  sum(!automatic_queue$known_story) + sum(!exploratory_queue$known_story)
+)
 
 
 # ============================================================
@@ -2062,7 +2359,9 @@ research_queue_pre_coherence <- bind_rows(
         "exploratory"
       )
     ),
-    
+
+    known_story,
+
     desc(
       discovery_score
     )
@@ -3232,13 +3531,18 @@ if (nrow(research_queue_scored) > 0) {
       
       .groups = "drop"
     ) |>
+    mutate(
+      # Re-check against memory using the canonical entity name.
+      known_story = is_known_story(parent_title, story_memory)
+    ) |>
     arrange(
+      known_story,
       desc(discovery_score)
     ) |>
     slice_head(
       n = MAX_WEEKLY_PARENT_REPORTS
     )
-  
+
 } else {
   
   research_queue <- tibble(
@@ -3260,7 +3564,8 @@ if (nrow(research_queue_scored) > 0) {
     origin_seeds = character(),
     evidence_text = character(),
     merged_candidate_count = integer(),
-    merged_candidate_names = character()
+    merged_candidate_names = character(),
+    known_story = logical()
   )
 }
 
@@ -3308,11 +3613,26 @@ if (nrow(research_queue) > 0) {
             evidence_text
           ),
           build_parent_research_prompt
+        ),
+
+      # Add prior coverage and pinned facts for known stories.
+      research_prompt = paste0(
+        research_prompt,
+        vapply(
+          parent_title,
+          function(title) {
+            format_memory_research_context(
+              find_memory_story(title, story_memory)
+            )
+          },
+          character(1),
+          USE.NAMES = FALSE
         )
+      )
     )
-  
+
 } else {
-  
+
   research_queue$research_prompt <- character()
 }
 
@@ -3625,7 +3945,8 @@ build_weekly_editor_prompt <- function(
     issue_id,
     issue_date,
     reports_packet,
-    max_stories = MAX_WEEKLY_BRIEFING_STORIES
+    max_stories = MAX_WEEKLY_BRIEFING_STORIES,
+    memory_text = "No stories have been reported in earlier issues.\n"
 ) {
   
   paste0(
@@ -3812,7 +4133,11 @@ build_weekly_editor_prompt <- function(
     "Avoid language such as 'tradable' unless the evidence supports a sufficiently clear and timely market mechanism. Prefer terms such as 'public-market look-through', 'research-worthy', 'monitoring candidate', or 'investment-relevant theme' when appropriate.\n",
     
     "If none qualifies, write the required quiet-week sentence instead.\n\n",
-    
+
+    "## Still watching\n",
+
+    "List here, one bullet each, every topic from STORY MEMORY that appears in this week's analyst reports without a material new development. Use exactly this form: '- **Topic** — Still watching: nothing new this week. Last reported in <issue> (<priority>, <score>/100).' You may add one short clause on what would change the assessment. If there are none, write 'No continuing stories this week.'\n\n",
+
     "## Comparison table\n",
     
     "Topic/subtheme | Priority | Score | Public exposure | Materiality | Evidence quality | Status\n",
@@ -3843,15 +4168,56 @@ build_weekly_editor_prompt <- function(
     "Provide a deduplicated list with story supported, title, publisher, publication date, event date when relevant, full URL, source quality, and claim supported.\n",
     
     "Prefer primary sources for ownership, financial exposure, filings, portfolio values, security terms, regulatory status, and company-specific claims.\n\n",
-    
+
+
+    # --------------------------------------------------------
+    # Story memory rules
+    # --------------------------------------------------------
+
+    "STORY MEMORY RULES\n",
+
+    "STORY MEMORY (below) lists stories reported in earlier issues, with their last assessment and pinned facts verified from primary sources.\n",
+
+    "1. A topic matching a STORY MEMORY entry is a continuing story. Include it under Ranked stories ONLY if there is a material new development since its last reported issue: a new filing or official disclosure, a newly verified event, a changed key figure, or an investment-score change of 5 points or more. Begin its Verified development line with 'Update since <last issue>:' and describe only what changed.\n",
+
+    "2. A continuing story without a material new development must NOT appear under Ranked stories, Monitoring signals, or the Executive briefing as if new. List it only under 'Still watching', and mention it in at most one Executive briefing bullet.\n",
+
+    "3. Analyst reports for continuing stories begin with 'CHANGE SINCE LAST REPORT:'. Use that line as a starting point, but verify it.\n",
+
+    "4. Pinned facts are the verified baseline. If an analyst report states a different value for a pinned fact, verify it against the primary source before publishing, use the verified value, and record the discrepancy under Analyst-quality flags. Never publish a different value without explanation.\n",
+
+    "5. New topics (not in STORY MEMORY) are handled exactly as before.\n\n",
+
+    "STORY MEMORY\n",
+
+    memory_text,
+
+    "\n\n",
+
+
+    # --------------------------------------------------------
+    # Machine-readable memory update
+    # --------------------------------------------------------
+
+    "MACHINE-READABLE MEMORY UPDATE (REQUIRED)\n",
+
+    "After the Sources section, end your output with exactly one fenced block whose opening fence is ```story-memory and closing fence is ```. It is removed before publication and used to update STORY MEMORY. It must contain valid JSON of this form:\n",
+
+    "{\"stories\": [{\"story_key\": \"needoh\", \"title\": \"NeeDoh scarcity and GAIN look-through\", \"status\": \"update\", \"priority\": \"YELLOW\", \"score\": 58, \"summary\": \"One sentence on the current assessment.\", \"pinned_facts\": [{\"fact\": \"Schylling preferred equity fair value (GAIN 10-Q)\", \"value\": \"$69.8M\", \"as_of\": \"2026-06-30\", \"source_url\": \"https://...\", \"verified_in\": \"", issue_id, "\"}]}]}\n",
+
+    "Rules for the block: include every topic from Ranked stories, Still watching, and Monitoring signals. status is one of new, update, still_watching, monitoring. For continuing stories reuse the exact story_key from STORY MEMORY; for new topics use a short lowercase key naming the product or brand. score is a number or null. pinned_facts lists only key figures you verified against a primary source this week (filings, official disclosures); use an empty list if none. For still_watching entries, priority, score, and summary may repeat the previous values.\n\n",
+
     "COMPLETED ANALYST REPORTS\n",
-    
+
     reports_packet
   )
 }
 
 weekly_editor_prompt <- build_weekly_editor_prompt(
-  ISSUE_ID, as.character(ISSUE_DATE), weekly_editor_packet
+  ISSUE_ID,
+  as.character(ISSUE_DATE),
+  weekly_editor_packet,
+  memory_text = format_memory_for_editor(story_memory)
 )
 writeLines(weekly_editor_prompt, file.path(WEEKLY_OUTPUT_DIR, "weekly_editor_prompt.txt"), useBytes = TRUE)
 
@@ -3892,6 +4258,51 @@ if (length(completed_weekly_reports) == 0) {
     error = function(e) { message("Weekly editor request failed: ", conditionMessage(e)); NULL }
   )
   if (!is.null(weekly_editor_response)) weekly_briefing <- extract_response_text(weekly_editor_response)
+}
+
+# ------------------------------------------------------------
+# Story memory: remove the machine-readable block from the
+# briefing and update story_memory.json.
+# ------------------------------------------------------------
+
+if (nzchar(weekly_briefing)) {
+  memory_extraction <- extract_story_memory_update(weekly_briefing)
+  weekly_briefing <- memory_extraction$text
+
+  if (!is.null(memory_extraction$update)) {
+    write_json(
+      memory_extraction$update,
+      file.path(WEEKLY_OUTPUT_DIR, "story_memory_update.json"),
+      auto_unbox = TRUE, null = "null", pretty = TRUE
+    )
+    story_memory <- update_story_memory(
+      story_memory,
+      memory_extraction$update,
+      ISSUE_ID,
+      ISSUE_DATE
+    )
+    save_story_memory(story_memory)
+    message("Story memory updated: ", length(story_memory), " stories.")
+  }
+}
+
+# ------------------------------------------------------------
+# Skip publication when there is nothing to publish.
+# The GitHub workflow reads this flag and does not open a pull
+# request for the week. Diagnostics are still uploaded.
+# ------------------------------------------------------------
+
+SKIP_PUBLICATION <- !nzchar(weekly_briefing)
+
+if (SKIP_PUBLICATION) {
+  writeLines(
+    paste(
+      "No completed analyst reports or editor briefing for", ISSUE_ID,
+      "- publication skipped."
+    ),
+    file.path(WEEKLY_OUTPUT_DIR, "skip_publication.flag")
+  )
+  message("No briefing this week: publication will be skipped by the workflow.")
 }
 
 # ============================================================
@@ -4577,6 +4988,45 @@ write_json(weekly_manifest, file.path(WEEKLY_OUTPUT_DIR, "weekly_manifest.json")
 
 
 # ============================================================
+# Teaser helper: first substantive Executive briefing bullet
+#
+# Used for the Weekly Research card and the home page teaser.
+# Handles both "One lead investment story qualified this week: X"
+# and a bare "One lead investment story qualified this week."
+# (in which case the next bullet is used). Returns NA if no
+# usable bullet is found.
+# ============================================================
+
+extract_briefing_summary <- function(lines, min_characters = 40) {
+  heading <- which(stringr::str_trim(lines) == "## Executive briefing")
+  if (length(heading) == 0) {
+    return(NA_character_)
+  }
+  later_h2 <- which(seq_along(lines) > heading[[1]] & grepl("^##[[:space:]]+", lines))
+  section_end <- if (length(later_h2) > 0) later_h2[[1]] - 1 else length(lines)
+  if (section_end <= heading[[1]]) {
+    return(NA_character_)
+  }
+  section <- lines[seq.int(heading[[1]] + 1, section_end)]
+  bullets <- section[grepl("^-[[:space:]]+", section)]
+
+  for (bullet in bullets) {
+    text <- bullet |>
+      stringr::str_remove("^-[[:space:]]+") |>
+      stringr::str_remove(
+        "^(One|No|[0-9]+|Two|Three) lead investment stor(y|ies)( qualified)?( this week)?([[:space:]]*\\([^)]*\\))?[[:space:]]*[:.][[:space:]]*"
+      ) |>
+      # Trailing Markdown source links, with or without parentheses.
+      stringr::str_remove("[[:space:]]*\\(?\\[[^]]+\\]\\([^)]*\\)\\)?[[:space:]]*$") |>
+      stringr::str_trim()
+    if (nchar(text) >= min_characters) {
+      return(text)
+    }
+  }
+  NA_character_
+}
+
+# ============================================================
 # Update Weekly Research index
 # ============================================================
 
@@ -4753,28 +5203,10 @@ if (nrow(weekly_index_data) > 0) {
   # Pull the lead-story summary from Executive briefing
   # ------------------------------------------------------------
   
-  summary_match <- grep(
-    "^- One lead investment story qualified this week:",
-    latest_report_lines,
-    value = TRUE
-  )
-  
-  if (length(summary_match) > 0) {
-    
-    summary_text <- sub(
-      "^- One lead investment story qualified this week:[[:space:]]*",
-      "",
-      summary_match[[1]]
-    )
-    
-    # Remove a trailing Markdown source link if present.
-    summary_text <- stringr::str_replace(
-      summary_text,
-      "[[:space:]]*\\[[^]]+\\]\\([^)]*\\)[[:space:]]*$",
-      ""
-    )
-    
-    summary_text <- stringr::str_trim(summary_text)
+  briefing_summary <- extract_briefing_summary(latest_report_lines)
+
+  if (!is.na(briefing_summary)) {
+    summary_text <- briefing_summary
   }
   
   # ------------------------------------------------------------
@@ -5107,30 +5539,14 @@ if (nrow(weekly_index_data) > 0 && file.exists(HOME_INDEX_FILE)) {
     latest_status_line <- paste0(latest_status_line, "**")
   }
   
-  executive_line <- grep(
-    "^- One lead investment story qualified this week:",
-    latest_lines,
-    value = TRUE
-  )
-  
-  latest_summary <- if (length(executive_line) > 0) {
-    executive_line[[1]]
-  } else {
-    paste(
+  latest_summary <- extract_briefing_summary(latest_lines)
+
+  if (is.na(latest_summary)) {
+    latest_summary <- paste(
       "See the full weekly report for the latest",
       "consumer-demand intelligence findings."
     )
   }
-  
-  latest_summary <- stringr::str_remove(
-    latest_summary,
-    "^- One lead investment story qualified this week:[[:space:]]*"
-  )
-  
-  latest_summary <- stringr::str_remove(
-    latest_summary,
-    "[[:space:]]*\\(\\[[^]]+\\]\\([^)]*\\)\\)[[:space:]]*$"
-  )
   
   mechanism_line <- grep(
     "^- Financial materiality \\(context\\):",
