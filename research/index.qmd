@@ -16,9 +16,9 @@ Each report moves from observed demand through verification, ownership mapping, 
 
 ::: {.research-feature}
 
-<div class="research-kicker">2026 · WEEK 40</div>
+<div class="research-kicker">2026 · WEEK 46</div>
 
-### 2026-W40 Weekly Market Intelligence
+### 2026-W46 Weekly Market Intelligence
 
 <div class="research-meta">
 <span class="research-badge">RESEARCH</span>
@@ -26,7 +26,7 @@ Each report moves from observed demand through verification, ownership mapping, 
 <span class="research-badge">— EVIDENCE</span>
 </div>
 
-Target’s Oct 26–27 ACOTAR midnight release events intersect with Bloomsbury’s two-book ACOTAR launch and an already signaled FY26/27 uplift. ([corporate.target.com](https://corporate.target.com/news-features/article/2026/10/target-acotar-collection-midnight-release))
+U.S. nursing shortage remains structurally tight; AMN’s Nov 5 print showed travel-nurse revenue +19% YoY and CMS launched a $275M nursing‑home staffing campaign in late October, reinforcing demand for temporary nurses and nursing education programs.
 
 <div class="research-stats">
 <div>
@@ -43,7 +43,7 @@ Target’s Oct 26–27 ACOTAR midnight release events intersect with Bloomsbury�
 </div>
 </div>
 
-[Read the full Week 40 report →](2026-W40.qmd){.research-report-link}
+[Read the full Week 46 report →](2026-W46.qmd){.research-report-link}
 
 :::
 

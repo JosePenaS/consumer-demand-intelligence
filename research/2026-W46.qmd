@@ -1,0 +1,201 @@
+---
+title: "2026-W46 Weekly Market Intelligence"
+date: "2026-11-12"
+categories:
+  - Consumer Demand
+  - Market Intelligence
+toc: true
+page-layout: full
+body-classes: research-report
+---
+
+::: {.investment-snapshot}
+
+<div class="snapshot-header">
+<span class="research-badge research-badge-yellow">YELLOW</span>
+<span class="research-badge">58/100</span>
+<span class="research-badge">HIGH EVIDENCE</span>
+</div>
+
+<div class="snapshot-grid">
+
+<div>
+<span class="snapshot-label">PUBLIC EXPOSURE</span>
+<strong>AMN (direct), CVSA (education), PSEC/PSBD (loans to Medical Solutions)</strong>
+</div>
+
+<div>
+<span class="snapshot-label">MATERIALITY</span>
+<strong>Moderate (AMN/CVSA), low (single‑name BDC)</strong>
+</div>
+
+<div>
+<span class="snapshot-label">STATUS</span>
+<strong>Ranked</strong>
+</div>
+
+</div>
+
+<div class="snapshot-verdict">
+<strong>Investment view:</strong> See the ranked story for the full investment view.
+</div>
+
+:::
+
+## Executive briefing
+- One lead investment story qualified this week (YELLOW). No RED/ORANGE stories met our bar.
+- U.S. nursing shortage remains structurally tight; AMN’s Nov 5 print showed travel-nurse revenue +19% YoY and CMS launched a $275M nursing‑home staffing campaign in late October, reinforcing demand for temporary nurses and nursing education programs. ([ir.amnhealthcare.com](https://ir.amnhealthcare.com/2026-11-05-AMN-HEALTHCARE-ANNOUNCES-THIRD-QUARTER-2026-RESULTS?asPDF=1&utm_source=openai))
+- BDC look‑through to private travel‑nurse provider Medical Solutions is real but small; importantly, PSBD’s exposure was on non‑accrual as of Sep 30, 2026, limiting current income transmission. ([palmersquarebdc.com](https://www.palmersquarebdc.com/financial-information/sec-filings/content/0001193125-26-446165/psbd-20260930.htm?utm_source=openai))
+- A short‑lived fresh‑strawberry tightness followed California rain (late Oct/early Nov); public‑equity leverage is weak and transitory—kept in Monitoring below. ([markon.com](https://www.markon.com/update-california-strawberries-84/?utm_source=openai))
+- No continuing stories from prior weeks had a material update inside the Nov 5–Nov 12 window.
+
+## Ranked stories
+
+::: {.research-story-card}
+<div class="research-story-header">
+<div>
+<div class="research-story-rank">RANK 1</div>
+<div class="research-story-title">U.S. nursing shortage</div>
+</div>
+<div class="research-story-meta">
+<span class="research-badge research-badge-yellow">YELLOW</span>
+<span class="research-badge">58/100</span>
+</div>
+</div>
+
+<div class="research-story-body">
+::: {.research-story-field}
+<span class="research-story-label">VERIFIED DEVELOPMENT</span>
+
+AMN Healthcare’s Nov 5 release reported Q3 2026 travel‑nurse revenue up 19% YoY; CMS announced a $275M national Nursing Home Staffing Campaign (announced via CMS channels Oct 26–29). ([ir.amnhealthcare.com](https://ir.amnhealthcare.com/2026-11-05-AMN-HEALTHCARE-ANNOUNCES-THIRD-QUARTER-2026-RESULTS?asPDF=1&utm_source=openai))
+
+::: 
+
+::: {.research-story-field}
+<span class="research-story-label">WHY IT MATTERS</span>
+
+Persistent vacancies keep agency demand and pricing relevant; policy incentives may buttress post‑acute demand into 2027 while nurse‑education capacity remains a bottleneck.
+
+::: 
+
+::: {.research-story-field}
+<span class="research-story-label">STRONGEST VERIFIED PUBLIC-COMPANY CONNECTION</span>
+
+AMN Healthcare (NYSE: AMN; direct operating exposure). Secondary: Covista (NYSE: CVSA; Chamberlain University nursing programs), and BDC lenders to Medical Solutions (e.g., PSEC; PSBD). ([sec.gov](https://www.sec.gov/Archives/edgar/data/1142750/000162828026071229/amn-20260930.htm?utm_source=openai))
+
+::: 
+
+::: {.research-story-field}
+<span class="research-story-label">INVESTMENT INSTRUMENT (WHEN RELEVANT)</span>
+
+AMN/CVSA common equity (operating). PSEC/PSBD loans to Medical Solutions (floating‑rate debt; PSBD tranche on non‑accrual as of 9/30/26). ([palmersquarebdc.com](https://www.palmersquarebdc.com/financial-information/sec-filings/content/0001193125-26-446165/psbd-20260930.htm?utm_source=openai))
+
+::: 
+
+::: {.research-story-field}
+<span class="research-story-label">FAIR-VALUE/NAV MECHANISM</span>
+
+For BDCs, fair‑value marks on Medical Solutions loans affect NAV; AMN/CVSA reflect operating value through equity. ([sec.gov](https://www.sec.gov/Archives/edgar/data/1287032/000128703226000309/psec-20260930.htm?utm_source=openai))
+
+::: 
+
+::: {.research-story-field}
+<span class="research-story-label">INCOME/CASH-FLOW MECHANISM</span>
+
+AMN/CVSA through operating margins and enrollment/tuition; BDCs via loan interest where accruing—note PSBD’s Medical Solutions loan is on non‑accrual, limiting current income until cured. ([palmersquarebdc.com](https://www.palmersquarebdc.com/financial-information/sec-filings/content/0001193125-26-446165/psbd-20260930.htm?utm_source=openai))
+
+::: 
+
+::: {.research-story-field}
+<span class="research-story-label">FINANCIAL MATERIALITY</span>
+
+Moderate for AMN and CVSA; de minimis single‑name weight for cited BDC positions in diversified portfolios. ([sec.gov](https://www.sec.gov/Archives/edgar/data/1142750/000162828026071229/amn-20260930.htm?utm_source=openai))
+
+::: 
+
+::: {.research-story-field}
+<span class="research-story-label">EVIDENCE QUALITY</span>
+
+High (SEC filings, company IR, CMS primary). ([ir.amnhealthcare.com](https://ir.amnhealthcare.com/2026-11-05-AMN-HEALTHCARE-ANNOUNCES-THIRD-QUARTER-2026-RESULTS?asPDF=1&utm_source=openai))
+
+::: 
+
+::: {.research-story-field}
+<span class="research-story-label">CATALYST</span>
+
+AMN FY26 Q4 outlook and early‑2027 commentary; initial deployment of CMS loan‑repayment/stipend funds at nursing homes. ([cms.gov](https://www.cms.gov/training-education/medicare-learning-network/newsletter/mln-connects-newsletter-october-29-2026?utm_source=openai))
+
+::: 
+
+::: {.research-story-field}
+<span class="research-story-label">MONITORING TRIGGER</span>
+
+Sustained multi‑quarter acceleration/slowdown in travel‑nurse volumes or spreads in AMN disclosures; confirmation of program uptake metrics from CMS.
+
+::: 
+
+::: {.research-story-verdict}
+<span class="research-story-label">ONE-SENTENCE EDITORIAL VERDICT</span>
+
+Research‑worthy theme with durable fundamentals and clear public‑market look‑through, but near‑term catalyst strength is moderate rather than acute.
+
+::: 
+
+::: {.research-story-field}
+<span class="research-story-label">KEY SOURCES</span>
+
+AMN Q3’26 press; AMN 10‑Q; CMS Nursing Home Staffing Campaign/MLN. [AMN IR] | [AMN 10‑Q] | [CMS campaign] | [CMS MLN (Oct 29)] ([ir.amnhealthcare.com](https://ir.amnhealthcare.com/2026-11-05-AMN-HEALTHCARE-ANNOUNCES-THIRD-QUARTER-2026-RESULTS?asPDF=1&utm_source=openai))
+
+::: 
+
+</div>
+
+:::
+
+## Still watching
+- No continuing stories this week.
+
+## Comparison table
+Topic/subtheme | Priority | Score | Public exposure | Materiality | Evidence quality | Status
+|---|---|---:|---|---|---|---|
+U.S. nursing shortage | YELLOW | 58 | AMN (direct), CVSA (education), PSEC/PSBD (loans to Medical Solutions) | Moderate (AMN/CVSA), low (single‑name BDC) | High | Ranked
+Strawberry shortage (CA→MX transition) | WHITE | 48 | DOLE (berries; diversified), LAND (landlord) | Low | High | Monitoring
+
+## Monitoring signals
+- Strawberry shortage (late‑Oct to early‑Nov disruption)
+  - What we have: Markon field reports and USDA/AMS Nov 4 weekly indicate rain‑related losses and a seasonal wind‑down in California with early Mexico volumes still building. ([markon.com](https://www.markon.com/update-california-strawberries-84/?utm_source=openai))
+  - What would move it upward: Evidence that tightness persists into December with visible margin commentary from a listed operator (e.g., DOLE) or a materially adverse update for key California tenants/leases (LAND), or a final AD ruling in Jan 2027 that resets winter price structures. ([sec.gov](https://www.sec.gov/Archives/edgar/data/1857475/000185747526000094/dole-20260930.htm?utm_source=openai))
+
+## Rejected or low-value signals
+- “Mexican farmers’ strike” affecting strawberries — rejected: unsupported viral claim for this commodity; no authoritative corroboration specific to strawberries. (unsupported viral claim)
+- Private‑only exposure tables for berry marketers (e.g., Driscoll’s, Naturipe partners) — rejected: private‑company‑only exposure with negligible listed look‑through. (private-company-only exposure)
+
+## Analyst-quality flags
+- PSBD income transmission overstated: Analyst said BDC loans to Medical Solutions generate floating‑rate interest income; PSBD’s Medical Solutions position was on non‑accrual as of Sep 30, 2026, limiting current income until it returns to accrual—material for instrument‑specific mapping. We corrected the mechanism and modestly reduced confidence in BDC income sensitivity. ([palmersquarebdc.com](https://www.palmersquarebdc.com/financial-information/sec-filings/content/0001193125-26-446165/psbd-20260930.htm?utm_source=openai))
+- CMS policy sourcing strengthened: Replaced secondary press coverage with CMS primary pages (campaign page, MLN newsletter, and FAQs specifying the Oct 26, 2026 start of the 90‑day exception window) to support the $275M initiative. ([cms.gov](https://www.cms.gov/medicare/health-safety-standards/quality-safety-oversight-general-information/cms-nursing-home-staffing-campaign?utm_source=openai))
+- Ownership/name verification: Confirmed Adtalem’s Feb 5, 2026 rename to Covista via SEC exhibits; no inconsistencies found with ticker transition to CVSA. ([sec.gov](https://www.sec.gov/Archives/edgar/data/730464/000110465926011611/atge-20260205xex3d2.htm?utm_source=openai))
+
+## Next-week watchlist
+- U.S. nursing shortage
+  - Move-up: AMN or peers signal stronger‑than‑seasonal travel‑nurse demand into Q4/Q1 or CMS publishes early uptake metrics for the staffing campaign.
+  - Move-down: Clear multi‑week deterioration in travel volumes/rates or hospital operator disclosures showing sharp contract‑labor normalization.
+  - Drop: If multiple quarters show sustained agency demand declines and education‑pipeline growth stalls without offsetting policy support.
+- Strawberry shortage
+  - Move-up: Persistent tightness beyond late November with DOLE commentary on berries margin impact, or AD final determination pointing to meaningfully higher winter import costs.
+  - Move-down: Rapid Mexico/Florida ramp with USDA prices normalizing within 2–4 weeks.
+  - Drop: Clear normalization in USDA AMS movement/prices and retailer availability.
+
+## Sources
+- U.S. nursing shortage — AMN Healthcare Announces Third Quarter 2026 Results; AMN IR; Nov 5, 2026; event date Nov 5, 2026; https://ir.amnhealthcare.com/2026-11-05-AMN-HEALTHCARE-ANNOUNCES-THIRD-QUARTER-2026-RESULTS; High; Confirms +19% YoY travel‑nurse revenue.
+- U.S. nursing shortage — AMN Healthcare Form 10‑Q (quarter ended Sep 30, 2026); SEC; filed Nov 2026 (period end Sep 30, 2026); https://www.sec.gov/Archives/edgar/data/1142750/000162828026071229/amn-20260930.htm; High; Segment definitions, business mix, demand commentary.
+- U.S. nursing shortage — CMS Nursing Home Staffing Campaign (program overview); CMS; posted Oct 2026; event date Oct 26–29, 2026; https://www.cms.gov/medicare/health-safety-standards/quality-safety-oversight-general-information/cms-nursing-home-staffing-campaign; High; Confirms $275M campaign.
+- U.S. nursing shortage — MLN Connects Newsletter; CMS; Oct 29, 2026; event window Oct 26–29, 2026; https://www.cms.gov/training-education/medicare-learning-network/newsletter/mln-connects-newsletter-october-29-2026; High; Confirms initiative features and funding amount.
+- U.S. nursing shortage — Nurses for Nursing Homes FAQs; CMS; Oct 2026; event start Oct 26, 2026; https://www.cms.gov/files/document/nurses-nursing-homes-frequently-asked-questions.pdf; High; Confirms dates/eligibility window.
+- U.S. nursing shortage — Prospect Capital (PSEC) Form 10‑Q (Sep 30, 2026); SEC; filed Nov 2026; https://www.sec.gov/Archives/edgar/data/1287032/000128703226000309/psec-20260930.htm; High; Confirms Medical Solutions second‑lien term loan exposure.
+- U.S. nursing shortage — Palmer Square Capital BDC (PSBD) Form 10‑Q (Sep 30, 2026); SEC/issuer; Nov 4, 2026; https://www.palmersquarebdc.com/financial-information/sec-filings/content/0001193125-26-446165/psbd-20260930.htm; High; Confirms Medical Solutions loan and non‑accrual status.
+- U.S. nursing shortage — Covista (formerly Adtalem) name change exhibits; SEC; Feb 5–6, 2026; https://www.sec.gov/Archives/edgar/data/730464/000110465926011611/atge-20260205xex3d2.htm and https://www.sec.gov/Archives/edgar/data/730464/000110465926011611/atge-20260205xex99d1.htm; High; Verifies legal name/ticker transition and healthcare‑education focus.
+- Strawberry shortage — Markon Update: California Strawberries; Markon; Oct 26, 2026; event date Oct 26, 2026; https://www.markon.com/update-california-strawberries-84/; Medium; Confirms rain damage and supply constraints.
+- Strawberry shortage — USDA AMS USMCA Weekly; USDA/AMS; Nov 4, 2026; event window late Oct–early Nov; https://www.ams.usda.gov/mnreports/usmcaw.pdf; High; Confirms sharp decrease in California movement and early Mexico/Florida timing.
+- Strawberry shortage — DOC Preliminary AD Determination: Fresh Winter Strawberries from Mexico; trade.gov/Federal Register; Aug 18/21, 2026; event date Aug 18, 2026; https://www.trade.gov/preliminary-determination-antidumping-duty-investigation-fresh-winter-strawberries-mexico and https://www.govinfo.gov/content/pkg/FR-2026-08-21/pdf/2026-17121.pdf; High; Confirms preliminary margins/timeline.
+- Strawberry shortage — Dole plc Form 10‑K (FY2025, filed 2026); SEC/issuer; 2026; https://www.sec.gov/Archives/edgar/data/1857475/000185747526000028/dole-20251231.htm; High; Confirms berries participation/competitor set and segment structure.
+- Strawberry shortage — Gladstone Land Ventura County strawberry farm acquisition (historical exposure); Gladstone Land; Nov 5, 2014; event date Nov 5, 2014; https://www.gladstonefarms.com/investors/news-events/press-releases/detail/179/gladstone-land-announces-a-6-1-million-farm-acquisition-in; Medium; Confirms strawberry‑acreage landlord exposure.

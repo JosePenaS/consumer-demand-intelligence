@@ -33,6 +33,62 @@
       "last_score": 61,
       "last_summary": "Target's Oct 26-27 ACOTAR midnight release events intersect with Bloomsbury's two-book ACOTAR launch and an already signaled FY26/27 uplift; impact is moderate for Bloomsbury and de minimis for Target.",
       "pinned_facts": []
+    },
+    {
+      "story_key": "nursing-shortage",
+      "title": "U.S. nursing shortage",
+      "first_reported": "2026-W46",
+      "times_reported": 1,
+      "pinned_facts": [
+        {
+          "fact": "AMN travel-nurse revenue growth in Q3 2026",
+          "value": "+19% YoY",
+          "as_of": "2026-09-30",
+          "source_url": "https://ir.amnhealthcare.com/2026-11-05-AMN-HEALTHCARE-ANNOUNCES-THIRD-QUARTER-2026-RESULTS",
+          "verified_in": "2026-W46"
+        },
+        {
+          "fact": "CMS Nursing Home Staffing Campaign funding",
+          "value": "$275M",
+          "as_of": "2026-10-26",
+          "source_url": "https://www.cms.gov/medicare/health-safety-standards/quality-safety-oversight-general-information/cms-nursing-home-staffing-campaign",
+          "verified_in": "2026-W46"
+        },
+        {
+          "fact": "PSBD loan to Medical Solutions status",
+          "value": "Non-accrual as of 2026-09-30",
+          "as_of": "2026-09-30",
+          "source_url": "https://www.palmersquarebdc.com/financial-information/sec-filings/content/0001193125-26-446165/psbd-20260930.htm",
+          "verified_in": "2026-W46"
+        }
+      ],
+      "last_reported": "2026-W46",
+      "last_reported_date": "2026-11-12",
+      "last_status": "update",
+      "last_priority": "YELLOW",
+      "last_score": 58,
+      "last_summary": "Structural tightness persists; AMN’s Q3 print (+19% YoY travel-nurse revenue) and CMS’s $275M nursing-home staffing campaign reinforce demand; investable via AMN/CVSA and limited BDC look-through (with PSBD’s loan on non-accrual)."
+    },
+    {
+      "story_key": "strawberry-shortage",
+      "title": "Fall 2026 strawberry tightness (CA→MX transition)",
+      "first_reported": "2026-W46",
+      "times_reported": 1,
+      "pinned_facts": [
+        {
+          "fact": "USDA AMS weekly notes sharp seasonal decrease in California strawberry movement",
+          "value": "Issued Nov 4, 2026",
+          "as_of": "2026-11-04",
+          "source_url": "https://www.ams.usda.gov/mnreports/usmcaw.pdf",
+          "verified_in": "2026-W46"
+        }
+      ],
+      "last_reported": "2026-W46",
+      "last_reported_date": "2026-11-12",
+      "last_status": "monitoring",
+      "last_priority": "WHITE",
+      "last_score": 48,
+      "last_summary": "Weather-driven late-Oct supply disruption tightened U.S. strawberries into early Nov; public-equity leverage is weak and likely transitory."
     }
   ]
 }

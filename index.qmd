@@ -15,17 +15,17 @@ The pipeline moves from demand discovery through web verification, corporate own
 
 <!-- LATEST-RESEARCH-START -->
 
-### 2026 · Week 40
+### 2026 · Week 46
 
-#### 2026-W40 Weekly Market Intelligence
-
-
-
-Target’s Oct 26–27 ACOTAR midnight release events intersect with Bloomsbury’s two-book ACOTAR launch and an already signaled FY26/27 uplift.
+#### 2026-W46 Weekly Market Intelligence
 
 
 
-[Read the full Week 40 report →](research/2026-W40.qmd)
+U.S. nursing shortage remains structurally tight; AMN’s Nov 5 print showed travel-nurse revenue +19% YoY and CMS launched a $275M nursing‑home staffing campaign in late October, reinforcing demand for temporary nurses and nursing education programs.
+
+
+
+[Read the full Week 46 report →](research/2026-W46.qmd)
 
 <!-- LATEST-RESEARCH-END -->
 
