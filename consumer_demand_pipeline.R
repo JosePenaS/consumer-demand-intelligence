@@ -40,11 +40,14 @@ library(readr)
 # HTTP 429 rate limiting) low. The pool cycles every few weeks.
 SEED_ANCHOR <- "sold out everywhere"
 
+# Consumer-product phrasing only. Generic terms such as "shortage"
+# were removed because they surface labor, water, and commodity
+# topics (e.g. "nursing shortage") rather than consumer products.
 SEED_ROTATION_POOL <- c(
   "out of stock",
   "back in stock",
   "restock",
-  "shortage",
+  "sold out online",
   "waitlist",
   "where to buy"
 )
@@ -3636,6 +3639,122 @@ if (nrow(research_queue) > 0) {
   research_queue$research_prompt <- character()
 }
 
+# ------------------------------------------------------------
+# Story-memory follow-up checks
+#
+# Recently reported stories are re-checked every week even if
+# they did not resurface in Google Trends, so material news
+# (e.g. a new quarterly filing) is not missed. Stories already
+# in this week's queue are skipped. A follow-up with no material
+# change ends up under "Still watching".
+# ------------------------------------------------------------
+
+MAX_MEMORY_RECHECKS <- 2
+MEMORY_RECHECK_MAX_AGE_DAYS <- 56
+
+build_memory_recheck_prompt <- function(story) {
+  base_prompt <- build_parent_research_prompt(
+    parent_title = story$title %||% story$story_key,
+    n_queries = 0L,
+    breakout_count = 0L,
+    high_growth_count = 0L,
+    max_growth_value = NA_real_,
+    origin_seed_count = 0,
+    origin_seeds = "story memory follow-up (not trending this week)",
+    evidence_text = paste0(
+      "FOLLOW-UP CHECK: this topic did not appear in this week's Google Trends discovery. ",
+      "It is researched because it was reported in an earlier issue (last reported ",
+      story$last_reported %||% "", ", ", story$last_reported_date %||% "", "). ",
+      "There is no new search-trend evidence this week."
+    )
+  )
+  paste0(
+    base_prompt,
+    format_memory_research_context(story),
+    "\nFOLLOW-UP CHECK RULES\n",
+    "1. Look specifically for material developments dated after ",
+    story$last_reported_date %||% "the last report",
+    ": new SEC filings (10-Q, 10-K, 8-K), earnings releases, official company or regulator announcements, and changes in the key figures listed under pinned facts.\n",
+    "2. Re-verify each pinned fact against the most recent primary filing and report any newer value with its period and source.\n",
+    "3. Do not treat the absence of trend data as a negative signal.\n",
+    "4. If nothing material changed, keep the report brief: the CHANGE line, the pinned facts confirmed, and what to watch next.\n"
+  )
+}
+
+memory_recheck_candidates <- list()
+
+if (length(story_memory) > 0) {
+  queued_titles <- research_queue$parent_title
+
+  for (story in story_memory) {
+    last_date <- suppressWarnings(as.Date(story$last_reported_date %||% NA_character_))
+    if (is.na(last_date)) next
+    if (as.numeric(Sys.Date() - last_date) > MEMORY_RECHECK_MAX_AGE_DAYS) next
+    if (identical(story$last_status %||% "", "rejected")) next
+
+    already_queued <- any(vapply(
+      queued_titles,
+      function(title) {
+        found <- find_memory_story(title, list(story))
+        !is.null(found)
+      },
+      logical(1)
+    ))
+    if (already_queued) next
+
+    memory_recheck_candidates[[length(memory_recheck_candidates) + 1]] <- story
+  }
+}
+
+if (length(memory_recheck_candidates) > 0) {
+  recheck_dates <- vapply(
+    memory_recheck_candidates,
+    function(s) s$last_reported_date %||% "",
+    character(1)
+  )
+  memory_recheck_candidates <- head(
+    memory_recheck_candidates[order(recheck_dates, decreasing = TRUE)],
+    MAX_MEMORY_RECHECKS
+  )
+
+  memory_recheck_rows <- purrr::map_dfr(memory_recheck_candidates, function(story) {
+    tibble(
+      canonical_story_key = story$story_key,
+      parent_title = story$title %||% story$story_key,
+      discovery_score = NA_real_,
+      discovery_priority = "FOLLOW-UP",
+      queue_status = "memory_recheck",
+      queue_reason = paste0(
+        "Story-memory follow-up; last reported ", story$last_reported %||% ""
+      ),
+      entity_confidence = NA_character_,
+      coherence_score = NA_real_,
+      consumer_relevance_score = NA_real_,
+      coherence_reason = NA_character_,
+      n_queries = 0L,
+      breakout_count = 0L,
+      high_growth_count = 0L,
+      max_growth_value = NA_real_,
+      origin_seed_count = 0,
+      origin_seeds = "story memory follow-up",
+      evidence_text = "Story-memory follow-up check (not trending this week).",
+      merged_candidate_count = 0L,
+      merged_candidate_names = NA_character_,
+      known_story = TRUE,
+      research_prompt = build_memory_recheck_prompt(story)
+    )
+  })
+
+  research_queue <- bind_rows(research_queue, memory_recheck_rows)
+
+  message(
+    "Story-memory follow-up checks added: ",
+    paste(memory_recheck_rows$parent_title, collapse = "; ")
+  )
+} else {
+  message("Story-memory follow-up checks added: none")
+}
+
 print(
   research_queue |>
     select(
@@ -3922,6 +4041,11 @@ weekly_editor_packet <- map_chr(completed_weekly_reports, function(result) {
   paste0(
     "\n\n========================================\n",
     "TOPIC: ", result$parent_title, "\n",
+    if (identical(result$queue_status %||% "", "memory_recheck")) {
+      "TYPE: STORY-MEMORY FOLLOW-UP CHECK (not trending this week; researched because it was reported before)\n"
+    } else {
+      ""
+    },
     "DISCOVERY CONTEXT ONLY — NOT AN INVESTMENT RANK\n",
     "DISTINCT SUPPORTING QUERIES: ", result$n_queries, "\n",
     "BREAKOUT QUERIES: ", result$breakout_count, "\n",
@@ -4186,7 +4310,9 @@ build_weekly_editor_prompt <- function(
 
     "4. Pinned facts are the verified baseline. If an analyst report states a different value for a pinned fact, verify it against the primary source before publishing, use the verified value, and record the discrepancy under Analyst-quality flags. Never publish a different value without explanation.\n",
 
-    "5. New topics (not in STORY MEMORY) are handled exactly as before.\n\n",
+    "5. New topics (not in STORY MEMORY) are handled exactly as before.\n",
+
+    "6. Reports marked 'TYPE: STORY-MEMORY FOLLOW-UP CHECK' were researched because the story was reported before, not because it trended this week. Apply rules 1 and 2 to them: a material new development (for example a new quarterly filing that changes a pinned figure) goes under Ranked stories as an update; otherwise list the story under 'Still watching'. Never cite the absence of trend data as a reason to downgrade.\n\n",
 
     "STORY MEMORY\n",
 
