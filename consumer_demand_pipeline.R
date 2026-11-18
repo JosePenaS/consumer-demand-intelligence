@@ -5243,6 +5243,39 @@ extract_yaml_value <- function(lines, field) {
   stringr::str_trim(value)
 }
 
+# Lead row of a report's comparison table, as a character vector:
+# Topic | Priority | Score | Public exposure | Materiality |
+# Evidence quality | Status. The editor sometimes omits the leading
+# pipe, so it is optional. Returns NULL when there is no table
+# (for example, an older report from a quiet week).
+read_lead_row <- function(lines) {
+  header <- grep(
+    "^[[:space:]]*\\|?[[:space:]]*Topic/subtheme[[:space:]]*\\|",
+    lines
+  )
+  
+  if (length(header) == 0 || header[[1]] + 2 > length(lines)) {
+    return(NULL)
+  }
+  
+  cells <- stringr::str_trim(
+    strsplit(lines[header[[1]] + 2], "\\|")[[1]]
+  )
+  
+  cells <- cells[nzchar(cells)]
+  
+  if (length(cells) < 7) {
+    return(NULL)
+  }
+  
+  cells
+}
+
+# Drop explanatory parentheses, e.g. "Strong (SEC filing + ...)".
+short_label <- function(x) {
+  stringr::str_trim(stringr::str_remove(x, "[[:space:]]*\\(.*$"))
+}
+
 weekly_index_data <- purrr::map_dfr(
   weekly_report_files,
   function(report_file) {
@@ -5326,7 +5359,7 @@ if (nrow(weekly_index_data) > 0) {
   # ------------------------------------------------------------
   
   comparison_header <- grep(
-    "^\\|[[:space:]]*Topic/subtheme[[:space:]]*\\|",
+    "^[[:space:]]*\\|?[[:space:]]*Topic/subtheme[[:space:]]*\\|",
     latest_report_lines
   )
   
@@ -5367,7 +5400,7 @@ if (nrow(weekly_index_data) > 0) {
       score_text <- comparison_cells[[3]]
       exposure_text <- comparison_cells[[4]]
       materiality_text <- comparison_cells[[5]]
-      evidence_text <- comparison_cells[[6]]
+      evidence_text <- short_label(comparison_cells[[6]])
       status_text <- comparison_cells[[7]]
     }
   }
@@ -5512,6 +5545,78 @@ if (nrow(weekly_index_data) > 0) {
     "No automated weekly reports have been published yet.",
     "",
     AUTO_INDEX_END
+  )
+}
+
+# ------------------------------------------------------------
+# List every weekly report with its lead story, newest first, so
+# older reports stay reachable from the Weekly Research page.
+# Reports without a comparison table (quiet weeks) are skipped.
+# ------------------------------------------------------------
+
+archive_lines <- character()
+
+for (i in seq_len(nrow(weekly_index_data))) {
+  
+  archive_row <- weekly_index_data[i, ]
+  
+  archive_report_lines <- readLines(
+    file.path(RESEARCH_DIR, archive_row$filename),
+    warn = FALSE,
+    encoding = "UTF-8"
+  )
+  
+  lead <- read_lead_row(archive_report_lines)
+  
+  if (is.null(lead)) {
+    next
+  }
+  
+  lead_title <- stringr::str_replace(
+    lead[[1]],
+    "[[:space:]]*→[[:space:]]*",
+    " / "
+  )
+  
+  lead_score <- if (grepl("/", lead[[3]], fixed = TRUE)) {
+    lead[[3]]
+  } else {
+    paste0(lead[[3]], "/100")
+  }
+  
+  week_label <- stringr::str_replace(
+    archive_row$issue_id,
+    "^([0-9]{4})-W",
+    "\\1 · Week "
+  )
+  
+  report_date <- tryCatch(
+    as.Date(archive_row$date),
+    error = function(e) NA
+  )
+  
+  date_label <- if (!is.na(report_date)) {
+    paste0(" · ", format(report_date, "%Y-%m-%d"))
+  } else {
+    ""
+  }
+  
+  archive_lines <- c(
+    archive_lines,
+    paste0(
+      "- **[", week_label, "](", archive_row$filename, ")**",
+      date_label,
+      " — ", lead_title,
+      " (", toupper(lead[[2]]), ", ", lead_score, ")"
+    )
+  )
+}
+
+if (length(archive_lines) > 0) {
+  automatic_index_block <- append(
+    automatic_index_block,
+    c("## All weekly reports", "", archive_lines, ""),
+    after = length(automatic_index_block) - 1
   )
 }
 
@@ -5710,6 +5815,30 @@ if (nrow(weekly_index_data) > 0 && file.exists(HOME_INDEX_FILE)) {
   
   if (nzchar(latest_status_line)) {
     latest_status_line <- paste0(latest_status_line, "**")
+  }
+  
+  # Current reports carry the lead story in the comparison table;
+  # prefer it over the older numbered-story format above.
+  home_lead <- read_lead_row(latest_lines)
+  
+  if (!is.null(home_lead)) {
+    
+    latest_story_title <- stringr::str_replace(
+      home_lead[[1]],
+      "[[:space:]]*→[[:space:]]*",
+      " / "
+    )
+    
+    home_score <- if (grepl("/", home_lead[[3]], fixed = TRUE)) {
+      home_lead[[3]]
+    } else {
+      paste0(home_lead[[3]], "/100")
+    }
+    
+    latest_status_line <- paste0(
+      "**", toupper(home_lead[[2]]), " · ", home_score, " · ",
+      short_label(home_lead[[6]]), " evidence quality**"
+    )
   }
   
   latest_summary <- extract_briefing_summary(latest_lines)
