@@ -43,13 +43,14 @@ SEED_ANCHOR <- "sold out everywhere"
 # Consumer-product phrasing only. Generic terms such as "shortage"
 # were removed because they surface labor, water, and commodity
 # topics (e.g. "nursing shortage") rather than consumer products.
+# "where to buy" was removed because it mostly returns everyday
+# shopping searches (e.g. "where to buy a mattress near me").
 SEED_ROTATION_POOL <- c(
   "out of stock",
   "back in stock",
   "restock",
   "sold out online",
-  "waitlist",
-  "where to buy"
+  "waitlist"
 )
 
 ROTATING_SEEDS_PER_WEEK <- 2
@@ -4273,7 +4274,7 @@ build_weekly_editor_prompt <- function(
     
     "## Rejected or low-value signals\n",
     
-    "List rejected topics and one explicit rejection reason each.\n\n",
+    "List rejected topics and one explicit rejection reason each. Each topic appears in exactly one of Ranked stories, Still watching, Monitoring signals, or Rejected or low-value signals: never list a monitoring topic again under Rejected, and make the Status column of the comparison table match the section the topic appears in.\n\n",
     
     "## Analyst-quality flags\n",
     
@@ -4494,6 +4495,15 @@ QUARTO_REPORT_FILE <- file.path(
 # # 2026-W36 Weekly Market Intelligence
 # Quarto supplies the page title through YAML front matter, so
 # remove the first H1 to avoid showing the title twice.
+# Remove tracking parameters that web-search citations append to
+# links (e.g. "?utm_source=openai"), so published URLs are clean.
+strip_tracking_params <- function(x) {
+  x <- gsub("\\?utm_source=openai&", "?", x, perl = TRUE)
+  gsub("[?&]utm_source=openai", "", x, perl = TRUE)
+}
+
+weekly_briefing <- strip_tracking_params(weekly_briefing)
+
 quarto_body <- weekly_briefing
 
 # Remove the first Markdown H1 line produced by the weekly editor.
@@ -4948,7 +4958,44 @@ if (length(comparison_header_index) > 0) {
         ignore.case = TRUE
       )
       
-      snapshot_verdict <- if (length(verdict_index) > 0) {
+      # Ranked stories have already been converted into cards, so
+      # the verdict usually sits inside the lead card's verdict
+      # block: take the first text line after its label.
+      card_verdict_index <- grep(
+        "research-story-verdict",
+        quarto_lines,
+        fixed = TRUE
+      )
+      
+      card_verdict <- ""
+      
+      if (length(card_verdict_index) > 0) {
+        
+        following <- quarto_lines[
+          seq(
+            card_verdict_index[[1]] + 1L,
+            min(length(quarto_lines), card_verdict_index[[1]] + 8L)
+          )
+        ]
+        
+        following <- stringr::str_trim(following)
+        
+        following <- following[
+          nzchar(following) &
+            !grepl("^<span", following) &
+            !grepl("^:::", following)
+        ]
+        
+        if (length(following) > 0) {
+          card_verdict <- following[[1]]
+        }
+      }
+      
+      snapshot_verdict <- if (nzchar(card_verdict)) {
+        
+        card_verdict
+        
+      } else if (length(verdict_index) > 0) {
         
         sub(
           "^-[[:space:]]+(\\*\\*)?One.*sentence editorial verdict:(\\*\\*)?[[:space:]]*",
