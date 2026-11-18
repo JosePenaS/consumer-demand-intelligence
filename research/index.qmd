@@ -18,28 +18,28 @@ Each report moves from observed demand through verification, ownership mapping, 
 
 <div class="research-kicker">2026 · WEEK 45</div>
 
-### 2026-W45 Weekly Market Intelligence
+### NeeDoh scarcity and GAIN look-through
 
 <div class="research-meta">
-<span class="research-badge">RESEARCH</span>
-<span class="research-badge">—/100</span>
-<span class="research-badge">— EVIDENCE</span>
+<span class="research-badge research-badge-yellow">YELLOW</span>
+<span class="research-badge">58/100</span>
+<span class="research-badge">STRONG EVIDENCE</span>
 </div>
 
-Read the latest Consumer Demand Intelligence investigation and its potential public-market implications.
+Viral toy scarcity around NeeDoh remains verifiably persistent at retail and on the manufacturer’s site, with formal purchase limits at Five Below and Schylling’s ongoing pause on direct orders.
 
 <div class="research-stats">
 <div>
 <span>PUBLIC EXPOSURE</span>
-<strong>See full report</strong>
+<strong>GAIN (preferred equity + term debt in Schylling)</strong>
 </div>
 <div>
 <span>MATERIALITY</span>
-<strong>See full report</strong>
+<strong>Moderate to GAIN; negligible to broadline retailers</strong>
 </div>
 <div>
 <span>STATUS</span>
-<strong>Published</strong>
+<strong>Ranked</strong>
 </div>
 </div>
 
@@ -47,11 +47,17 @@ Read the latest Consumer Demand Intelligence investigation and its potential pub
 
 :::
 
+## All weekly reports
+
+- **[2026 · Week 45](2026-W45.qmd)** · 2026-11-08 — NeeDoh scarcity and GAIN look-through (YELLOW, 58/100)
+- **[2026 · Week 40](2026-W40.qmd)** · 2026-10-04 — ACOTAR midnight events at Target (publisher economics) (YELLOW, 61/100)
+- **[2026 · Week 36](2026-W36.qmd)** · 2026-09-04 — NeeDoh scarcity/stockouts / Schylling (YELLOW, 59/100)
+
 <!-- AUTO-WEEKLY-END -->
 
 ---
 
-## Research Archive
+## Original case study
 
 ### 2026
 
