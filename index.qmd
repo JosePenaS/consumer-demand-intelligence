@@ -15,17 +15,17 @@ The pipeline moves from demand discovery through web verification, corporate own
 
 <!-- LATEST-RESEARCH-START -->
 
-### 2026 · Week 45
+### 2026 · Week 47
 
-#### NeeDoh scarcity and GAIN look-through
+#### ACOTAR launch cycle (Bloomsbury)
 
-**YELLOW · 58/100 · Strong evidence quality**
+**ORANGE · 68/100 · High evidence quality**
 
-Viral toy scarcity around NeeDoh remains verifiably persistent at retail and on the manufacturer’s site, with formal purchase limits at Five Below and Schylling’s ongoing pause on direct orders.
+Bloomsbury’s ACOTAR launch cycle (ORANGE, 68/100) and NeeDoh scarcity with GAIN look‑through (YELLOW, 59/100).
 
 
 
-[Read the full Week 45 report →](research/2026-W45.qmd)
+[Read the full Week 47 report →](research/2026-W47.qmd)
 
 <!-- LATEST-RESEARCH-END -->
 
