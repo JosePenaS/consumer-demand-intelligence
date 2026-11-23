@@ -1,108 +1,122 @@
 [
   {
-    "objectID": "research/index.html",
-    "href": "research/index.html",
-    "title": "Weekly Research",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Consumer Demand Intelligence",
     "section": "",
-    "text": "Weekly investigations of emerging consumer-demand signals and their potential public-market implications.\nEach report moves from observed demand through verification, ownership mapping, financial transmission, materiality assessment, and source validation."
+    "text": "Consumer Demand Intelligence is an automated research system that detects emerging consumer-demand signals and investigates whether they create meaningful public-market opportunities.\nThe pipeline moves from demand discovery through web verification, corporate ownership mapping, financial transmission, materiality assessment, and source verification."
   },
   {
-    "objectID": "research/index.html#consumer-demand-research",
-    "href": "research/index.html#consumer-demand-research",
-    "title": "Weekly Research",
+    "objectID": "index.html#from-consumer-signals-to-investable-research",
+    "href": "index.html#from-consumer-signals-to-investable-research",
+    "title": "Consumer Demand Intelligence",
     "section": "",
-    "text": "Weekly investigations of emerging consumer-demand signals and their potential public-market implications.\nEach report moves from observed demand through verification, ownership mapping, financial transmission, materiality assessment, and source validation."
+    "text": "Consumer Demand Intelligence is an automated research system that detects emerging consumer-demand signals and investigates whether they create meaningful public-market opportunities.\nThe pipeline moves from demand discovery through web verification, corporate ownership mapping, financial transmission, materiality assessment, and source verification."
   },
   {
-    "objectID": "research/index.html#latest-research",
-    "href": "research/index.html#latest-research",
-    "title": "Weekly Research",
+    "objectID": "index.html#latest-research",
+    "href": "index.html#latest-research",
+    "title": "Consumer Demand Intelligence",
     "section": "Latest Research",
-    "text": "Latest Research\n\n\n2026 · WEEK 45\n\n\nNeeDoh scarcity and GAIN look-through\n\nYELLOW 58/100 STRONG EVIDENCE\n\nViral toy scarcity around NeeDoh remains verifiably persistent at retail and on the manufacturer’s site, with formal purchase limits at Five Below and Schylling’s ongoing pause on direct orders.\n\n\nPUBLIC EXPOSURE GAIN (preferred equity + term debt in Schylling)\n\n\nMATERIALITY Moderate to GAIN; negligible to broadline retailers\n\n\nSTATUS Ranked\n\n\nRead the full Week 45 report →"
+    "text": "Latest Research\n\n\n2026 · Week 47\n\nACOTAR launch cycle (Bloomsbury)\nORANGE · 68/100 · High evidence quality\nBloomsbury’s ACOTAR launch cycle (ORANGE, 68/100) and NeeDoh scarcity with GAIN look‑through (YELLOW, 59/100).\nRead the full Week 47 report →"
   },
   {
-    "objectID": "research/index.html#all-weekly-reports",
-    "href": "research/index.html#all-weekly-reports",
-    "title": "Weekly Research",
-    "section": "All weekly reports",
-    "text": "All weekly reports\n\n2026 · Week 45 · 2026-11-08 — NeeDoh scarcity and GAIN look-through (YELLOW, 58/100)\n2026 · Week 40 · 2026-10-04 — ACOTAR midnight events at Target (publisher economics) (YELLOW, 61/100)\n2026 · Week 36 · 2026-09-04 — NeeDoh scarcity/stockouts / Schylling (YELLOW, 59/100)"
+    "objectID": "index.html#how-the-research-pipeline-works",
+    "href": "index.html#how-the-research-pipeline-works",
+    "title": "Consumer Demand Intelligence",
+    "section": "How the research pipeline works",
+    "text": "How the research pipeline works\n\nDemand discovery — identify emerging consumer-search signals.\nVerification — determine what is actually driving the demand.\nOwnership mapping — trace products and brands to corporate owners.\nPublic-market look-through — identify listed-company exposure.\nFinancial transmission — determine how the development could affect revenue, earnings, cash flow, or NAV.\nMateriality assessment — estimate whether the exposure is large enough to matter.\nSource audit — prioritize primary filings and high-quality evidence.\n\nBrowse all weekly research →"
   },
   {
-    "objectID": "research/index.html#original-case-study",
-    "href": "research/index.html#original-case-study",
-    "title": "Weekly Research",
-    "section": "Original case study",
-    "text": "Original case study\n\n2026\n\nWeek 34 · NeeDoh — Schylling / Gladstone Investment Corporation\nYELLOW · Monitoring Signal\nA surge in consumer interest around NeeDoh led to an investigation of Schylling and ultimately revealed public-market exposure through Gladstone Investment Corporation.\nRead the Week 34 research →"
-  },
-  {
-    "objectID": "research/index.html#research-framework",
-    "href": "research/index.html#research-framework",
-    "title": "Weekly Research",
-    "section": "Research Framework",
-    "text": "Research Framework\nEvery investigation follows the same basic progression:\nDemand signal → Verification → Ownership → Public exposure → Financial transmission → Materiality → Investment assessment\nThe objective is not simply to identify products that are trending. It is to determine whether unusual consumer behavior can be traced to a measurable and financially meaningful exposure in a publicly traded company.\nRead the methodology →"
-  },
-  {
-    "objectID": "research/2026-W45.html",
-    "href": "research/2026-W45.html",
-    "title": "2026-W45 Weekly Market Intelligence",
+    "objectID": "methodology.html",
+    "href": "methodology.html",
+    "title": "Methodology",
     "section": "",
-    "text": "YELLOW 58/100 STRONG (SEC FILING + RETAILER POLICY + MANUFACTURER PAGES) EVIDENCE\n\n\n\nPUBLIC EXPOSURE GAIN (preferred equity + term debt in Schylling)\n\n\nMATERIALITY Moderate to GAIN; negligible to broadline retailers\n\n\nSTATUS Ranked\n\n\n\nInvestment view: See the ranked story for the full investment view."
+    "text": "Consumer Demand Intelligence uses a multi-stage research pipeline designed to separate interesting consumer-search activity from financially meaningful market intelligence."
   },
   {
-    "objectID": "research/2026-W45.html#executive-briefing",
-    "href": "research/2026-W45.html#executive-briefing",
-    "title": "2026-W45 Weekly Market Intelligence",
+    "objectID": "methodology.html#research-pipeline",
+    "href": "methodology.html#research-pipeline",
+    "title": "Methodology",
+    "section": "Research Pipeline",
+    "text": "Research Pipeline\n\n1. Consumer-demand discovery\nGoogle Trends is used to discover unusual search behavior and emerging consumer-interest signals.\nSearch growth is treated as a research lead rather than evidence of investment significance.\n\n\n2. Candidate screening\nPotential topics are evaluated for coherence, specificity, and whether they represent a recognizable consumer-demand phenomenon.\n\n\n3. Automated web research\nQualified candidates undergo structured web research focused on:\n\nevidence of real consumer demand;\nproduct availability and supply conditions;\ncompany and brand ownership;\npublic-market exposure;\nfinancial relevance;\nsource quality and consistency.\n\n\n\n4. Public-market look-through\nPrivate brands are not automatically excluded.\nThe research process examines whether publicly traded companies may have economic exposure through:\n\nparent-company ownership;\ncommon equity;\npreferred equity;\ndebt investments;\nbusiness development companies;\nlisted investment vehicles;\nother economically meaningful securities.\n\n\n\n5. Financial transmission\nThe analysis distinguishes between different economic channels.\nFor example, changes in the fair value of an investment may affect NAV without necessarily creating current income. Debt may generate interest income while also creating fair-value and credit exposure.\n\n\n6. Investment-relevance scoring\nEach topic is evaluated using a structured scoring framework incorporating evidence strength, economic linkage, materiality, durability, and uncertainty.\n\n\n7. Source verification\nMaterial claims and citations are audited to ensure that sources directly support the statements attributed to them."
+  },
+  {
+    "objectID": "methodology.html#the-objective-is-to-produce-a-repeatable-market-intelligence-process-rather-than-a-simple-collection-of-trending-searches.",
+    "href": "methodology.html#the-objective-is-to-produce-a-repeatable-market-intelligence-process-rather-than-a-simple-collection-of-trending-searches.",
+    "title": "Methodology",
+    "section": "The objective is to produce a repeatable market-intelligence process rather than a simple collection of trending searches.",
+    "text": "The objective is to produce a repeatable market-intelligence process rather than a simple collection of trending searches."
+  },
+  {
+    "objectID": "research/2026-W47.html",
+    "href": "research/2026-W47.html",
+    "title": "2026-W47 Weekly Market Intelligence",
+    "section": "",
+    "text": "ORANGE 68/100 HIGH EVIDENCE\n\n\n\nPUBLIC EXPOSURE Bloomsbury common equity (operating)\n\n\nMATERIALITY Moderate–High\n\n\nSTATUS Ranked\n\n\n\nInvestment view: A validated, multi‑week print phenomenon with a dated second release keeps Bloomsbury’s FY26/27 uplift intact and investable."
+  },
+  {
+    "objectID": "research/2026-W47.html#executive-briefing",
+    "href": "research/2026-W47.html#executive-briefing",
+    "title": "2026-W47 Weekly Market Intelligence",
     "section": "Executive briefing",
-    "text": "Executive briefing\n\nOne lead investment story qualified this week.\nViral toy scarcity around NeeDoh remains verifiably persistent at retail and on the manufacturer’s site, with formal purchase limits at Five Below and Schylling’s ongoing pause on direct orders. (support.fivebelow.com)\nThe cleanest public-market look-through is Gladstone Investment Corp. (NASDAQ: GAIN), which, as of June 30, 2026, carried Schylling preferred equity at ~$69.8M FV and term debt at ~$17.0M (SOFR+11.0%, 14.7% cash); Schylling is one of GAIN’s five largest holdings. (gladstoneinvestment.com)\nCombined Schylling exposure of ~$86.8M equated to ~6.8% of GAIN’s ~$1.282B investment portfolio FV at 6/30/26, implying moderate NAV sensitivity; income sensitivity is primarily via the floating-rate term debt, not NeeDoh unit sales. (gladstoneinvestment.com)\nMainstream coverage corroborates sellouts/site unavailability and the early-2026 sales surge at Schylling; durability beyond the holiday window remains uncertain. (today.com)"
+    "text": "Executive briefing\n\nTwo lead investment stories qualified this week: Bloomsbury’s ACOTAR launch cycle (ORANGE, 68/100) and NeeDoh scarcity with GAIN look‑through (YELLOW, 59/100).\nBloomsbury’s ACOTAR #6 posted 958,195 U.S. hardcovers in week one (Circana BookScan via Publishers Weekly) and #7 is dated for January 12, 2027—material for FY26/27 and with a near‑dated catalyst. (www2.publishersweekly.com)\nGAIN’s September‑quarter 10‑Q (filed Nov 9) shows Schylling (NeeDoh) preferred equity marked up to $77.9M FV and $17.0M term debt outstanding (SOFR+11.0%, 14.7% cash), making Schylling ≈6.6% of portfolio FV—NAV‑relevant plus ongoing interest income. (sec.gov)\nPS5 “shortage” chatter is real only for the premium PS5 Pro SKU in GTA VI/Black Friday week; standard PS5 remains broadly available. We classify this as a low‑materiality, short‑lived monitoring signal, not a lead. (tomsguide.com)"
   },
   {
-    "objectID": "research/2026-W45.html#ranked-stories",
-    "href": "research/2026-W45.html#ranked-stories",
-    "title": "2026-W45 Weekly Market Intelligence",
+    "objectID": "research/2026-W47.html#ranked-stories",
+    "href": "research/2026-W47.html#ranked-stories",
+    "title": "2026-W47 Weekly Market Intelligence",
     "section": "Ranked stories",
-    "text": "Ranked stories\n\n\n\n\nRANK 1\n\n\nNeeDoh scarcity and GAIN look-through\n\n\n\nYELLOW 58/100\n\n\n\n\nVERIFIED DEVELOPMENT\nFive Below instituted a 5-per-person limit on NeeDoh/similar squishies effective August 10, 2026; Schylling’s NeeDoh pages say “Sold out online due to overwhelming demand” and note a temporary pause on new orders. (support.fivebelow.com)\n\n\nWHY IT MATTERS\nThe scarcity is real and ongoing into November, providing a seasonal demand tail; while most retailers’ exposure is diffuse, GAIN’s concentrated investment in Schylling creates a measurable public-market read-through. (support.fivebelow.com)\n\n\nSTRONGEST VERIFIED PUBLIC-COMPANY CONNECTION\nGladstone Investment Corporation (NASDAQ: GAIN) — Schylling listed among GAIN’s five largest investments; preferred equity FV ~$69.8M and term debt FV ~$17.0M at 6/30/26. (gladstoneinvestment.com)\n\n\nINVESTMENT INSTRUMENT (WHEN RELEVANT)\nGAIN holds Schylling preferred equity and first-lien term debt (SOFR+11.0%, 14.7% cash). (gladstoneinvestment.com)\n\n\nFAIR-VALUE/NAV MECHANISM\nChanges in Schylling enterprise value flow through GAIN’s preferred equity fair value and thus to NAV; Schylling contributed to GAIN’s top-five cohort that totaled 42.9% of portfolio FV at 6/30/26. (gladstoneinvestment.com)\n\n\nINCOME/CASH-FLOW MECHANISM\nContractual floating interest from the Schylling term debt; income sensitivity is to reference rates and credit, not directly to NeeDoh unit volumes. (gladstoneinvestment.com)\n\n\nFINANCIAL MATERIALITY\nModerate to GAIN (combined Schylling FV ~$86.8M ≈ ~6.8% of 6/30/26 investment FV of ~$1.282B). (gladstoneinvestment.com)\n\n\nEVIDENCE QUALITY\nStrong — primary SEC filing, retailer policy page, and manufacturer pages; corroborated by mainstream reporting on sellouts and manufacturer comments on demand. (gladstoneinvestment.com)\n\n\nCATALYST\nHoliday restocks/sell-through (Nov–Dec) and GAIN’s next disclosure cycle covering the quarter ended Sept 30, 2026 (for updated fair-value marks and any income detail). (gladstoneinvestment.com)\n\n\nMONITORING TRIGGER\nRemoval of purchase limits and resumed direct orders at Schylling; any step-down in Schylling’s FV marks within GAIN’s subsequent filings. (support.fivebelow.com)\n\n\nONE-SENTENCE EDITORIAL VERDICT\nA research-worthy, seasonally time-bounded theme with a clean BDC look-through, but durability risk caps priority at YELLOW.\n\n\nKEY SOURCES\nFive Below policy; Schylling NeeDoh landing and product pages; GAIN 10‑Q 6/30/26; TODAY sellout explainer; Axios CEO-demand piece."
+    "text": "Ranked stories\n\n\n\n\nRANK 1\n\n\nTarget ACOTAR midnight events and Bloomsbury’s two‑book launch\n\n\n\nORANGE 68/100\n\n\n\n\nVERIFIED DEVELOPMENT\nUpdate since 2026‑W40: Target executed Oct 26–27 midnight events for ACOTAR #6 (Oct 27 street date); week‑one U.S. hardcovers reached 958,195 (Circana BookScan), and #7 is confirmed for January 12, 2027. (corporate.target.com)\n\n\nWHY IT MATTERS\nBloomsbury had already flagged FY26/27 as “materially ahead” on these two SJM releases; strong print sell‑through plus a second drop inside the same fiscal year underpins revenue/margin and backlist pull‑through. (bloomsbury-ir.co.uk)\n\n\nSTRONGEST VERIFIED PUBLIC-COMPANY CONNECTION\nBloomsbury Publishing plc (LSE: BMY) as the publisher and direct beneficiary.\n\n\nINVESTMENT INSTRUMENT (WHEN RELEVANT)\nCommon equity (operating issuer).\n\n\nFAIR-VALUE/NAV MECHANISM\nNot applicable (operating company).\n\n\nINCOME/CASH-FLOW MECHANISM\nHigher frontlist and backlist sales; potential operating leverage on print/digital mix; benefits realized in Bloomsbury P&L.\n\n\nFINANCIAL MATERIALITY\nModerate–High at the issuer level this fiscal year; immaterial for Target or tie‑in merch vendors.\n\n\nEVIDENCE QUALITY\nHigh (primary RNS + publisher product pages + trade reporting). (bloomsbury-ir.co.uk)\n\n\nCATALYST\nACOTAR #7 publication on January 12, 2027; possible Bloomsbury trading updates. (bloomsbury.com)\n\n\nMONITORING TRIGGER\nIf BookScan rankings fade sharply before holidays or preorders for #7 underperform, reduce priority; conversely, sustained top‑tier charting into January would support persistence.\n\n\nONE-SENTENCE EDITORIAL VERDICT\nA validated, multi‑week print phenomenon with a dated second release keeps Bloomsbury’s FY26/27 uplift intact and investable.\n\n\nKEY SOURCES\nTarget events; BookScan‑based sales; Bloomsbury RNS; Bloomsbury #7 product page. (corporate.target.com)\n\n\n\n\n\n\n\nRANK 2\n\n\nNeeDoh scarcity and GAIN look‑through\n\n\n\nYELLOW 59/100\n\n\n\n\nVERIFIED DEVELOPMENT\nUpdate since 2026‑W45: GAIN’s 10‑Q (Q2 FY2027, filed Nov 9) marks Schylling preferred equity at $77.9M FV (from $69.8M at Jun 30) with $8.1M quarterly unrealized appreciation and $16.98M Schylling term debt outstanding (SOFR+11.0%, 14.7% cash, due 9/2027). (sec.gov)\n\n\nWHY IT MATTERS\nSchylling (NeeDoh) now represents ≈6.6% of GAIN’s $1.431B portfolio FV, providing measurable NAV sensitivity plus floating‑rate cash income from the term debt. (sec.gov)\n\n\nSTRONGEST VERIFIED PUBLIC-COMPANY CONNECTION\nGladstone Investment Corporation (NASDAQ: GAIN).\n\n\nINVESTMENT INSTRUMENT (WHEN RELEVANT)\nPreferred equity (NAV sensitivity) and secured term debt (interest income + credit exposure).\n\n\nFAIR-VALUE/NAV MECHANISM\nChanges in Schylling’s outlook drive preferred equity marks; Q2 recorded +$8.054M unrealized appreciation attributable to Schylling. (sec.gov)\n\n\nINCOME/CASH-FLOW MECHANISM\nContractual floating‑rate interest on the term debt (SOFR+11.0%, 14.7% cash coupon). (sec.gov)\n\n\nFINANCIAL MATERIALITY\nModerate at the BDC level given single‑name concentration in the mid‑single‑digit percent of FV.\n\n\nEVIDENCE QUALITY\nHigh (primary SEC filings + retailer policy page). (sec.gov)\n\n\nCATALYST\nWalmart’s Nov 27 “while supplies last” roll‑out to test scarcity persistence; next GAIN 10‑Q (FQ3, due early Feb 2027). (i5.walmartimages.com)\n\n\nMONITORING TRIGGER\nIf post‑Black‑Friday limits ease and inventory normalizes broadly, expect fair‑value momentum to fade; sustained limits/sell‑through into December would support further upside risk to marks.\n\n\nONE-SENTENCE EDITORIAL VERDICT\nA clear look‑through from a viral toy scarcity to a BDC’s NAV and income lines merits monitoring, but seasonality caps the priority.\n\n\nKEY SOURCES\nGAIN 10‑Q Sept 30; prior 10‑Q June 30 baseline; Five Below limit notice; Walmart event PDF. (sec.gov)"
   },
   {
-    "objectID": "research/2026-W45.html#comparison-table",
-    "href": "research/2026-W45.html#comparison-table",
-    "title": "2026-W45 Weekly Market Intelligence",
+    "objectID": "research/2026-W47.html#still-watching",
+    "href": "research/2026-W47.html#still-watching",
+    "title": "2026-W47 Weekly Market Intelligence",
+    "section": "Still watching",
+    "text": "Still watching\nNo continuing stories this week."
+  },
+  {
+    "objectID": "research/2026-W47.html#comparison-table",
+    "href": "research/2026-W47.html#comparison-table",
+    "title": "2026-W47 Weekly Market Intelligence",
     "section": "Comparison table",
-    "text": "Comparison table\n\n\n\n\n\n\n\n\n\n\n\n\nTopic/subtheme\nPriority\nScore\nPublic exposure\nMateriality\nEvidence quality\nStatus\n\n\n\n\nNeeDoh scarcity and GAIN look-through\nYELLOW\n58\nGAIN (preferred equity + term debt in Schylling)\nModerate to GAIN; negligible to broadline retailers\nStrong (SEC filing + retailer policy + manufacturer pages)\nRanked"
+    "text": "Comparison table\n\n\n\n\n\n\n\n\n\n\n\n\nTopic/subtheme\nPriority\nScore\nPublic exposure\nMateriality\nEvidence quality\nStatus\n\n\n\n\nACOTAR launch cycle (Bloomsbury)\nORANGE\n68\nBloomsbury common equity (operating)\nModerate–High\nHigh\nRanked\n\n\nNeeDoh scarcity → GAIN look‑through\nYELLOW\n59\nGAIN preferred equity + term debt\nModerate\nHigh\nRanked\n\n\nPS5 Pro stockouts (GTA VI/Black Friday)\nWHITE\n46\nSony common equity (operating)\nLow\nMedium‑High\nMonitoring\n\n\nPS5 “stock shortages” (general)\nWHITE\n44\nSony common equity (operating)\nLow\nMedium‑High\nRejected (duplicate)"
   },
   {
-    "objectID": "research/2026-W45.html#monitoring-signals",
-    "href": "research/2026-W45.html#monitoring-signals",
-    "title": "2026-W45 Weekly Market Intelligence",
+    "objectID": "research/2026-W47.html#monitoring-signals",
+    "href": "research/2026-W47.html#monitoring-signals",
+    "title": "2026-W47 Weekly Market Intelligence",
     "section": "Monitoring signals",
-    "text": "Monitoring signals\n\nNone below threshold this week. To move any adjacent NeeDoh-related subtheme upward, we would need: a) new, verifiable public-company exposures with quantified instruments/terms; or b) primary evidence of sustained manufacturer capacity expansion/licensing that changes GAIN’s NAV trajectory or income profile."
+    "text": "Monitoring signals\n\nPS5 Pro stockouts (SKU‑specific): Evidence needed to move up—sustained, multi‑week U.S. out‑of‑stock at MSRP for base PS5 Slim Disc/Digital across major retailers, or Sony revising guidance citing component constraints (vs. demand seasonality). Absence of either keeps this below 50. (tomsguide.com)"
   },
   {
-    "objectID": "research/2026-W45.html#rejected-or-low-value-signals",
-    "href": "research/2026-W45.html#rejected-or-low-value-signals",
-    "title": "2026-W45 Weekly Market Intelligence",
+    "objectID": "research/2026-W47.html#rejected-or-low-value-signals",
+    "href": "research/2026-W47.html#rejected-or-low-value-signals",
+    "title": "2026-W47 Weekly Market Intelligence",
     "section": "Rejected or low-value signals",
-    "text": "Rejected or low-value signals\n\nGeneric “toy virality” without a verifiable, instrumented public-company link — unsupported transmission mechanism.\nAmbiguous “shortage” anecdotes from social media — unsupported viral claim."
+    "text": "Rejected or low-value signals\n\nPS5 “stock shortages” (general, duplicate framing) — Rejected: duplicate story."
   },
   {
-    "objectID": "research/2026-W45.html#analyst-quality-flags",
-    "href": "research/2026-W45.html#analyst-quality-flags",
-    "title": "2026-W45 Weekly Market Intelligence",
+    "objectID": "research/2026-W47.html#analyst-quality-flags",
+    "href": "research/2026-W47.html#analyst-quality-flags",
+    "title": "2026-W47 Weekly Market Intelligence",
     "section": "Analyst-quality flags",
-    "text": "Analyst-quality flags\n\nInstrument/Income clarity: The analyst properly separated NAV effects (preferred equity) from income (term debt). Terms of the preferred equity dividend remain undisclosed in public filings; we therefore avoid any claim of immediate dividend income sensitivity. (gladstoneinvestment.com)\nOwnership mapping: 2013 acquisition by Crofton Capital and Gladstone Investment confirmed. (bostonglobe.com)"
+    "text": "Analyst-quality flags\n\nNo material analyst-quality flags identified."
   },
   {
-    "objectID": "research/2026-W45.html#next-week-watchlist",
-    "href": "research/2026-W45.html#next-week-watchlist",
-    "title": "2026-W45 Weekly Market Intelligence",
+    "objectID": "research/2026-W47.html#next-week-watchlist",
+    "href": "research/2026-W47.html#next-week-watchlist",
+    "title": "2026-W47 Weekly Market Intelligence",
     "section": "Next-week watchlist",
-    "text": "Next-week watchlist\n\nNeeDoh scarcity and GAIN look-through\n\nMove-up conditions: Continued retailer limits plus evidence of holiday sell-through translating into higher Schylling FV marks or disclosed dividends at GAIN; confirmation of capacity/licensing expansion at Schylling that plausibly extends demand persistence into 2027. (gladstoneinvestment.com)\nMove-down conditions: Schylling resumes normal direct orders and major retailers drop limits without offsetting demand signals; GAIN marks Schylling down or reports weaker portfolio contribution. (support.fivebelow.com)\nDrop conditions: Loss of clear public-company transmission (e.g., GAIN exit/restructure) or official recall materially impairing NeeDoh demand (none as of Nov 8, 2026). (cpsc.gov)"
+    "text": "Next-week watchlist\n\nACOTAR (Bloomsbury): Move up if BookScan/top‑list momentum stays elevated through mid‑December and preorder indicators for #7 accelerate; move down if #6 falls out of top ranks before Thanksgiving weekend; drop if Bloomsbury issues guidance softening unrelated to the ACOTAR slate. (www2.publishersweekly.com)\nNeeDoh → GAIN: Move up if Walmart’s Nov 27 drop shows rapid, widespread sell‑outs and retailer limits persist into December; move down if inventory normalizes and limits are lifted; drop if subsequent filings show Schylling FV flat‑to‑down with softening income contribution. (i5.walmartimages.com)\nPS5 Pro stockouts (monitoring): Move up only if scarcity broadens to base PS5 models for ≥7 consecutive days nationwide or Sony cites supply constraints in formal guidance; drop if Pro restocks stabilize post‑Black Friday. (tomsguide.com)"
   },
   {
-    "objectID": "research/2026-W45.html#sources",
-    "href": "research/2026-W45.html#sources",
-    "title": "2026-W45 Weekly Market Intelligence",
+    "objectID": "research/2026-W47.html#sources",
+    "href": "research/2026-W47.html#sources",
+    "title": "2026-W47 Weekly Market Intelligence",
     "section": "Sources",
-    "text": "Sources\n\nLead story — Five Below purchase limits; “All Things Squishy!” help article; Five Below; updated Oct 31, 2026; event: limit effective Aug 10, 2026; https://support.fivebelow.com/hc/en-us/articles/39664453744919-All-Things-Squishy-Dumplings-Needohs-Assorted-Squishy-Toys; Primary retailer policy page; supports: verified per-customer limit and scarcity acknowledgment. (support.fivebelow.com)\nLead story — NeeDoh landing page; Schylling; accessed Nov 8, 2026; ongoing; https://schylling.com/needoh/; Manufacturer site; supports: “Sold out online due to overwhelming demand.” (schylling.com)\nLead story — Multiple NeeDoh product pages (e.g., Color Changing NeeDoh, Press‑Doh, Nice‑sicle); Schylling; accessed Nov 8, 2026; ongoing; https://schylling.com/product/color-changing-nee-doh/; https://schylling.com/product/needoh-press-doh/; https://schylling.com/product/needoh-nice-sicle/; Manufacturer site; supports: “taking a short pause on new orders.” (schylling.com)\nLead story — Form 10‑Q for quarter ended June 30, 2026 (filed Aug 6, 2026); Gladstone Investment Corporation; https://www.gladstoneinvestment.com/investors/sec-filings/quarterly-reports/content/0001321741-26-000017/0001321741-26-000017.pdf; Primary SEC filing; supports: Schylling preferred equity FV ~$69.8M; term debt FV ~$17.0M; SOFR+11.0%, 14.7% cash; top‑five investments collectively 42.9% of FV; total investment FV ~$1.282B. (gladstoneinvestment.com)\nContext — “Where Can You Buy NeeDohs? Everything To Know About the Viral Collectible”; TODAY.com; updated Aug 17, 2026; https://www.today.com/shop/what-are-needohs-rcna267297; National media; supports: “selling out everywhere”; “all varieties currently unavailable” on site at time of update. (today.com)\nContext — “Squishy toys take over Easter baskets”; Axios; Apr 4, 2026; https://www.axios.com/2026/04/04/needoh-squishy-toys-dumplings-easter; National media; supports: CEO remarks on &gt;3x YTD sales and six months’ inventory sold in six weeks. (axios.com)\nOwnership backdrop — “Toy maker gets new owners, not a new philosophy”; The Boston Globe; Aug 21, 2013; https://www.bostonglobe.com/business/2013/08/21/toy-maker-schylling-inc-gets-new-owners-not-new-philosophy/A9r5D20aRkRANvyvKu5SCK/story.html/1000; Major newspaper; supports: 2013 acquisition by Crofton Capital and Gladstone Investment. (bostonglobe.com)\nSafety/regulatory status check — CPSC recall database index; U.S. CPSC; accessed Nov 8, 2026; https://www.cpsc.gov/Recalls; Primary regulator; supports: no posted CPSC recall of authentic NeeDoh as of access date. (cpsc.gov)\n\nNotes on issue-date discipline: All events and filings cited occurred on or before Nov 8, 2026 (issue date). Access dates on Nov 8, 2026 are noted where relevant."
+    "text": "Sources\n\nStory: ACOTAR launch cycle — “Latest ACOTAR Novel Sells Nearly 1 Million Print Copies in First Week,” Publishers Weekly, Nov 6, 2026 (event: Oct 27–Nov 3, 2026). URL: https://www2.publishersweekly.com/pw/by-topic/industry-news/publisher-news/article/101707-maas-s-latest-acotar-novel-sells-nearly-1-million-copies-in-first-week.html — Quality: trade reporting (BookScan). Claim: 958,195 U.S. hardcovers week one; #7 date mention. (www2.publishersweekly.com)\nStory: ACOTAR launch cycle — “Target Brings the World of ACOTAR…,” Target Corporate, Oct 2, 2026 (events Oct 26–27, 2026). URL: https://corporate.target.com/news-features/article/2026/10/target-acotar-collection-midnight-release — Quality: primary corporate. Claims: ~250 stores; event timing; merch lineup. (corporate.target.com)\nStory: ACOTAR launch cycle — Bloomsbury RNS “Sarah J. Maas… Trading Update,” Mar 5, 2026. URL: https://www.bloomsbury-ir.co.uk/media/press_releases/2026/050326.asp — Quality: primary regulatory. Claims: two‑book schedule; FY26/27 “materially ahead.” (bloomsbury-ir.co.uk)\nStory: ACOTAR launch cycle — Bloomsbury product page (#7), accessed Nov 22, 2026 (event: Jan 12, 2027). URL: https://www.bloomsbury.com/us/court-of-forgotten-melody-9798260200568/ — Quality: primary product page. Claim: #7 publication date. (bloomsbury.com)\nStory: ACOTAR launch cycle — The Guardian, Nov 3, 2026. URL: https://www.theguardian.com/books/2026/nov/03/sarah-j-maas-court-of-splintered-harmony-uk-fastest-selling-adult-fantasy-novel — Quality: national press citing NielsenIQ/Bloomsbury. Claims: UK five‑day 188,914; 1.7m preorders/opening‑day (Eng print+ebook). (theguardian.com)\nStory: NeeDoh → GAIN — Gladstone Investment Form 10‑Q (quarter ended Sept 30, 2026; filed Nov 9, 2026). URL: https://www.sec.gov/Archives/edgar/data/1321741/000132174126000022/gain-20260930.htm — Quality: primary SEC filing. Claims: Schylling preferred FV $77.882M; term debt $16.981M at SOFR+11.0%/14.7% cash; Schylling Q2 unrealized appreciation $8.054M; total portfolio FV $1.431B. (sec.gov)\nStory: NeeDoh → GAIN (baseline) — Gladstone Investment Form 10‑Q (quarter ended Jun 30, 2026; filed Aug 6, 2026). URL: https://www.sec.gov/Archives/edgar/data/1321741/000132174126000017/gain-20260630.htm — Quality: primary SEC filing. Claim: prior Schylling preferred FV $69.829M. (sec.gov)\nStory: NeeDoh → GAIN — Five Below support/limits page, updated Nov 11, 2026 (policy effective Aug 10, 2026). URL: https://support.fivebelow.com/hc/en-us/articles/39664453744919-All-Things-Squishy-Dumplings-Needohs-Assorted-Squishy-Toys — Quality: primary retailer page. Claim: 5‑unit limit; restock context. (support.fivebelow.com)\nStory: NeeDoh → GAIN — Walmart “NeeDoh Store List by State” PDF, event Nov 27, 2026. URL: https://i5.walmartimages.com/dfw/4ff9c6c9-d788/k2-_a72babae-2458-4cdf-96f0-0eb8c74ffad7.v1.pdf — Quality: retailer‑hosted document. Claim: 6 a.m. local availability, “while supplies last.” (i5.walmartimages.com)\nMonitoring: PS5 Pro stockouts — Tom’s Guide restock tracker and Black Friday buying guidance confirming PS5 Pro OOS while standard PS5 in stock; accessed Nov 22, 2026. URLs: https://www.tomsguide.com/gaming/playstation/ps5-pro-restocks-updates-and-news and https://www.tomsguide.com/gaming/playstation/ps5-slim-vs-ps5-slim-digital-edition-vs-ps5-pro-what-should-you-buy-for-black-friday — Quality: reputable tech outlet with live checks. Claims: Pro “sold out” vs. Slim availability. (tomsguide.com)\nContext (Sony IR): FY26 Q2 speech transcript, Nov 5, 2026. URL: https://www.sony.com/en/SonyInfo/IR/library/er/pdf/26q2_sonyspeech.pdf — Quality: primary IR. Claims: hardware profitability on par with prior year; memory procurement aligned. (sony.com)"
   },
   {
     "objectID": "research/2026-W40.html",
@@ -168,60 +182,172 @@
     "text": "Sources\n\nRanked story — Target ACOTAR midnight events\n\nTarget Brings the World of ACOTAR to Fans with Exclusive Merch and Midnight Book Release Celebrations; Target Corporate; publication Oct 2, 2026; event Oct 26–27, 2026; https://corporate.target.com/news-features/article/2026/10/target-acotar-collection-midnight-release; Primary corporate page; Confirms “~250” midnight events, dates, and exclusive GWP. (corporate.target.com)\nTrading Update (FY2025/26 in line; FY2026/27 materially ahead); Bloomsbury Publishing Plc (RNS via Investegate); publication Mar 5, 2026; events Oct 27, 2026 and Jan 12, 2027; https://www.investegate.co.uk/announcement/rns/bloomsbury-publishing–bmy/trading-update/9459182; Primary investor disclosure; Links ACOTAR 6/7 to FY2026/27 uplift. (investegate.co.uk)\nSarah J. Maas Announces Next Two ACOTAR Books; Publishers Weekly; publication Sept 2026; events Oct 27, 2026 and Jan 12, 2027; https://www.publishersweekly.com/pw/newsbrief/index.html?record=5988; Trade media; Confirms titles/dates. (publishersweekly.com)\nFinancial Highlights — 2025 Annual Report; Target Corporate; publication Mar 11, 2026 (FY2025); https://corporate.target.com/investors/annual/2025-annual-report/financials/financial-performance; Primary corporate investor page; Confirms ~$102.7B merchandise sales baseline. (corporate.target.com)\n\nMonitoring — Pokémon 30th Anniversary at Target\n\nThe Pokémon TCG: 30th Celebration Expansion Is Available Now; The Pokémon Company (pokemon.com); publication Sept 16, 2026; event Sept 16, 2026; https://www.pokemon.com/us/news/the-pokemon-tcg-30th-celebration-expansion-is-available-now; Primary official; Confirms set launch and product cadence. (pokemon.com)\nPokémon TCG: 30th Celebration Product Showcase; The Pokémon Company (pokemon.com); publication June 2026 (with Sept 16 launch); https://www.pokemon.com/us/news/pokemon-tcg-30th-celebration-product-showcase; Primary official; Confirms product waves into late 2026. (pokemon.com)\nPokémon 30th Anniversary Celebration | Target Stores; KidsGuide (event calendar); publication Sept 2026; event Sept 27, 2026; https://kidsguidemagazine.com/event/pokemon-30th-anniversary-celebration-target-stores/; Local listing; Corroborates 12–4 pm family event timing (medium quality). (kidsguidemagazine.com)\n\nBackground — Ownership/indirect exposure\n\nNintendo IR statement on TPC affiliation; Nintendo Co., Ltd.; publication July 22, 2016; https://www.nintendo.co.jp/ir/pdf/2016/160722e.pdf; Primary IR; Confirms TPC as affiliated company holding Pokémon rights (indirect, unquantified look‑through). (nintendo.co.jp)\n\n\nAnalyst-quality note: We reviewed but did not rely on third‑party/blog posts regarding an Oct 2 Mewtwo promo GWP because we could not confirm the retailer list/date on Pokemon.com; these remain non-core to the week’s investment thesis. (pokemon.com)"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Consumer Demand Intelligence",
+    "objectID": "research/2026-W45.html",
+    "href": "research/2026-W45.html",
+    "title": "2026-W45 Weekly Market Intelligence",
     "section": "",
-    "text": "Consumer Demand Intelligence is an automated research system that detects emerging consumer-demand signals and investigates whether they create meaningful public-market opportunities.\nThe pipeline moves from demand discovery through web verification, corporate ownership mapping, financial transmission, materiality assessment, and source verification."
+    "text": "YELLOW 58/100 STRONG (SEC FILING + RETAILER POLICY + MANUFACTURER PAGES) EVIDENCE\n\n\n\nPUBLIC EXPOSURE GAIN (preferred equity + term debt in Schylling)\n\n\nMATERIALITY Moderate to GAIN; negligible to broadline retailers\n\n\nSTATUS Ranked\n\n\n\nInvestment view: See the ranked story for the full investment view."
   },
   {
-    "objectID": "index.html#from-consumer-signals-to-investable-research",
-    "href": "index.html#from-consumer-signals-to-investable-research",
-    "title": "Consumer Demand Intelligence",
-    "section": "",
-    "text": "Consumer Demand Intelligence is an automated research system that detects emerging consumer-demand signals and investigates whether they create meaningful public-market opportunities.\nThe pipeline moves from demand discovery through web verification, corporate ownership mapping, financial transmission, materiality assessment, and source verification."
+    "objectID": "research/2026-W45.html#executive-briefing",
+    "href": "research/2026-W45.html#executive-briefing",
+    "title": "2026-W45 Weekly Market Intelligence",
+    "section": "Executive briefing",
+    "text": "Executive briefing\n\nOne lead investment story qualified this week.\nViral toy scarcity around NeeDoh remains verifiably persistent at retail and on the manufacturer’s site, with formal purchase limits at Five Below and Schylling’s ongoing pause on direct orders. (support.fivebelow.com)\nThe cleanest public-market look-through is Gladstone Investment Corp. (NASDAQ: GAIN), which, as of June 30, 2026, carried Schylling preferred equity at ~$69.8M FV and term debt at ~$17.0M (SOFR+11.0%, 14.7% cash); Schylling is one of GAIN’s five largest holdings. (gladstoneinvestment.com)\nCombined Schylling exposure of ~$86.8M equated to ~6.8% of GAIN’s ~$1.282B investment portfolio FV at 6/30/26, implying moderate NAV sensitivity; income sensitivity is primarily via the floating-rate term debt, not NeeDoh unit sales. (gladstoneinvestment.com)\nMainstream coverage corroborates sellouts/site unavailability and the early-2026 sales surge at Schylling; durability beyond the holiday window remains uncertain. (today.com)"
   },
   {
-    "objectID": "index.html#latest-research",
-    "href": "index.html#latest-research",
-    "title": "Consumer Demand Intelligence",
+    "objectID": "research/2026-W45.html#ranked-stories",
+    "href": "research/2026-W45.html#ranked-stories",
+    "title": "2026-W45 Weekly Market Intelligence",
+    "section": "Ranked stories",
+    "text": "Ranked stories\n\n\n\n\nRANK 1\n\n\nNeeDoh scarcity and GAIN look-through\n\n\n\nYELLOW 58/100\n\n\n\n\nVERIFIED DEVELOPMENT\nFive Below instituted a 5-per-person limit on NeeDoh/similar squishies effective August 10, 2026; Schylling’s NeeDoh pages say “Sold out online due to overwhelming demand” and note a temporary pause on new orders. (support.fivebelow.com)\n\n\nWHY IT MATTERS\nThe scarcity is real and ongoing into November, providing a seasonal demand tail; while most retailers’ exposure is diffuse, GAIN’s concentrated investment in Schylling creates a measurable public-market read-through. (support.fivebelow.com)\n\n\nSTRONGEST VERIFIED PUBLIC-COMPANY CONNECTION\nGladstone Investment Corporation (NASDAQ: GAIN) — Schylling listed among GAIN’s five largest investments; preferred equity FV ~$69.8M and term debt FV ~$17.0M at 6/30/26. (gladstoneinvestment.com)\n\n\nINVESTMENT INSTRUMENT (WHEN RELEVANT)\nGAIN holds Schylling preferred equity and first-lien term debt (SOFR+11.0%, 14.7% cash). (gladstoneinvestment.com)\n\n\nFAIR-VALUE/NAV MECHANISM\nChanges in Schylling enterprise value flow through GAIN’s preferred equity fair value and thus to NAV; Schylling contributed to GAIN’s top-five cohort that totaled 42.9% of portfolio FV at 6/30/26. (gladstoneinvestment.com)\n\n\nINCOME/CASH-FLOW MECHANISM\nContractual floating interest from the Schylling term debt; income sensitivity is to reference rates and credit, not directly to NeeDoh unit volumes. (gladstoneinvestment.com)\n\n\nFINANCIAL MATERIALITY\nModerate to GAIN (combined Schylling FV ~$86.8M ≈ ~6.8% of 6/30/26 investment FV of ~$1.282B). (gladstoneinvestment.com)\n\n\nEVIDENCE QUALITY\nStrong — primary SEC filing, retailer policy page, and manufacturer pages; corroborated by mainstream reporting on sellouts and manufacturer comments on demand. (gladstoneinvestment.com)\n\n\nCATALYST\nHoliday restocks/sell-through (Nov–Dec) and GAIN’s next disclosure cycle covering the quarter ended Sept 30, 2026 (for updated fair-value marks and any income detail). (gladstoneinvestment.com)\n\n\nMONITORING TRIGGER\nRemoval of purchase limits and resumed direct orders at Schylling; any step-down in Schylling’s FV marks within GAIN’s subsequent filings. (support.fivebelow.com)\n\n\nONE-SENTENCE EDITORIAL VERDICT\nA research-worthy, seasonally time-bounded theme with a clean BDC look-through, but durability risk caps priority at YELLOW.\n\n\nKEY SOURCES\nFive Below policy; Schylling NeeDoh landing and product pages; GAIN 10‑Q 6/30/26; TODAY sellout explainer; Axios CEO-demand piece."
+  },
+  {
+    "objectID": "research/2026-W45.html#comparison-table",
+    "href": "research/2026-W45.html#comparison-table",
+    "title": "2026-W45 Weekly Market Intelligence",
+    "section": "Comparison table",
+    "text": "Comparison table\n\n\n\n\n\n\n\n\n\n\n\n\nTopic/subtheme\nPriority\nScore\nPublic exposure\nMateriality\nEvidence quality\nStatus\n\n\n\n\nNeeDoh scarcity and GAIN look-through\nYELLOW\n58\nGAIN (preferred equity + term debt in Schylling)\nModerate to GAIN; negligible to broadline retailers\nStrong (SEC filing + retailer policy + manufacturer pages)\nRanked"
+  },
+  {
+    "objectID": "research/2026-W45.html#monitoring-signals",
+    "href": "research/2026-W45.html#monitoring-signals",
+    "title": "2026-W45 Weekly Market Intelligence",
+    "section": "Monitoring signals",
+    "text": "Monitoring signals\n\nNone below threshold this week. To move any adjacent NeeDoh-related subtheme upward, we would need: a) new, verifiable public-company exposures with quantified instruments/terms; or b) primary evidence of sustained manufacturer capacity expansion/licensing that changes GAIN’s NAV trajectory or income profile."
+  },
+  {
+    "objectID": "research/2026-W45.html#rejected-or-low-value-signals",
+    "href": "research/2026-W45.html#rejected-or-low-value-signals",
+    "title": "2026-W45 Weekly Market Intelligence",
+    "section": "Rejected or low-value signals",
+    "text": "Rejected or low-value signals\n\nGeneric “toy virality” without a verifiable, instrumented public-company link — unsupported transmission mechanism.\nAmbiguous “shortage” anecdotes from social media — unsupported viral claim."
+  },
+  {
+    "objectID": "research/2026-W45.html#analyst-quality-flags",
+    "href": "research/2026-W45.html#analyst-quality-flags",
+    "title": "2026-W45 Weekly Market Intelligence",
+    "section": "Analyst-quality flags",
+    "text": "Analyst-quality flags\n\nInstrument/Income clarity: The analyst properly separated NAV effects (preferred equity) from income (term debt). Terms of the preferred equity dividend remain undisclosed in public filings; we therefore avoid any claim of immediate dividend income sensitivity. (gladstoneinvestment.com)\nOwnership mapping: 2013 acquisition by Crofton Capital and Gladstone Investment confirmed. (bostonglobe.com)"
+  },
+  {
+    "objectID": "research/2026-W45.html#next-week-watchlist",
+    "href": "research/2026-W45.html#next-week-watchlist",
+    "title": "2026-W45 Weekly Market Intelligence",
+    "section": "Next-week watchlist",
+    "text": "Next-week watchlist\n\nNeeDoh scarcity and GAIN look-through\n\nMove-up conditions: Continued retailer limits plus evidence of holiday sell-through translating into higher Schylling FV marks or disclosed dividends at GAIN; confirmation of capacity/licensing expansion at Schylling that plausibly extends demand persistence into 2027. (gladstoneinvestment.com)\nMove-down conditions: Schylling resumes normal direct orders and major retailers drop limits without offsetting demand signals; GAIN marks Schylling down or reports weaker portfolio contribution. (support.fivebelow.com)\nDrop conditions: Loss of clear public-company transmission (e.g., GAIN exit/restructure) or official recall materially impairing NeeDoh demand (none as of Nov 8, 2026). (cpsc.gov)"
+  },
+  {
+    "objectID": "research/2026-W45.html#sources",
+    "href": "research/2026-W45.html#sources",
+    "title": "2026-W45 Weekly Market Intelligence",
+    "section": "Sources",
+    "text": "Sources\n\nLead story — Five Below purchase limits; “All Things Squishy!” help article; Five Below; updated Oct 31, 2026; event: limit effective Aug 10, 2026; https://support.fivebelow.com/hc/en-us/articles/39664453744919-All-Things-Squishy-Dumplings-Needohs-Assorted-Squishy-Toys; Primary retailer policy page; supports: verified per-customer limit and scarcity acknowledgment. (support.fivebelow.com)\nLead story — NeeDoh landing page; Schylling; accessed Nov 8, 2026; ongoing; https://schylling.com/needoh/; Manufacturer site; supports: “Sold out online due to overwhelming demand.” (schylling.com)\nLead story — Multiple NeeDoh product pages (e.g., Color Changing NeeDoh, Press‑Doh, Nice‑sicle); Schylling; accessed Nov 8, 2026; ongoing; https://schylling.com/product/color-changing-nee-doh/; https://schylling.com/product/needoh-press-doh/; https://schylling.com/product/needoh-nice-sicle/; Manufacturer site; supports: “taking a short pause on new orders.” (schylling.com)\nLead story — Form 10‑Q for quarter ended June 30, 2026 (filed Aug 6, 2026); Gladstone Investment Corporation; https://www.gladstoneinvestment.com/investors/sec-filings/quarterly-reports/content/0001321741-26-000017/0001321741-26-000017.pdf; Primary SEC filing; supports: Schylling preferred equity FV ~$69.8M; term debt FV ~$17.0M; SOFR+11.0%, 14.7% cash; top‑five investments collectively 42.9% of FV; total investment FV ~$1.282B. (gladstoneinvestment.com)\nContext — “Where Can You Buy NeeDohs? Everything To Know About the Viral Collectible”; TODAY.com; updated Aug 17, 2026; https://www.today.com/shop/what-are-needohs-rcna267297; National media; supports: “selling out everywhere”; “all varieties currently unavailable” on site at time of update. (today.com)\nContext — “Squishy toys take over Easter baskets”; Axios; Apr 4, 2026; https://www.axios.com/2026/04/04/needoh-squishy-toys-dumplings-easter; National media; supports: CEO remarks on &gt;3x YTD sales and six months’ inventory sold in six weeks. (axios.com)\nOwnership backdrop — “Toy maker gets new owners, not a new philosophy”; The Boston Globe; Aug 21, 2013; https://www.bostonglobe.com/business/2013/08/21/toy-maker-schylling-inc-gets-new-owners-not-new-philosophy/A9r5D20aRkRANvyvKu5SCK/story.html/1000; Major newspaper; supports: 2013 acquisition by Crofton Capital and Gladstone Investment. (bostonglobe.com)\nSafety/regulatory status check — CPSC recall database index; U.S. CPSC; accessed Nov 8, 2026; https://www.cpsc.gov/Recalls; Primary regulator; supports: no posted CPSC recall of authentic NeeDoh as of access date. (cpsc.gov)\n\nNotes on issue-date discipline: All events and filings cited occurred on or before Nov 8, 2026 (issue date). Access dates on Nov 8, 2026 are noted where relevant."
+  },
+  {
+    "objectID": "research/2026-W36.html",
+    "href": "research/2026-W36.html",
+    "title": "2026-W36 Weekly Market Intelligence",
+    "section": "",
+    "text": "YELLOW 59/100 HIGH EVIDENCE\n\n\n\nPUBLIC EXPOSURE Gladstone Investment (GAIN)\n\n\nMATERIALITY ≈6–7% of GAIN’s fair-value portfolio\n\n\nSTATUS Monitoring candidate\n\n\n\nInvestment view: Research-worthy BDC look-through persists, but much of the valuation effect is already embedded and the theme remains fad-sensitive into the holidays."
+  },
+  {
+    "objectID": "research/2026-W36.html#executive-briefing",
+    "href": "research/2026-W36.html#executive-briefing",
+    "title": "2026-W36 Weekly Market Intelligence",
+    "section": "Executive briefing",
+    "text": "Executive briefing\n\nOne lead investment story qualified this week: NeeDoh scarcity continues to show public‑market look‑through via Gladstone Investment (GAIN); rationing evidence remained active during the window, but much of the valuation uplift has already been recognized. (otcmarkets.com)\nPlayStation 5 Pro sold out across major U.S. retailers on September 2 following Rockstar’s GTA VI Extended Look, but first‑party restocks appeared within a day, implying low persistence and limited financial materiality for Sony or AMD at this stage. (tomsguide.com)\nSource audit upgrades: we replaced an older GAIN coupon citation with FY2026 10‑K schedule‑of‑investments figures (Schylling preferred and term debt) and confirmed FY2026 unrealized appreciation attribution to Schylling. (otcmarkets.com)\nEditorial stance: prioritize verified, economically transmissible developments over viral attention; penalize ambiguous “official” NeeDoh storefronts and scalper chatter with unclear provenance. (semarketplace.com)"
+  },
+  {
+    "objectID": "research/2026-W36.html#ranked-stories",
+    "href": "research/2026-W36.html#ranked-stories",
+    "title": "2026-W36 Weekly Market Intelligence",
+    "section": "Ranked stories",
+    "text": "Ranked stories\n\n\n\n\nRANK #1\n\n\nNeeDoh scarcity/stockouts (Schylling)\n\n\n\nYELLOW 59/100\n\n\n\n\nVERIFIED DEVELOPMENT (EVENT TIMING)\n\nNationwide stockouts persisted into late summer after a spring 2026 viral surge; Schylling told Axios sales were up &gt;3x y/y and six months of inventory sold through in six weeks. During the current window, retailer guidance still reflected rationing (e.g., Five Below’s 5‑per‑person limit updated August 29). (axios.com)\n\n\n\nWHY IT MATTERS\n\nThe shortage’s investment relevance is via a listed BDC (GAIN) that holds Schylling preferred equity and term debt; Schylling was one of GAIN’s five largest positions at March 31, 2026, and contributed ~$45.8m of FY2026 unrealized appreciation. (otcmarkets.com)\n\n\n\nSTRONGEST VERIFIED PUBLIC‑COMPANY CONNECTION\n\nGladstone Investment Corporation (NASDAQ: GAIN). (otcmarkets.com)\n\n\n\nINSTRUMENT (EXPOSURE)\n\nGAIN holds (i) Schylling preferred stock (FV $66.4m at 3/31/26) and (ii) Schylling term debt (SOFR+11.0% cash, due 9/2027; FV $17.0m at 3/31/26). (otcmarkets.com)\n\n\n\nFAIR‑VALUE/NAV MECHANISM\n\nChanges in Schylling’s enterprise value flow through GAIN’s unrealized appreciation/depreciation and NAV; FY2026 unrealized appreciation attributed to Schylling was ~$45.8m, evidencing look‑through to the brand’s momentum. (otcmarkets.com)\n\n\n\nINCOME/CASH‑FLOW MECHANISM\n\nTerm debt produces contractual cash interest (floating at SOFR+11%); preferred dividend terms not disclosed in the 10‑K excerpt. Income is not mechanically linked to viral spikes absent refinancings or distribution actions. (otcmarkets.com)\n\n\n\nFINANCIAL MATERIALITY (CONTEXT)\n\nCombined Schylling FV ≈$83m vs. GAIN’s ~$1.31b portfolio (≈6–7%); material for GAIN, negligible system‑wide. A meaningful portion of 2026 uplift is already booked. (otcmarkets.com)\n\n\n\nEVIDENCE QUALITY\n\nHigh (company on‑record statements, national media, primary SEC/10‑K schedule). (axios.com)\n\n\n\nCATALYST\n\nNext GAIN portfolio marks/commentary; holiday 2026 toy‑season demand; any safety/regulatory action affecting NeeDoh. (otcmarkets.com)\n\n\n\nMONITORING TRIGGER\n\nSustained normalization of on‑shelf availability (≥4–6 weeks at majors) or Schylling‑specific de‑marking in GAIN’s next filing would reduce the thesis; conversely, evidence of capacity expansion without demand fade could extend NAV sensitivity. (today.com)\n\n\n\nONE‑SENTENCE EDITORIAL VERDICT\n\nResearch‑worthy BDC look‑through persists, but much of the valuation effect is already embedded and the theme remains fad‑sensitive into the holidays.\n\n\n\nKEY SOURCES\n\nAxios (company demand commentary), The Atlantic (national shortage reporting), Shop TODAY (continued scarcity, Aug. 17 update), GAIN FY2026 10‑K (Schylling position and unrealized gains), SE Marketplace (wholesale onboarding pause). (axios.com)"
+  },
+  {
+    "objectID": "research/2026-W36.html#comparison-table",
+    "href": "research/2026-W36.html#comparison-table",
+    "title": "2026-W36 Weekly Market Intelligence",
+    "section": "Comparison table",
+    "text": "Comparison table\n\n\n\n\n\n\n\n\n\n\n\n\nTopic/subtheme\nPriority\nScore\nPublic exposure\nMateriality\nEvidence quality\nStatus\n\n\n\n\nNeeDoh scarcity/stockouts → Schylling\nYELLOW\n59\nGladstone Investment (GAIN)\n≈6–7% of GAIN FV portfolio\nHigh\nMonitoring candidate"
+  },
+  {
+    "objectID": "research/2026-W36.html#monitoring-signals",
+    "href": "research/2026-W36.html#monitoring-signals",
+    "title": "2026-W36 Weekly Market Intelligence",
+    "section": "Monitoring signals",
+    "text": "Monitoring signals\n\nPlayStation 5 Pro sell‑through spike around GTA VI Extended Look\n\nStatus: Monitoring only (below 50). On Sep 2, PS5 Pro was sold out across major U.S. retailers, but PlayStation Direct restocks appeared by Sep 3–4, indicating transitory tightness more than structural shortage. (tomsguide.com)\nWhat would move it upward: Multi‑week, multi‑region PS5 Pro stockouts into late October with Sony acknowledging constrained shipments; Sony revising FY2026 Game & Network Services outlook citing stronger Pro demand; AMD updating semi‑custom outlook tied to higher PS5 Pro orders. (sec.gov)\nWhy it’s capped now: Sony’s Q1 FY2026 shows hardware units down YoY and management emphasis on MAU/services; short‑cycle sellouts with rapid restocks are unlikely to shift FY outlooks or AMD shipment timing materially. (sec.gov)"
+  },
+  {
+    "objectID": "research/2026-W36.html#rejected-or-low-value-signals",
+    "href": "research/2026-W36.html#rejected-or-low-value-signals",
+    "title": "2026-W36 Weekly Market Intelligence",
+    "section": "Rejected or low-value signals",
+    "text": "Rejected or low-value signals\n\n“PS5 sold out everywhere” construed as a family‑wide shortage (base PS5 and Digital): rejected — no verified event; the spike is specific to PS5 Pro and already easing. (tomsguide.com)\nUnofficial “official” NeeDoh storefronts/reseller blogs: rejected — ambiguous entity and unsupported claims; stronger primary sources exist. (officialneedoh.com)\nAdditional public co‑investors in Schylling: rejected — unsupported ownership; FY2026 10‑K does not indicate a listed co‑investor footnote for Schylling. (otcmarkets.com)"
+  },
+  {
+    "objectID": "research/2026-W36.html#analyst-quality-flags",
+    "href": "research/2026-W36.html#analyst-quality-flags",
+    "title": "2026-W36 Weekly Market Intelligence",
+    "section": "Analyst-quality flags",
+    "text": "Analyst-quality flags\n\nSource strengthening: Replaced prior‑period or secondary citations with GAIN’s FY2026 10‑K schedule of investments for Schylling coupons, maturities, fair values, and unrealized appreciation attribution. No numerical corrections required. (otcmarkets.com)\nTransmission clarity: Maintained separation of NAV effects (fair‑value marks to Schylling preferred) from income (contractual interest on term debt); no unsupported income claims carried forward. (otcmarkets.com)\nOwnership mapping: Confirmed SIE’s ownership under Sony Group via official corporate pages to avoid reliance on tertiary summaries. (playstation.com)"
+  },
+  {
+    "objectID": "research/2026-W36.html#next-week-watchlist",
+    "href": "research/2026-W36.html#next-week-watchlist",
+    "title": "2026-W36 Weekly Market Intelligence",
+    "section": "Next-week watchlist",
+    "text": "Next-week watchlist\n\nNeeDoh → Move up if: GAIN issues interim commentary indicating further Schylling appreciation, a recap/special distribution, or capacity expansion that sustains scarcity without demand fade; Move down if: clear, sustained mainstream in‑stock normalization or adverse safety/regulatory action; Drop if: no incremental signals and GAIN marks show neutral/negative movement. (otcmarkets.com)\nPS5 Pro → Move up if: persistent multi‑week shortages + Sony/AMD guidance commentary attribute impact to Pro demand; Move down if: retailer and PS Direct inventories remain stable through mid‑September; Drop if: no evidence of financial transmission beyond a short restock cycle. (tomsguide.com)"
+  },
+  {
+    "objectID": "research/2026-W36.html#sources",
+    "href": "research/2026-W36.html#sources",
+    "title": "2026-W36 Weekly Market Intelligence",
+    "section": "Sources",
+    "text": "Sources\n\nNeeDoh/Schylling/Gain exposure — GLADSTONE INVESTMENT CORPORATION (FY2026 10‑K), Gladstone Investment Corporation, filing received May 12, 2026; Event window: portfolio as of Mar 31, 2026; URL: https://www.otcmarkets.com/filing/html?guid=r0j-knwqajPQV3h&id=19435359; Primary SEC mirror; supports top‑five status, Schylling FV (preferred ~$66.4m; term debt ~$17.0m), SOFR+11.0% due 9/2027, and ~$45.8m FY2026 unrealized appreciation attributed to Schylling. (otcmarkets.com)\nNeeDoh demand surge — “Squishy toys take over Easter baskets,” Axios, Apr 4, 2026; Event: Mar–Apr 2026 sell‑through; URL: https://www.axios.com/2026/04/04/needoh-squishy-toys-dumplings-easter; National outlet; supports &gt;3x y/y sales, six‑months’ inventory sold in six weeks. (axios.com)\nNeeDoh shortage reporting — “Everyone Thinks They Need a NeeDoh,” The Atlantic, Apr 3, 2026; Event: Spring 2026 shortages; URL: https://www.theatlantic.com/family/2026/04/needoh-toy-shortage/686674/; National outlet; corroborates widespread stockouts. (theatlantic.com)\nCurrent retail availability — “Where Can You Buy NeeDohs?” Shop TODAY, updated Aug 17, 2026; URL: https://www.today.com/shop/what-are-needohs-rcna267297; Consumer outlet; notes continued sell‑outs and counterfeit warnings. (today.com)\nWholesale gating — “Schylling | SE Marketplace” (wholesale), accessed Sep 4, 2026; URL: https://www.semarketplace.com/schylling; Trade page; states pause on new NeeDoh orders/customers due to overwhelming demand. (semarketplace.com)\nRetail rationing (window evidence) — Five Below Customer Relations, “All Things Squishy! (Dumplings, Needohs, …),” updated Aug 29, 2026; URL: https://support.fivebelow.com/hc/en-us/articles/39664453744919-All-Things-Squishy-Dumplings-Needohs-Assorted-Squishy-Toys; Confirms customer‑level purchase limits. (support.fivebelow.com)\nSafety/litigation context — “Iowa case highlights rising NeeDoh burn reports,” Axios Local (Des Moines), Jul 27, 2026; URL: https://www.axios.com/local/des-moines/2026/07/27/iowa-needoh-burn-hot-car; Incident‑report context and company warning updates. (axios.com)\nSafety/litigation context — “Class Action Lawsuit Alleges NeeDoh…,” ClassAction.org, Jul 24, 2026; URL: https://www.classaction.org/news/class-action-lawsuit-alleges-needoh-sensory-toys-can-explode-when-exposed-to-heat-posing-risk-of-severe-burns; Confirms filing dates and allegations (unproven). (classaction.org)\nGTA VI catalyst — “Grand Theft Auto VI: An Extended Look,” Rockstar Games, Aug 27, 2026; URL: https://www.rockstargames.com/VI/an-extended-look; Confirms event timing and “captured entirely from in‑game footage on PS5.” (rockstargames.com)\nPS5 Pro availability (sell‑outs) — “PS5 Pro restocks — latest updates…,” Tom’s Guide, last updated Sep 2, 2026; URL: https://www.tomsguide.com/gaming/playstation/ps5-pro-restocks-latest-updates; Shows sold‑out status across major U.S. retailers on Sep 2. (tomsguide.com)\nPS5 Pro availability (restock) — Notebookcheck News topic index (and localized posts), “PS5 Pro is back in stock on the official PlayStation Store…,” Sep 4, 2026; URL: https://www.notebookcheck.net/Topics.92152.0.html?tag=2; Confirms PS Direct restock within the window; English article mirrored across regional editions. (notebookcheck.net)\nSony segment context — Sony Group Corporation Form 6‑K (Q1 FY2026), filed Jul 31, 2026; URL: https://www.sec.gov/Archives/edgar/data/313838/000110465926088922/tm2621477d2_6k.htm; Notes 125M MAUs (June) and YoY hardware unit decline; supports limited financial transmission from short‑term sellouts. (sec.gov)\nOwnership mapping — PlayStation Corporate “About Us,” accessed Sep 4, 2026; URL: https://www.playstation.com/en-us/corporate/about-us/; Confirms Sony Interactive Entertainment is wholly owned by Sony Group Corporation. (playstation.com)\nSupplier link — AMD Q3 2024 Results (SEC-filed deck), Oct 29, 2024; URL: https://ir.amd.com/sec-filings/content/0000002488-24-000161/0000002488-24-000161.pdf; Confirms updated AMD semi‑custom SoC in PS5 Pro; supplier exposure context. (ir.amd.com)\n\nNotes on timing: All events and filings cited occurred on or before September 4, 2026; access dates are September 4, 2026 for web pages where relevant."
+  },
+  {
+    "objectID": "research/index.html",
+    "href": "research/index.html",
+    "title": "Weekly Research",
+    "section": "",
+    "text": "Weekly investigations of emerging consumer-demand signals and their potential public-market implications.\nEach report moves from observed demand through verification, ownership mapping, financial transmission, materiality assessment, and source validation."
+  },
+  {
+    "objectID": "research/index.html#consumer-demand-research",
+    "href": "research/index.html#consumer-demand-research",
+    "title": "Weekly Research",
+    "section": "",
+    "text": "Weekly investigations of emerging consumer-demand signals and their potential public-market implications.\nEach report moves from observed demand through verification, ownership mapping, financial transmission, materiality assessment, and source validation."
+  },
+  {
+    "objectID": "research/index.html#latest-research",
+    "href": "research/index.html#latest-research",
+    "title": "Weekly Research",
     "section": "Latest Research",
-    "text": "Latest Research\n\n\n2026 · Week 45\n\nNeeDoh scarcity and GAIN look-through\nYELLOW · 58/100 · Strong evidence quality\nViral toy scarcity around NeeDoh remains verifiably persistent at retail and on the manufacturer’s site, with formal purchase limits at Five Below and Schylling’s ongoing pause on direct orders.\nRead the full Week 45 report →"
+    "text": "Latest Research\n\n\n2026 · WEEK 47\n\n\nACOTAR launch cycle (Bloomsbury)\n\nORANGE 68/100 HIGH EVIDENCE\n\nBloomsbury’s ACOTAR launch cycle (ORANGE, 68/100) and NeeDoh scarcity with GAIN look‑through (YELLOW, 59/100).\n\n\nPUBLIC EXPOSURE Bloomsbury common equity (operating)\n\n\nMATERIALITY Moderate–High\n\n\nSTATUS Ranked\n\n\nRead the full Week 47 report →"
   },
   {
-    "objectID": "index.html#how-the-research-pipeline-works",
-    "href": "index.html#how-the-research-pipeline-works",
-    "title": "Consumer Demand Intelligence",
-    "section": "How the research pipeline works",
-    "text": "How the research pipeline works\n\nDemand discovery — identify emerging consumer-search signals.\nVerification — determine what is actually driving the demand.\nOwnership mapping — trace products and brands to corporate owners.\nPublic-market look-through — identify listed-company exposure.\nFinancial transmission — determine how the development could affect revenue, earnings, cash flow, or NAV.\nMateriality assessment — estimate whether the exposure is large enough to matter.\nSource audit — prioritize primary filings and high-quality evidence.\n\nBrowse all weekly research →"
+    "objectID": "research/index.html#all-weekly-reports",
+    "href": "research/index.html#all-weekly-reports",
+    "title": "Weekly Research",
+    "section": "All weekly reports",
+    "text": "All weekly reports\n\n2026 · Week 47 · 2026-11-22 — ACOTAR launch cycle (Bloomsbury) (ORANGE, 68/100)\n2026 · Week 45 · 2026-11-08 — NeeDoh scarcity and GAIN look-through (YELLOW, 58/100)\n2026 · Week 40 · 2026-10-04 — ACOTAR midnight events at Target (publisher economics) (YELLOW, 61/100)\n2026 · Week 36 · 2026-09-04 — NeeDoh scarcity/stockouts / Schylling (YELLOW, 59/100)"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
+    "objectID": "research/index.html#original-case-study",
+    "href": "research/index.html#original-case-study",
+    "title": "Weekly Research",
+    "section": "Original case study",
+    "text": "Original case study\n\n2026\n\nWeek 34 · NeeDoh — Schylling / Gladstone Investment Corporation\nYELLOW · Monitoring Signal\nA surge in consumer interest around NeeDoh led to an investigation of Schylling and ultimately revealed public-market exposure through Gladstone Investment Corporation.\nRead the Week 34 research →"
   },
   {
-    "objectID": "methodology.html",
-    "href": "methodology.html",
-    "title": "Methodology",
-    "section": "",
-    "text": "Consumer Demand Intelligence uses a multi-stage research pipeline designed to separate interesting consumer-search activity from financially meaningful market intelligence."
-  },
-  {
-    "objectID": "methodology.html#research-pipeline",
-    "href": "methodology.html#research-pipeline",
-    "title": "Methodology",
-    "section": "Research Pipeline",
-    "text": "Research Pipeline\n\n1. Consumer-demand discovery\nGoogle Trends is used to discover unusual search behavior and emerging consumer-interest signals.\nSearch growth is treated as a research lead rather than evidence of investment significance.\n\n\n2. Candidate screening\nPotential topics are evaluated for coherence, specificity, and whether they represent a recognizable consumer-demand phenomenon.\n\n\n3. Automated web research\nQualified candidates undergo structured web research focused on:\n\nevidence of real consumer demand;\nproduct availability and supply conditions;\ncompany and brand ownership;\npublic-market exposure;\nfinancial relevance;\nsource quality and consistency.\n\n\n\n4. Public-market look-through\nPrivate brands are not automatically excluded.\nThe research process examines whether publicly traded companies may have economic exposure through:\n\nparent-company ownership;\ncommon equity;\npreferred equity;\ndebt investments;\nbusiness development companies;\nlisted investment vehicles;\nother economically meaningful securities.\n\n\n\n5. Financial transmission\nThe analysis distinguishes between different economic channels.\nFor example, changes in the fair value of an investment may affect NAV without necessarily creating current income. Debt may generate interest income while also creating fair-value and credit exposure.\n\n\n6. Investment-relevance scoring\nEach topic is evaluated using a structured scoring framework incorporating evidence strength, economic linkage, materiality, durability, and uncertainty.\n\n\n7. Source verification\nMaterial claims and citations are audited to ensure that sources directly support the statements attributed to them."
-  },
-  {
-    "objectID": "methodology.html#the-objective-is-to-produce-a-repeatable-market-intelligence-process-rather-than-a-simple-collection-of-trending-searches.",
-    "href": "methodology.html#the-objective-is-to-produce-a-repeatable-market-intelligence-process-rather-than-a-simple-collection-of-trending-searches.",
-    "title": "Methodology",
-    "section": "The objective is to produce a repeatable market-intelligence process rather than a simple collection of trending searches.",
-    "text": "The objective is to produce a repeatable market-intelligence process rather than a simple collection of trending searches."
+    "objectID": "research/index.html#research-framework",
+    "href": "research/index.html#research-framework",
+    "title": "Weekly Research",
+    "section": "Research Framework",
+    "text": "Research Framework\nEvery investigation follows the same basic progression:\nDemand signal → Verification → Ownership → Public exposure → Financial transmission → Materiality → Investment assessment\nThe objective is not simply to identify products that are trending. It is to determine whether unusual consumer behavior can be traced to a measurable and financially meaningful exposure in a publicly traded company.\nRead the methodology →"
   },
   {
     "objectID": "research/2026-W34-needoh.html",
@@ -294,66 +420,10 @@
     "text": "Issue-date discipline\nFive Below’s August 24 page update is not treated as an event occurring during the August 15–22 observation window. The analysis relies on the explicitly stated effective date of August 10 for the purchase-limit policy and uses the August 17 Today.com coverage as the in-window evidence of continued demand and stockouts."
   },
   {
-    "objectID": "research/2026-W36.html",
-    "href": "research/2026-W36.html",
-    "title": "2026-W36 Weekly Market Intelligence",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "YELLOW 59/100 HIGH EVIDENCE\n\n\n\nPUBLIC EXPOSURE Gladstone Investment (GAIN)\n\n\nMATERIALITY ≈6–7% of GAIN’s fair-value portfolio\n\n\nSTATUS Monitoring candidate\n\n\n\nInvestment view: Research-worthy BDC look-through persists, but much of the valuation effect is already embedded and the theme remains fad-sensitive into the holidays."
-  },
-  {
-    "objectID": "research/2026-W36.html#executive-briefing",
-    "href": "research/2026-W36.html#executive-briefing",
-    "title": "2026-W36 Weekly Market Intelligence",
-    "section": "Executive briefing",
-    "text": "Executive briefing\n\nOne lead investment story qualified this week: NeeDoh scarcity continues to show public‑market look‑through via Gladstone Investment (GAIN); rationing evidence remained active during the window, but much of the valuation uplift has already been recognized. (otcmarkets.com)\nPlayStation 5 Pro sold out across major U.S. retailers on September 2 following Rockstar’s GTA VI Extended Look, but first‑party restocks appeared within a day, implying low persistence and limited financial materiality for Sony or AMD at this stage. (tomsguide.com)\nSource audit upgrades: we replaced an older GAIN coupon citation with FY2026 10‑K schedule‑of‑investments figures (Schylling preferred and term debt) and confirmed FY2026 unrealized appreciation attribution to Schylling. (otcmarkets.com)\nEditorial stance: prioritize verified, economically transmissible developments over viral attention; penalize ambiguous “official” NeeDoh storefronts and scalper chatter with unclear provenance. (semarketplace.com)"
-  },
-  {
-    "objectID": "research/2026-W36.html#ranked-stories",
-    "href": "research/2026-W36.html#ranked-stories",
-    "title": "2026-W36 Weekly Market Intelligence",
-    "section": "Ranked stories",
-    "text": "Ranked stories\n\n\n\n\nRANK #1\n\n\nNeeDoh scarcity/stockouts (Schylling)\n\n\n\nYELLOW 59/100\n\n\n\n\nVERIFIED DEVELOPMENT (EVENT TIMING)\n\nNationwide stockouts persisted into late summer after a spring 2026 viral surge; Schylling told Axios sales were up &gt;3x y/y and six months of inventory sold through in six weeks. During the current window, retailer guidance still reflected rationing (e.g., Five Below’s 5‑per‑person limit updated August 29). (axios.com)\n\n\n\nWHY IT MATTERS\n\nThe shortage’s investment relevance is via a listed BDC (GAIN) that holds Schylling preferred equity and term debt; Schylling was one of GAIN’s five largest positions at March 31, 2026, and contributed ~$45.8m of FY2026 unrealized appreciation. (otcmarkets.com)\n\n\n\nSTRONGEST VERIFIED PUBLIC‑COMPANY CONNECTION\n\nGladstone Investment Corporation (NASDAQ: GAIN). (otcmarkets.com)\n\n\n\nINSTRUMENT (EXPOSURE)\n\nGAIN holds (i) Schylling preferred stock (FV $66.4m at 3/31/26) and (ii) Schylling term debt (SOFR+11.0% cash, due 9/2027; FV $17.0m at 3/31/26). (otcmarkets.com)\n\n\n\nFAIR‑VALUE/NAV MECHANISM\n\nChanges in Schylling’s enterprise value flow through GAIN’s unrealized appreciation/depreciation and NAV; FY2026 unrealized appreciation attributed to Schylling was ~$45.8m, evidencing look‑through to the brand’s momentum. (otcmarkets.com)\n\n\n\nINCOME/CASH‑FLOW MECHANISM\n\nTerm debt produces contractual cash interest (floating at SOFR+11%); preferred dividend terms not disclosed in the 10‑K excerpt. Income is not mechanically linked to viral spikes absent refinancings or distribution actions. (otcmarkets.com)\n\n\n\nFINANCIAL MATERIALITY (CONTEXT)\n\nCombined Schylling FV ≈$83m vs. GAIN’s ~$1.31b portfolio (≈6–7%); material for GAIN, negligible system‑wide. A meaningful portion of 2026 uplift is already booked. (otcmarkets.com)\n\n\n\nEVIDENCE QUALITY\n\nHigh (company on‑record statements, national media, primary SEC/10‑K schedule). (axios.com)\n\n\n\nCATALYST\n\nNext GAIN portfolio marks/commentary; holiday 2026 toy‑season demand; any safety/regulatory action affecting NeeDoh. (otcmarkets.com)\n\n\n\nMONITORING TRIGGER\n\nSustained normalization of on‑shelf availability (≥4–6 weeks at majors) or Schylling‑specific de‑marking in GAIN’s next filing would reduce the thesis; conversely, evidence of capacity expansion without demand fade could extend NAV sensitivity. (today.com)\n\n\n\nONE‑SENTENCE EDITORIAL VERDICT\n\nResearch‑worthy BDC look‑through persists, but much of the valuation effect is already embedded and the theme remains fad‑sensitive into the holidays.\n\n\n\nKEY SOURCES\n\nAxios (company demand commentary), The Atlantic (national shortage reporting), Shop TODAY (continued scarcity, Aug. 17 update), GAIN FY2026 10‑K (Schylling position and unrealized gains), SE Marketplace (wholesale onboarding pause). (axios.com)"
-  },
-  {
-    "objectID": "research/2026-W36.html#comparison-table",
-    "href": "research/2026-W36.html#comparison-table",
-    "title": "2026-W36 Weekly Market Intelligence",
-    "section": "Comparison table",
-    "text": "Comparison table\n\n\n\n\n\n\n\n\n\n\n\n\nTopic/subtheme\nPriority\nScore\nPublic exposure\nMateriality\nEvidence quality\nStatus\n\n\n\n\nNeeDoh scarcity/stockouts → Schylling\nYELLOW\n59\nGladstone Investment (GAIN)\n≈6–7% of GAIN FV portfolio\nHigh\nMonitoring candidate"
-  },
-  {
-    "objectID": "research/2026-W36.html#monitoring-signals",
-    "href": "research/2026-W36.html#monitoring-signals",
-    "title": "2026-W36 Weekly Market Intelligence",
-    "section": "Monitoring signals",
-    "text": "Monitoring signals\n\nPlayStation 5 Pro sell‑through spike around GTA VI Extended Look\n\nStatus: Monitoring only (below 50). On Sep 2, PS5 Pro was sold out across major U.S. retailers, but PlayStation Direct restocks appeared by Sep 3–4, indicating transitory tightness more than structural shortage. (tomsguide.com)\nWhat would move it upward: Multi‑week, multi‑region PS5 Pro stockouts into late October with Sony acknowledging constrained shipments; Sony revising FY2026 Game & Network Services outlook citing stronger Pro demand; AMD updating semi‑custom outlook tied to higher PS5 Pro orders. (sec.gov)\nWhy it’s capped now: Sony’s Q1 FY2026 shows hardware units down YoY and management emphasis on MAU/services; short‑cycle sellouts with rapid restocks are unlikely to shift FY outlooks or AMD shipment timing materially. (sec.gov)"
-  },
-  {
-    "objectID": "research/2026-W36.html#rejected-or-low-value-signals",
-    "href": "research/2026-W36.html#rejected-or-low-value-signals",
-    "title": "2026-W36 Weekly Market Intelligence",
-    "section": "Rejected or low-value signals",
-    "text": "Rejected or low-value signals\n\n“PS5 sold out everywhere” construed as a family‑wide shortage (base PS5 and Digital): rejected — no verified event; the spike is specific to PS5 Pro and already easing. (tomsguide.com)\nUnofficial “official” NeeDoh storefronts/reseller blogs: rejected — ambiguous entity and unsupported claims; stronger primary sources exist. (officialneedoh.com)\nAdditional public co‑investors in Schylling: rejected — unsupported ownership; FY2026 10‑K does not indicate a listed co‑investor footnote for Schylling. (otcmarkets.com)"
-  },
-  {
-    "objectID": "research/2026-W36.html#analyst-quality-flags",
-    "href": "research/2026-W36.html#analyst-quality-flags",
-    "title": "2026-W36 Weekly Market Intelligence",
-    "section": "Analyst-quality flags",
-    "text": "Analyst-quality flags\n\nSource strengthening: Replaced prior‑period or secondary citations with GAIN’s FY2026 10‑K schedule of investments for Schylling coupons, maturities, fair values, and unrealized appreciation attribution. No numerical corrections required. (otcmarkets.com)\nTransmission clarity: Maintained separation of NAV effects (fair‑value marks to Schylling preferred) from income (contractual interest on term debt); no unsupported income claims carried forward. (otcmarkets.com)\nOwnership mapping: Confirmed SIE’s ownership under Sony Group via official corporate pages to avoid reliance on tertiary summaries. (playstation.com)"
-  },
-  {
-    "objectID": "research/2026-W36.html#next-week-watchlist",
-    "href": "research/2026-W36.html#next-week-watchlist",
-    "title": "2026-W36 Weekly Market Intelligence",
-    "section": "Next-week watchlist",
-    "text": "Next-week watchlist\n\nNeeDoh → Move up if: GAIN issues interim commentary indicating further Schylling appreciation, a recap/special distribution, or capacity expansion that sustains scarcity without demand fade; Move down if: clear, sustained mainstream in‑stock normalization or adverse safety/regulatory action; Drop if: no incremental signals and GAIN marks show neutral/negative movement. (otcmarkets.com)\nPS5 Pro → Move up if: persistent multi‑week shortages + Sony/AMD guidance commentary attribute impact to Pro demand; Move down if: retailer and PS Direct inventories remain stable through mid‑September; Drop if: no evidence of financial transmission beyond a short restock cycle. (tomsguide.com)"
-  },
-  {
-    "objectID": "research/2026-W36.html#sources",
-    "href": "research/2026-W36.html#sources",
-    "title": "2026-W36 Weekly Market Intelligence",
-    "section": "Sources",
-    "text": "Sources\n\nNeeDoh/Schylling/Gain exposure — GLADSTONE INVESTMENT CORPORATION (FY2026 10‑K), Gladstone Investment Corporation, filing received May 12, 2026; Event window: portfolio as of Mar 31, 2026; URL: https://www.otcmarkets.com/filing/html?guid=r0j-knwqajPQV3h&id=19435359; Primary SEC mirror; supports top‑five status, Schylling FV (preferred ~$66.4m; term debt ~$17.0m), SOFR+11.0% due 9/2027, and ~$45.8m FY2026 unrealized appreciation attributed to Schylling. (otcmarkets.com)\nNeeDoh demand surge — “Squishy toys take over Easter baskets,” Axios, Apr 4, 2026; Event: Mar–Apr 2026 sell‑through; URL: https://www.axios.com/2026/04/04/needoh-squishy-toys-dumplings-easter; National outlet; supports &gt;3x y/y sales, six‑months’ inventory sold in six weeks. (axios.com)\nNeeDoh shortage reporting — “Everyone Thinks They Need a NeeDoh,” The Atlantic, Apr 3, 2026; Event: Spring 2026 shortages; URL: https://www.theatlantic.com/family/2026/04/needoh-toy-shortage/686674/; National outlet; corroborates widespread stockouts. (theatlantic.com)\nCurrent retail availability — “Where Can You Buy NeeDohs?” Shop TODAY, updated Aug 17, 2026; URL: https://www.today.com/shop/what-are-needohs-rcna267297; Consumer outlet; notes continued sell‑outs and counterfeit warnings. (today.com)\nWholesale gating — “Schylling | SE Marketplace” (wholesale), accessed Sep 4, 2026; URL: https://www.semarketplace.com/schylling; Trade page; states pause on new NeeDoh orders/customers due to overwhelming demand. (semarketplace.com)\nRetail rationing (window evidence) — Five Below Customer Relations, “All Things Squishy! (Dumplings, Needohs, …),” updated Aug 29, 2026; URL: https://support.fivebelow.com/hc/en-us/articles/39664453744919-All-Things-Squishy-Dumplings-Needohs-Assorted-Squishy-Toys; Confirms customer‑level purchase limits. (support.fivebelow.com)\nSafety/litigation context — “Iowa case highlights rising NeeDoh burn reports,” Axios Local (Des Moines), Jul 27, 2026; URL: https://www.axios.com/local/des-moines/2026/07/27/iowa-needoh-burn-hot-car; Incident‑report context and company warning updates. (axios.com)\nSafety/litigation context — “Class Action Lawsuit Alleges NeeDoh…,” ClassAction.org, Jul 24, 2026; URL: https://www.classaction.org/news/class-action-lawsuit-alleges-needoh-sensory-toys-can-explode-when-exposed-to-heat-posing-risk-of-severe-burns; Confirms filing dates and allegations (unproven). (classaction.org)\nGTA VI catalyst — “Grand Theft Auto VI: An Extended Look,” Rockstar Games, Aug 27, 2026; URL: https://www.rockstargames.com/VI/an-extended-look; Confirms event timing and “captured entirely from in‑game footage on PS5.” (rockstargames.com)\nPS5 Pro availability (sell‑outs) — “PS5 Pro restocks — latest updates…,” Tom’s Guide, last updated Sep 2, 2026; URL: https://www.tomsguide.com/gaming/playstation/ps5-pro-restocks-latest-updates; Shows sold‑out status across major U.S. retailers on Sep 2. (tomsguide.com)\nPS5 Pro availability (restock) — Notebookcheck News topic index (and localized posts), “PS5 Pro is back in stock on the official PlayStation Store…,” Sep 4, 2026; URL: https://www.notebookcheck.net/Topics.92152.0.html?tag=2; Confirms PS Direct restock within the window; English article mirrored across regional editions. (notebookcheck.net)\nSony segment context — Sony Group Corporation Form 6‑K (Q1 FY2026), filed Jul 31, 2026; URL: https://www.sec.gov/Archives/edgar/data/313838/000110465926088922/tm2621477d2_6k.htm; Notes 125M MAUs (June) and YoY hardware unit decline; supports limited financial transmission from short‑term sellouts. (sec.gov)\nOwnership mapping — PlayStation Corporate “About Us,” accessed Sep 4, 2026; URL: https://www.playstation.com/en-us/corporate/about-us/; Confirms Sony Interactive Entertainment is wholly owned by Sony Group Corporation. (playstation.com)\nSupplier link — AMD Q3 2024 Results (SEC-filed deck), Oct 29, 2024; URL: https://ir.amd.com/sec-filings/content/0000002488-24-000161/0000002488-24-000161.pdf; Confirms updated AMD semi‑custom SoC in PS5 Pro; supplier exposure context. (ir.amd.com)\n\nNotes on timing: All events and filings cited occurred on or before September 4, 2026; access dates are September 4, 2026 for web pages where relevant."
+    "text": "About this site"
   }
 ]
