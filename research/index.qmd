@@ -16,26 +16,26 @@ Each report moves from observed demand through verification, ownership mapping, 
 
 ::: {.research-feature}
 
-<div class="research-kicker">2026 · WEEK 45</div>
+<div class="research-kicker">2026 · WEEK 47</div>
 
-### NeeDoh scarcity and GAIN look-through
+### ACOTAR launch cycle (Bloomsbury)
 
 <div class="research-meta">
-<span class="research-badge research-badge-yellow">YELLOW</span>
-<span class="research-badge">58/100</span>
-<span class="research-badge">STRONG EVIDENCE</span>
+<span class="research-badge research-badge-orange">ORANGE</span>
+<span class="research-badge">68/100</span>
+<span class="research-badge">HIGH EVIDENCE</span>
 </div>
 
-Viral toy scarcity around NeeDoh remains verifiably persistent at retail and on the manufacturer’s site, with formal purchase limits at Five Below and Schylling’s ongoing pause on direct orders.
+Bloomsbury’s ACOTAR launch cycle (ORANGE, 68/100) and NeeDoh scarcity with GAIN look‑through (YELLOW, 59/100).
 
 <div class="research-stats">
 <div>
 <span>PUBLIC EXPOSURE</span>
-<strong>GAIN (preferred equity + term debt in Schylling)</strong>
+<strong>Bloomsbury common equity (operating)</strong>
 </div>
 <div>
 <span>MATERIALITY</span>
-<strong>Moderate to GAIN; negligible to broadline retailers</strong>
+<strong>Moderate–High</strong>
 </div>
 <div>
 <span>STATUS</span>
@@ -43,12 +43,13 @@ Viral toy scarcity around NeeDoh remains verifiably persistent at retail and on 
 </div>
 </div>
 
-[Read the full Week 45 report →](2026-W45.qmd){.research-report-link}
+[Read the full Week 47 report →](2026-W47.qmd){.research-report-link}
 
 :::
 
 ## All weekly reports
 
+- **[2026 · Week 47](2026-W47.qmd)** · 2026-11-22 — ACOTAR launch cycle (Bloomsbury) (ORANGE, 68/100)
 - **[2026 · Week 45](2026-W45.qmd)** · 2026-11-08 — NeeDoh scarcity and GAIN look-through (YELLOW, 58/100)
 - **[2026 · Week 40](2026-W40.qmd)** · 2026-10-04 — ACOTAR midnight events at Target (publisher economics) (YELLOW, 61/100)
 - **[2026 · Week 36](2026-W36.qmd)** · 2026-09-04 — NeeDoh scarcity/stockouts / Schylling (YELLOW, 59/100)
