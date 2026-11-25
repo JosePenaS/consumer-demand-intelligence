@@ -2629,7 +2629,13 @@ build_parent_research_prompt <- function(
     
     "5. The driver is within scope when a supplied query OR cited reporting about the searched product connects it to the driver. Do not pull in an unrelated event merely because it is in the news.\n",
     
-    "6. If the driver is simply organic demand for the product itself, say so in one line and continue; do not invent a second chain.\n\n",
+    "6. If the driver is simply organic demand for the product itself, say so in one line and continue; do not invent a second chain.\n",
+    
+    "7. Score the story on its STRONGEST verified beneficiary across both chains. If a driver beneficiary has higher financial materiality than the owner of the searched product, assess Financial materiality, Public-company exposure, Persistence, and Catalyst clarity for that beneficiary (for example its own sell-through disclosures and next earnings report) and name it as the strongest public-company connection in the snapshot.\n",
+    
+    "8. Informational value: judge whether the search signal adds information beyond what is already public about the driver, such as evidence that uptake is stronger or weaker than expected. A famous, widely anticipated event scores low on informational value unless the signal says something new about its size.\n",
+    
+    "9. Do not list a driver beneficiary whose exposure is de minimis; mention it in one line instead.\n\n",
     
     
     # --------------------------------------------------------
