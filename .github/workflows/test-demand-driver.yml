@@ -1,0 +1,45 @@
+name: Test demand-driver prompt
+
+on:
+  # Runs automatically when this branch is pushed (a workflow that only
+  # exists on a branch cannot be started manually until it is on main).
+  push:
+    branches: [demand-driver]
+    paths: ["consumer_demand_pipeline.R", "tests/test_demand_driver.R", ".github/workflows/test-demand-driver.yml"]
+  workflow_dispatch:
+    inputs:
+      cases:
+        description: "Comma-separated case ids (blank = all): ps5_pro, bearista_cup, acotar"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      TEST_CASES: ${{ github.event.inputs.cases }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - name: Install R packages
+        shell: Rscript {0}
+        run: |
+          pk <- c("httr2","dplyr","tidyr","purrr","tibble","lubridate","jsonlite","stringr","readr")
+          miss <- pk[!vapply(pk, requireNamespace, logical(1), quietly = TRUE)]
+          if (length(miss)) install.packages(miss, repos = "https://cloud.r-project.org")
+      - name: Run test
+        shell: Rscript {0}
+        run: source("tests/test_demand_driver.R", echo = FALSE)
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: demand-driver-test-${{ github.run_id }}
+          path: demand_driver_test/
+          if-no-files-found: warn
