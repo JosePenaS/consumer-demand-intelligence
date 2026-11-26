@@ -1,0 +1,28 @@
+name: Test catalyst calendar
+
+on:
+  push:
+    branches: [catalyst-calendar]
+    paths: ["consumer_demand_pipeline.R", "story_memory.json", "tests/test_catalyst_calendar.R", ".github/workflows/test-catalyst-calendar.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - name: Install R packages
+        shell: Rscript {0}
+        run: |
+          pk <- c("dplyr","purrr","tibble","stringr","jsonlite")
+          miss <- pk[!vapply(pk, requireNamespace, logical(1), quietly = TRUE)]
+          if (length(miss)) install.packages(miss, repos = "https://cloud.r-project.org")
+      - name: Run test
+        shell: Rscript {0}
+        run: source("tests/test_catalyst_calendar.R", echo = FALSE)
