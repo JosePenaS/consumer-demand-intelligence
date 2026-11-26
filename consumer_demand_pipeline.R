@@ -290,7 +290,7 @@ format_catalysts <- function(catalysts, today = Sys.Date()) {
     vapply(
       catalysts,
       function(c) {
-        d <- suppressWarnings(as.Date(c$date %||% NA_character_))
+        d <- as.Date(as.character(c$date %||% NA_character_), format = "%Y-%m-%d")
         gap <- if (is.na(d)) "" else {
           n <- as.integer(d - today)
           if (n > 0) paste0(" (in ", n, " days)") else if (n == 0) " (today)" else paste0(" (", -n, " days ago)")
@@ -414,14 +414,14 @@ merge_catalysts <- function(old, new, issue_date = Sys.Date()) {
   merged <- old
   for (c in new) {
     if (!is.list(c) || !nzchar(key(c))) next
-    if (is.na(suppressWarnings(as.Date(c$date %||% NA_character_)))) next
+    if (is.na(as.Date(as.character(c$date %||% NA_character_), format = "%Y-%m-%d"))) next
     existing <- vapply(merged, key, character(1))
     position <- match(key(c), existing)
     if (is.na(position)) merged[[length(merged) + 1]] <- c else merged[[position]] <- c
   }
   issue_date <- as.Date(issue_date)
   purrr::keep(merged, function(c) {
-    d <- suppressWarnings(as.Date(c$date %||% NA_character_))
+    d <- as.Date(as.character(c$date %||% NA_character_), format = "%Y-%m-%d")
     !is.na(d) && as.numeric(issue_date - d) <= CATALYST_KEEP_PAST_DAYS
   })
 }
@@ -3750,7 +3750,7 @@ CATALYST_MEMORY_MAX_AGE_DAYS <- 365
 
 catalysts_in_window <- function(story, today = Sys.Date()) {
   purrr::keep(story$catalysts %||% list(), function(c) {
-    d <- suppressWarnings(as.Date(c$date %||% NA_character_))
+    d <- as.Date(as.character(c$date %||% NA_character_), format = "%Y-%m-%d")
     !is.na(d) &&
       d >= today - CATALYST_LOOKBACK_DAYS &&
       d <= today + CATALYST_LOOKAHEAD_DAYS
