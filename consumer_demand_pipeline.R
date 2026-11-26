@@ -280,6 +280,33 @@ format_pinned_facts <- function(facts) {
   )
 }
 
+# Dated catalysts (launches, releases, decisions, earnings) recorded for a
+# story, one line each, with the distance from `today`.
+format_catalysts <- function(catalysts, today = Sys.Date()) {
+  if (length(catalysts %||% list()) == 0) {
+    return("  (none recorded)")
+  }
+  paste0(
+    vapply(
+      catalysts,
+      function(c) {
+        d <- as.Date(as.character(c$date %||% NA_character_), format = "%Y-%m-%d")
+        gap <- if (is.na(d)) "" else {
+          n <- as.integer(d - today)
+          if (n > 0) paste0(" (in ", n, " days)") else if (n == 0) " (today)" else paste0(" (", -n, " days ago)")
+        }
+        paste0(
+          "  - ", c$event %||% "", " — ", c$date %||% "date unknown", gap,
+          if (nzchar(c$beneficiaries %||% "")) paste0(" — beneficiaries: ", c$beneficiaries) else "",
+          if (nzchar(c$source_url %||% "")) paste0(" — source: ", c$source_url) else ""
+        )
+      },
+      character(1)
+    ),
+    collapse = "\n"
+  )
+}
+
 format_memory_story <- function(story) {
   score <- story$last_score %||% NA
   paste0(
@@ -293,7 +320,8 @@ format_memory_story <- function(story) {
     "Last priority / score: ", story$last_priority %||% "", " / ",
     if (is.na(score)) "—" else paste0(score, "/100"), "\n",
     "Last summary: ", story$last_summary %||% "", "\n",
-    "Pinned verified facts:\n", format_pinned_facts(story$pinned_facts %||% list())
+    "Pinned verified facts:\n", format_pinned_facts(story$pinned_facts %||% list()), "\n",
+    "Dated catalysts:\n", format_catalysts(story$catalysts %||% list())
   )
 }
 
@@ -374,6 +402,30 @@ merge_pinned_facts <- function(old_facts, new_facts) {
   merged
 }
 
+# Catalysts are keyed by event name; a newer entry replaces the date or
+# details. Catalysts more than CATALYST_KEEP_PAST_DAYS in the past are
+# dropped.
+CATALYST_KEEP_PAST_DAYS <- 45
+
+merge_catalysts <- function(old, new, issue_date = Sys.Date()) {
+  old <- old %||% list()
+  new <- new %||% list()
+  key <- function(c) memory_compact_key(c$event %||% "")
+  merged <- old
+  for (c in new) {
+    if (!is.list(c) || !nzchar(key(c))) next
+    if (is.na(as.Date(as.character(c$date %||% NA_character_), format = "%Y-%m-%d"))) next
+    existing <- vapply(merged, key, character(1))
+    position <- match(key(c), existing)
+    if (is.na(position)) merged[[length(merged) + 1]] <- c else merged[[position]] <- c
+  }
+  issue_date <- as.Date(issue_date)
+  purrr::keep(merged, function(c) {
+    d <- as.Date(as.character(c$date %||% NA_character_), format = "%Y-%m-%d")
+    !is.na(d) && as.numeric(issue_date - d) <= CATALYST_KEEP_PAST_DAYS
+  })
+}
+
 # Statuses that mean the story appeared in the published briefing
 # or is being tracked. Rejected topics are not remembered.
 MEMORY_TRACKED_STATUSES <- c("new", "update", "still_watching", "monitoring")
@@ -416,6 +468,11 @@ update_story_memory <- function(memory, update, issue_id, issue_date) {
     existing$pinned_facts <- merge_pinned_facts(
       existing$pinned_facts,
       entry$pinned_facts
+    )
+    existing$catalysts <- merge_catalysts(
+      existing$catalysts,
+      entry$catalysts,
+      issue_date
     )
     memory[[position]] <- existing
   }
@@ -3681,8 +3738,64 @@ if (nrow(research_queue) > 0) {
 # change ends up under "Still watching".
 # ------------------------------------------------------------
 
-MAX_MEMORY_RECHECKS <- 2
+MAX_MEMORY_RECHECKS <- 3
 MEMORY_RECHECK_MAX_AGE_DAYS <- 56
+
+# Catalyst calendar: a remembered story is re-checked when one of its dated
+# catalysts falls between CATALYST_LOOKBACK_DAYS ago and
+# CATALYST_LOOKAHEAD_DAYS ahead, even if it was last reported long ago.
+CATALYST_LOOKBACK_DAYS <- 10
+CATALYST_LOOKAHEAD_DAYS <- 21
+CATALYST_MEMORY_MAX_AGE_DAYS <- 365
+
+catalysts_in_window <- function(story, today = Sys.Date()) {
+  purrr::keep(story$catalysts %||% list(), function(c) {
+    d <- as.Date(as.character(c$date %||% NA_character_), format = "%Y-%m-%d")
+    !is.na(d) &&
+      d >= today - CATALYST_LOOKBACK_DAYS &&
+      d <= today + CATALYST_LOOKAHEAD_DAYS
+  })
+}
+
+# Stories to re-check this week: catalyst checks first (nearest date),
+# then the most recently reported stories.
+select_memory_rechecks <- function(
+    memory,
+    queued_titles = character(),
+    today = Sys.Date(),
+    max_checks = MAX_MEMORY_RECHECKS
+) {
+  candidates <- list()
+  for (story in memory) {
+    last_date <- suppressWarnings(as.Date(story$last_reported_date %||% NA_character_))
+    if (is.na(last_date)) next
+    if (identical(story$last_status %||% "", "rejected")) next
+
+    window_cats <- catalysts_in_window(story, today)
+    age <- as.numeric(today - last_date)
+    max_age <- if (length(window_cats) > 0) CATALYST_MEMORY_MAX_AGE_DAYS else MEMORY_RECHECK_MAX_AGE_DAYS
+    if (age > max_age) next
+
+    already_queued <- any(vapply(
+      as.character(queued_titles %||% character()),
+      function(title) !is.null(find_memory_story(title, list(story))),
+      logical(1)
+    ))
+    if (already_queued) next
+
+    story$.catalysts_in_window <- window_cats
+    story$.catalyst_gap <- if (length(window_cats) > 0) {
+      min(abs(vapply(window_cats, function(c) as.numeric(as.Date(c$date) - today), numeric(1))))
+    } else {
+      Inf
+    }
+    candidates[[length(candidates) + 1]] <- story
+  }
+  if (length(candidates) == 0) return(list())
+  gap <- vapply(candidates, function(s) s$.catalyst_gap, numeric(1))
+  recency <- vapply(candidates, function(s) s$last_reported_date %||% "", character(1))
+  head(candidates[order(gap, -xtfrm(recency))], max_checks)
+}
 
 build_memory_recheck_prompt <- function(story) {
   base_prompt <- build_parent_research_prompt(
@@ -3709,46 +3822,32 @@ build_memory_recheck_prompt <- function(story) {
     ": new SEC filings (10-Q, 10-K, 8-K), earnings releases, official company or regulator announcements, and changes in the key figures listed under pinned facts.\n",
     "2. Re-verify each pinned fact against the most recent primary filing and report any newer value with its period and source.\n",
     "3. Do not treat the absence of trend data as a negative signal.\n",
-    "4. If nothing material changed, keep the report brief: the CHANGE line, the pinned facts confirmed, and what to watch next.\n"
+    "4. If nothing material changed, keep the report brief: the CHANGE line, the pinned facts confirmed, and what to watch next.\n",
+    catalyst_check_rules(story)
   )
 }
 
-memory_recheck_candidates <- list()
-
-if (length(story_memory) > 0) {
-  queued_titles <- research_queue$parent_title
-
-  for (story in story_memory) {
-    last_date <- suppressWarnings(as.Date(story$last_reported_date %||% NA_character_))
-    if (is.na(last_date)) next
-    if (as.numeric(Sys.Date() - last_date) > MEMORY_RECHECK_MAX_AGE_DAYS) next
-    if (identical(story$last_status %||% "", "rejected")) next
-
-    already_queued <- any(vapply(
-      queued_titles,
-      function(title) {
-        found <- find_memory_story(title, list(story))
-        !is.null(found)
-      },
-      logical(1)
-    ))
-    if (already_queued) next
-
-    memory_recheck_candidates[[length(memory_recheck_candidates) + 1]] <- story
-  }
+catalyst_check_rules <- function(story, today = Sys.Date()) {
+  cats <- story$.catalysts_in_window %||% list()
+  if (length(cats) == 0) return("")
+  paste0(
+    "\nCATALYST CHECK\n",
+    "This story has a dated catalyst in the current window:\n",
+    format_catalysts(cats, today), "\n",
+    "1. If the catalyst date is still ahead: look for evidence of how big it will be (pre-orders, sell-outs, waitlists, retailer allocations, company guidance or commentary, early tracking) and whether that evidence points to stronger or weaker demand than generally expected.\n",
+    "2. If the catalyst date has passed: report what actually happened (sales figures, records, company statements, delays) and compare it with prior expectations.\n",
+    "3. Re-assess every listed beneficiary, including demand-driver beneficiaries, and state whether the catalyst changes the investment score.\n",
+    "4. Begin the report with one line 'CATALYST: <event> (<date>)', before the CHANGE SINCE LAST REPORT line.\n"
+  )
 }
+
+memory_recheck_candidates <- select_memory_rechecks(
+  story_memory,
+  queued_titles = research_queue$parent_title,
+  today = Sys.Date()
+)
 
 if (length(memory_recheck_candidates) > 0) {
-  recheck_dates <- vapply(
-    memory_recheck_candidates,
-    function(s) s$last_reported_date %||% "",
-    character(1)
-  )
-  memory_recheck_candidates <- head(
-    memory_recheck_candidates[order(recheck_dates, decreasing = TRUE)],
-    MAX_MEMORY_RECHECKS
-  )
-
   memory_recheck_rows <- purrr::map_dfr(memory_recheck_candidates, function(story) {
     tibble(
       canonical_story_key = story$story_key,
@@ -3756,9 +3855,15 @@ if (length(memory_recheck_candidates) > 0) {
       discovery_score = NA_real_,
       discovery_priority = "FOLLOW-UP",
       queue_status = "memory_recheck",
-      queue_reason = paste0(
-        "Story-memory follow-up; last reported ", story$last_reported %||% ""
-      ),
+      queue_reason = if (length(story$.catalysts_in_window %||% list()) > 0) {
+        paste0(
+          "Catalyst check: ",
+          paste(vapply(story$.catalysts_in_window, function(c) paste0(c$event %||% "", " (", c$date %||% "", ")"), character(1)), collapse = "; "),
+          "; last reported ", story$last_reported %||% ""
+        )
+      } else {
+        paste0("Story-memory follow-up; last reported ", story$last_reported %||% "")
+      },
       entity_confidence = NA_character_,
       coherence_score = NA_real_,
       consumer_relevance_score = NA_real_,
@@ -4073,7 +4178,10 @@ weekly_editor_packet <- map_chr(completed_weekly_reports, function(result) {
   paste0(
     "\n\n========================================\n",
     "TOPIC: ", result$parent_title, "\n",
-    if (identical(result$queue_status %||% "", "memory_recheck")) {
+    if (identical(result$queue_status %||% "", "memory_recheck") &&
+        grepl("^Catalyst check", result$queue_reason %||% "")) {
+      paste0("TYPE: CATALYST CHECK (", result$queue_reason, ")\n")
+    } else if (identical(result$queue_status %||% "", "memory_recheck")) {
       "TYPE: STORY-MEMORY FOLLOW-UP CHECK (not trending this week; researched because it was reported before)\n"
     } else {
       ""
@@ -4344,7 +4452,9 @@ build_weekly_editor_prompt <- function(
 
     "5. New topics (not in STORY MEMORY) are handled exactly as before.\n",
 
-    "6. Reports marked 'TYPE: STORY-MEMORY FOLLOW-UP CHECK' were researched because the story was reported before, not because it trended this week. Apply rules 1 and 2 to them: a material new development (for example a new quarterly filing that changes a pinned figure) goes under Ranked stories as an update; otherwise list the story under 'Still watching'. Never cite the absence of trend data as a reason to downgrade.\n\n",
+    "6. Reports marked 'TYPE: STORY-MEMORY FOLLOW-UP CHECK' were researched because the story was reported before, not because it trended this week. Apply rules 1 and 2 to them: a material new development (for example a new quarterly filing that changes a pinned figure) goes under Ranked stories as an update; otherwise list the story under 'Still watching'. Never cite the absence of trend data as a reason to downgrade.\n",
+
+    "7. Reports marked 'TYPE: CATALYST CHECK' were researched because a dated catalyst for a remembered story is near or just passed. Put the story under Ranked stories (as 'Update since <last issue>:') when the check finds new evidence about the catalyst's size or outcome, or the catalyst moves the investment score by 5 points or more; otherwise list it under 'Still watching' and name the catalyst and its date.\n\n",
 
     "STORY MEMORY\n",
 
@@ -4361,9 +4471,9 @@ build_weekly_editor_prompt <- function(
 
     "After the Sources section, end your output with exactly one fenced block whose opening fence is ```story-memory and closing fence is ```. It is removed before publication and used to update STORY MEMORY. It must contain valid JSON of this form:\n",
 
-    "{\"stories\": [{\"story_key\": \"needoh\", \"title\": \"NeeDoh scarcity and GAIN look-through\", \"status\": \"update\", \"priority\": \"YELLOW\", \"score\": 58, \"summary\": \"One sentence on the current assessment.\", \"pinned_facts\": [{\"fact\": \"Schylling preferred equity fair value (GAIN 10-Q)\", \"value\": \"$69.8M\", \"as_of\": \"2026-06-30\", \"source_url\": \"https://...\", \"verified_in\": \"", issue_id, "\"}]}]}\n",
+    "{\"stories\": [{\"story_key\": \"needoh\", \"title\": \"NeeDoh scarcity and GAIN look-through\", \"status\": \"update\", \"priority\": \"YELLOW\", \"score\": 58, \"summary\": \"One sentence on the current assessment.\", \"pinned_facts\": [{\"fact\": \"Schylling preferred equity fair value (GAIN 10-Q)\", \"value\": \"$69.8M\", \"as_of\": \"2026-06-30\", \"source_url\": \"https://...\", \"verified_in\": \"", issue_id, "\"}], \"catalysts\": [{\"event\": \"<dated milestone, e.g. next 10-Q filing>\", \"date\": \"YYYY-MM-DD\", \"beneficiaries\": \"<tickers>\", \"source_url\": \"https://...\"}]}]}\n",
 
-    "Rules for the block: include every topic from Ranked stories, Still watching, and Monitoring signals. status is one of new, update, still_watching, monitoring. For continuing stories reuse the exact story_key from STORY MEMORY; for new topics use a short lowercase key naming the product or brand. score is a number or null. pinned_facts lists only key figures you verified against a primary source this week (filings, official disclosures); use an empty list if none. For still_watching entries, priority, score, and summary may repeat the previous values.\n\n",
+    "Rules for the block: include every topic from Ranked stories, Still watching, and Monitoring signals. status is one of new, update, still_watching, monitoring. For continuing stories reuse the exact story_key from STORY MEMORY; for new topics use a short lowercase key naming the product or brand. score is a number or null. pinned_facts lists only key figures you verified against a primary source this week (filings, official disclosures); use an empty list if none. For still_watching entries, priority, score, and summary may repeat the previous values. catalysts lists dated milestones that could change the story's assessment (a launch, release, regulatory decision, or an earnings report expected to show the effect), each with event, date (YYYY-MM-DD; if only the month is known, use the first day and add '(month only)' to event), beneficiaries (tickers, including demand-driver beneficiaries), and source_url. Include only dates verified in this week's reports or carried over from STORY MEMORY, keep existing catalysts unless they changed, include catalysts for monitoring topics too, and use an empty list if none.\n\n",
 
     "COMPLETED ANALYST REPORTS\n",
 
