@@ -2610,6 +2610,35 @@ build_parent_research_prompt <- function(
     
     
     # --------------------------------------------------------
+    # Demand driver (upstream cause of the searches)
+    # --------------------------------------------------------
+    
+    "DEMAND-DRIVER CHAIN (MANDATORY)\n",
+    
+    "Scarcity searches are often a symptom. Before judging the topic, identify what is CAUSING the demand behind the searches.\n",
+    
+    "1. Name the primary demand driver: for example a content or product launch, a viral moment, a celebrity or influencer, a holiday or promotion, a policy or regulatory change, a weather event, a price change, or organic demand for the product itself.\n",
+    
+    "2. Verify the causal link between the driver and the searched product with cited evidence (reporting that ties the sell-outs, restocks, waitlists, or search spike to the driver). Without that evidence, say the driver is unverified and do not use it.\n",
+    
+    "3. If the driver is itself a distinct, verifiable event or product owned by someone other than the maker of the searched product, build a SECOND exposure chain for the driver: driver -> owner of the driver (publisher, studio, IP owner, platform holder, licensor, organizer) -> publicly traded economic beneficiary. Apply the same strict verification and materiality rules as for the searched product.\n",
+    
+    "   Illustrative pattern (not a claim about any current event): game consoles selling out around a major game launch -> research the game's publisher and its parent, not only the console maker; toys selling out around a film release -> research the studio and licensor, not only the toy maker.\n",
+    
+    "4. Assess the driver's magnitude separately from the scarcity's persistence. A shortage that clears quickly through restocks can still be evidence of a very large demand event. Repeated sell-outs followed by restocks indicate demand being met by supply, not necessarily noise.\n",
+    
+    "5. The driver is within scope when a supplied query OR cited reporting about the searched product connects it to the driver. Do not pull in an unrelated event merely because it is in the news.\n",
+    
+    "6. If the driver is simply organic demand for the product itself, say so in one line and continue; do not invent a second chain.\n",
+    
+    "7. Score the story on its STRONGEST verified beneficiary across both chains. If a driver beneficiary has higher financial materiality than the owner of the searched product, assess Financial materiality, Public-company exposure, Persistence, and Catalyst clarity for that beneficiary (for example its own sell-through disclosures and next earnings report) and name it as the strongest public-company connection in the snapshot.\n",
+    
+    "8. Informational value: judge whether the search signal adds information beyond what is already public about the driver, such as evidence that uptake is stronger or weaker than expected. A famous, widely anticipated event scores low on informational value unless the signal says something new about its size.\n",
+    
+    "9. Do not list a driver beneficiary whose exposure is de minimis; mention it in one line instead.\n\n",
+    
+    
+    # --------------------------------------------------------
     # Ownership and look-through
     # --------------------------------------------------------
     
@@ -2652,7 +2681,7 @@ build_parent_research_prompt <- function(
     
     "- Evaluate BOTH operating exposure and investment/ownership exposure.\n",
     
-    "- Valid operating exposure includes: ownership of the affected brand; manufacturing; primary supplier relationship; primary distribution; meaningful retailer exposure; licensing; or explicit operational exposure.\n",
+    "- Valid operating exposure includes: ownership of the affected brand; manufacturing; primary supplier relationship; primary distribution; meaningful retailer exposure; licensing; explicit operational exposure; or ownership of a verified upstream demand driver identified in the DEMAND-DRIVER CHAIN (label this exposure type 'demand driver').\n",
     
     "- Valid investment exposure includes: a publicly traded parent; listed holding company; BDC; investment company; listed strategic investor; or other public entity with a material debt or equity investment in the affected private company.\n",
     
@@ -2758,7 +2787,7 @@ build_parent_research_prompt <- function(
     "- Financial materiality: 0-25\n",
     "- Public-company exposure: 0-15\n",
     "- Evidence quality: 0-15\n",
-    "- Persistence: 0-10\n",
+    "- Persistence: 0-10 (persistence of the underlying demand or its driver, not only of the stockout)\n",
     "- Catalyst clarity: 0-10\n",
     "- Informational value: 0-5\n",
     
@@ -2775,7 +2804,7 @@ build_parent_research_prompt <- function(
     
     "## 0. Weekly-editor snapshot\n",
     
-    "Provide exactly: topic; one-sentence verified development; principal subtheme; primary trend driver; strongest verified evidence; strongest verified public-company connection or 'None'; financial materiality; evidence quality; persistence classification; investment score; priority classification; recommended status (publish, monitor, reject); three reasons supporting the classification; principal reason not to prioritize it.\n\n",
+    "Provide exactly: topic; one-sentence verified development; principal subtheme; primary demand driver (and whether it is verified); listed beneficiaries of that driver or 'None'; strongest verified evidence; strongest verified public-company connection or 'None'; financial materiality; evidence quality; persistence classification; investment score; priority classification; recommended status (publish, monitor, reject); three reasons supporting the classification; principal reason not to prioritize it.\n\n",
     
     "## 1. Topic disambiguation\n",
     
@@ -2789,15 +2818,17 @@ build_parent_research_prompt <- function(
     
     "State what actually happened, when it happened, and the evidence. Clearly label unresolved claims.\n\n",
     
-    "## 4. Demand, supply, and persistence\n",
+    "## 4. Demand driver, supply, and persistence\n",
     
-    "Assess verified demand evidence, inventory, stockouts, restocks, production or distribution constraints, and likely duration. Do not treat Google Trends growth itself as proof of demand or scarcity.\n\n",
+    "Start with the DEMAND-DRIVER CHAIN: the verified driver, the evidence linking it to the searches, its scale, and its timing (including dated future milestones). Then assess verified demand evidence, inventory, stockouts, restocks, production or distribution constraints, and likely duration. Do not treat Google Trends growth itself as proof of demand or scarcity.\n\n",
     
     "## 5. Ownership, capital-provider, and public-company map\n",
     
     "For every verified subtheme construct the full economic chain where applicable:\n",
     
     "product/event -> brand -> operating company -> legal owner -> ultimate parent -> major investor/BDC/holding company -> publicly traded economic beneficiary.\n\n",
+    
+    "When a verified demand driver is owned by someone else, add the driver chain as well: driver -> owner of the driver -> ultimate parent -> publicly traded economic beneficiary.\n\n",
     
     "For each entity report: legal entity name; private/public status; ownership or investment relationship; percentage ownership when disclosed; debt/equity instrument when disclosed; cost basis; fair value; portfolio significance; ticker and exchange; relationship confidence; and authoritative evidence.\n\n",
     
@@ -4109,7 +4140,7 @@ build_weekly_editor_prompt <- function(
     
     "4. Do not include companies merely because they sell similar products, compete in the same category, could theoretically benefit, or belong to the same industry.\n",
     
-    "5. Prefer verified, persistent, financially material developments over novelty-driven attention.\n",
+    "5. Prefer verified, persistent, financially material developments over novelty-driven attention. Judge persistence on the underlying demand or its driver: when a scarcity signal is explained by a large, verified, dated demand driver (for example a major launch), quick restocks are not by themselves a reason to reject or demote the story, and the driver's listed beneficiaries may be the lead exposure.\n",
     
     "6. Penalize ambiguous entities, weak ownership mapping, unsupported shortages, one-day spikes, duplicated stories, speculative exposure tables, and unsupported financial-transmission claims.\n",
     
